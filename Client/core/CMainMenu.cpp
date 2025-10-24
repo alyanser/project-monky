@@ -162,14 +162,6 @@ CMainMenu::CMainMenu(CGUI* pManager)
     m_pLogo->SetPosition(CVector2D(0.5f * m_iMenuSizeX - logoSize.fX / 2, 0.365f * m_iMenuSizeY - logoSize.fY / 2), false);
     m_pLogo->SetZOrderingEnabled(false);
 
-    // Create the image showing the version number
-    //m_pVersion = reinterpret_cast<CGUIStaticImage*>(pManager->CreateStaticImage());
-    //m_pVersion->LoadFromFile(CORE_MTA_VERSION);
-    //m_pVersion->SetParent(m_pCanvas);
-    //m_pVersion->SetPosition(CVector2D(0.855f, 0.512f), true);
-    //m_pVersion->SetSize(CVector2D((32 / NATIVE_RES_X) * m_iMenuSizeX, (32 / NATIVE_RES_Y) * m_iMenuSizeY), false);
-    //m_pVersion->SetProperty("InheritsAlpha", "False");
-
     float fBase = 0.613f;
     float fGap = 0.043f;
     // Our disconnect item is shown/hidden dynamically, so we store it seperately
@@ -209,77 +201,6 @@ CMainMenu::CMainMenu(CGUI* pManager)
     m_pMenuArea->SetClickHandler(GUI_CALLBACK_MOUSE(&CMainMenu::OnMenuClick, this));
     m_pMenuArea->SetMouseEnterHandler(GUI_CALLBACK(&CMainMenu::OnMenuEnter, this));
     m_pMenuArea->SetMouseLeaveHandler(GUI_CALLBACK(&CMainMenu::OnMenuExit, this));
-
-    m_pLatestNews = reinterpret_cast<CGUIStaticImage*>(pManager->CreateStaticImage());
-    if (!m_pLatestNews->LoadFromFile(PathJoin(g_pCore->GetLocalization()->GetLanguageDirectory(), "latest_news.png")))
-    {
-        // Load en_US if no localization is available
-        auto pLanguage = g_pLocalization->GetLanguage("en_US");
-        m_pLatestNews->LoadFromFile(PathJoin(g_pCore->GetLocalization()->GetLanguageDirectory(pLanguage), "latest_news.png"));
-    }
-    m_pLatestNews->SetParent(m_pCanvas);
-    m_pLatestNews->SetProperty("InheritsAlpha", "False");
-    CVector2D vecNativeSize;
-    m_pLatestNews->GetNativeSize(vecNativeSize);
-    float fDrawSizeX = (vecNativeSize.fX / NATIVE_RES_X) * m_iMenuSizeX;
-    float fDrawSizeY = (vecNativeSize.fY / NATIVE_RES_Y) * m_iMenuSizeY;
-    m_pLatestNews->SetSize(CVector2D(fDrawSizeX, fDrawSizeY), false);
-    float fDrawPosX = 0.83f * m_iMenuSizeX - fDrawSizeX;            // Right aligned
-    float fDrawPosY = 0.61f * m_iMenuSizeY;
-    m_pLatestNews->SetPosition(CVector2D(fDrawPosX, fDrawPosY), false);
-    m_pLatestNews->SetVisible(false);
-
-    // Create news item stuff
-    fDrawPosX -= 25;
-    fDrawPosY += fDrawSizeY + 3;
-    for (uint i = 0; i < CORE_MTA_NEWS_ITEMS; i++)
-    {
-        fDrawPosY += 20;
-        // Create our shadow and item
-        CGUILabel* pItemShadow = reinterpret_cast<CGUILabel*>(m_pManager->CreateLabel(m_pCanvas, " "));
-        CGUILabel* pItem = reinterpret_cast<CGUILabel*>(m_pManager->CreateLabel(m_pCanvas, " "));
-
-        pItem->SetFont("sans");
-        pItemShadow->SetFont("sans");
-        pItem->SetHorizontalAlign(CGUI_ALIGN_RIGHT);
-        pItemShadow->SetHorizontalAlign(CGUI_ALIGN_RIGHT);
-
-        pItem->SetSize(CVector2D(fDrawSizeX, 14), false);
-        pItemShadow->SetSize(CVector2D(fDrawSizeX, 15), false);
-
-        pItem->SetPosition(CVector2D(fDrawPosX, fDrawPosY), false);
-        pItemShadow->SetPosition(CVector2D(fDrawPosX + 1, fDrawPosY + 1), false);
-
-        pItemShadow->SetTextColor(112, 112, 112);
-
-        // Set the handlers
-        pItem->SetClickHandler(GUI_CALLBACK(&CMainMenu::OnNewsButtonClick, this));
-
-        // Store the item in the array
-        m_pNewsItemLabels[i] = pItem;
-        m_pNewsItemShadowLabels[i] = pItemShadow;
-
-        // Create our date label
-        fDrawPosY += 15;
-        CGUILabel* pItemDate = reinterpret_cast<CGUILabel*>(m_pManager->CreateLabel(m_pCanvas, " "));
-
-        pItemDate->SetFont("default-small");
-        pItemDate->SetHorizontalAlign(CGUI_ALIGN_RIGHT);
-
-        pItemDate->SetSize(CVector2D(fDrawSizeX, 13), false);
-        pItemDate->SetPosition(CVector2D(fDrawPosX, fDrawPosY), false);
-
-        m_pNewsItemDateLabels[i] = pItemDate;
-
-        // Create 'NEW' sticker
-        CGUILabel*& pLabel = m_pNewsItemNEWLabels[i];
-        pLabel = reinterpret_cast<CGUILabel*>(pManager->CreateLabel(m_pCanvas, "NEW"));
-        pLabel->SetFont("default-small");
-        pLabel->SetTextColor(255, 0, 0);
-        pLabel->AutoSize(pLabel->GetText().c_str());
-        pLabel->SetAlpha(0.7f);
-        pLabel->SetVisible(false);
-    }
 
     m_pLogo->MoveToBack();
 
@@ -1171,52 +1092,10 @@ bool CMainMenu::SetItemHoverProgress(sMenuItem* pItem, float fProgress, bool bHo
 
 void CMainMenu::SetNewsHeadline(int iIndex, const SString& strHeadline, const SString& strDate, bool bIsNew)
 {
-    if (iIndex < 0 || iIndex > 2)
-        return;
-
-    m_pLatestNews->SetVisible(true);
-
-    // Headline
-    CGUILabel* pItem = m_pNewsItemLabels[iIndex];
-    CGUILabel* pItemShadow = m_pNewsItemShadowLabels[iIndex];
-    SColor     color = headlineColors[iIndex];
-    pItem->SetTextColor(color.R, color.G, color.B);
-    pItem->SetText(strHeadline);
-    pItemShadow->SetText(strHeadline);
-
-    // Switch font if it's too big
-    if (pItem->GetSize(false).fX < pItem->GetTextExtent())
-    {
-        const char* szFontName = "default-bold-small";
-        for (char i = 0; i < CORE_MTA_NEWS_ITEMS; i++)
-        {
-            // Try default-bold-small first, if that's too big use default-small
-            m_pNewsItemLabels[i]->SetFont(szFontName);
-            m_pNewsItemShadowLabels[i]->SetFont(szFontName);
-            if (strcmp(szFontName, "default-small") && (m_pNewsItemLabels[i]->GetSize(false).fX < m_pNewsItemLabels[i]->GetTextExtent()))
-            {
-                szFontName = "default-small";
-                i = -1;
-            }
-        }
-    }
-
-    // Set our Date labels
-    CGUILabel* pItemDate = m_pNewsItemDateLabels[iIndex];
-    pItemDate->SetText(strDate);
-
-    // 'NEW' sticker
-    CGUILabel* pNewLabel = m_pNewsItemNEWLabels[iIndex];
-    pNewLabel->SetVisible(bIsNew);
-    pNewLabel->SetPosition(CVector2D(pItem->GetPosition().fX + 4, pItem->GetPosition().fY - 4));
 }
 
 void CMainMenu::ReloadNews()
 {
-    delete m_pNewsBrowser;
-    m_pNewsBrowser = new CNewsBrowser();
-    m_pNewsBrowser->CreateHeadlines();
-    m_pNewsBrowser->SetVisible(true);
 }
 
 /////////////////////////////////////////////////////////////
