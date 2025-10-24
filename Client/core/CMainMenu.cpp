@@ -21,10 +21,6 @@
 #define NATIVE_BG_X     1280.0f
 #define NATIVE_BG_Y     1024.0f
 
-// Don't need the NATIVE LOGO. Temporary fix
-#define NATIVE_LOGO_X     0.0f
-#define NATIVE_LOGO_Y     0.0f
-
 #define CORE_MTA_MENUITEMS_START_X  0.168
 
 #define CORE_MTA_BG_MAX_ALPHA       1.00f   //ACHTUNG: Set to 1 for now due to GTA main menu showing through (no delay inserted between Entering game... and loading screen)
@@ -153,15 +149,6 @@ CMainMenu::CMainMenu(CGUI* pManager)
     m_pCanvas->MoveToBack();
     m_pCanvas->SetVisible(false);
 
-    // Create our MTA logo
-    CVector2D logoSize = CVector2D((NATIVE_LOGO_X / NATIVE_RES_X) * m_iMenuSizeX, (NATIVE_LOGO_Y / NATIVE_RES_Y) * m_iMenuSizeY);
-    m_pLogo = reinterpret_cast<CGUIStaticImage*>(pManager->CreateStaticImage(m_pCanvas));
-    m_pLogo->LoadFromFile(CORE_MTA_LOGO);
-    m_pLogo->SetProperty("InheritsAlpha", "False");
-    m_pLogo->SetSize(logoSize, false);
-    m_pLogo->SetPosition(CVector2D(0.5f * m_iMenuSizeX - logoSize.fX / 2, 0.365f * m_iMenuSizeY - logoSize.fY / 2), false);
-    m_pLogo->SetZOrderingEnabled(false);
-
     float fBase = 0.613f;
     float fGap = 0.043f;
     // Our disconnect item is shown/hidden dynamically, so we store it seperately
@@ -202,7 +189,6 @@ CMainMenu::CMainMenu(CGUI* pManager)
     m_pMenuArea->SetMouseEnterHandler(GUI_CALLBACK(&CMainMenu::OnMenuEnter, this));
     m_pMenuArea->SetMouseLeaveHandler(GUI_CALLBACK(&CMainMenu::OnMenuExit, this));
 
-    m_pLogo->MoveToBack();
 
     // Submenus
     m_ServerBrowser.SetVisible(false);
@@ -331,7 +317,6 @@ CMainMenu::~CMainMenu()
     m_pNewsBrowser = nullptr;
 
     destroyElement(m_pMenuArea);
-    destroyElement(m_pLogo);
     destroyElement(m_pLatestNews);
     destroyElement(m_pVersion);
 
