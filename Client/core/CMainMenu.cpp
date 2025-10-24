@@ -19,10 +19,11 @@
 #define NATIVE_RES_Y    1024.0f
 
 #define NATIVE_BG_X     1280.0f
-#define NATIVE_BG_Y     649.0f
+#define NATIVE_BG_Y     1024.0f
 
-#define NATIVE_LOGO_X     1058.0f
-#define NATIVE_LOGO_Y     540.0f
+// Don't need the NATIVE LOGO. Temporary fix
+#define NATIVE_LOGO_X     0.0f
+#define NATIVE_LOGO_Y     0.0f
 
 #define CORE_MTA_MENUITEMS_START_X  0.168
 
@@ -162,12 +163,12 @@ CMainMenu::CMainMenu(CGUI* pManager)
     m_pLogo->SetZOrderingEnabled(false);
 
     // Create the image showing the version number
-    m_pVersion = reinterpret_cast<CGUIStaticImage*>(pManager->CreateStaticImage());
-    m_pVersion->LoadFromFile(CORE_MTA_VERSION);
-    m_pVersion->SetParent(m_pCanvas);
-    m_pVersion->SetPosition(CVector2D(0.855f, 0.512f), true);
-    m_pVersion->SetSize(CVector2D((32 / NATIVE_RES_X) * m_iMenuSizeX, (32 / NATIVE_RES_Y) * m_iMenuSizeY), false);
-    m_pVersion->SetProperty("InheritsAlpha", "False");
+    //m_pVersion = reinterpret_cast<CGUIStaticImage*>(pManager->CreateStaticImage());
+    //m_pVersion->LoadFromFile(CORE_MTA_VERSION);
+    //m_pVersion->SetParent(m_pCanvas);
+    //m_pVersion->SetPosition(CVector2D(0.855f, 0.512f), true);
+    //m_pVersion->SetSize(CVector2D((32 / NATIVE_RES_X) * m_iMenuSizeX, (32 / NATIVE_RES_Y) * m_iMenuSizeY), false);
+    //m_pVersion->SetProperty("InheritsAlpha", "False");
 
     float fBase = 0.613f;
     float fGap = 0.043f;
