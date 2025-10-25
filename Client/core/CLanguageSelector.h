@@ -27,12 +27,12 @@ class CLanguageSelector
 {
 public:
     ZERO_ON_NEW
-    CLanguageSelector(CGUIElement* pMainMenuCanvas);
+    CLanguageSelector();
     ~CLanguageSelector();
     void DoPulse();
 
 protected:
-    void           CreateGUI(CGUIElement* pMainMenuCanvas);
+    void           CreateGUI();
     CLangListItem  CreateGUILangItem(CGUIElement* pGUIParent, const CVector2D& vecPanePosition, const SString& strLocale = "");
     void           SetLanguageListVisible(bool bVisible);
     CLangListItem* GetListItemByIndex(uint uiIndex);

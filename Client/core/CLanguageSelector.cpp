@@ -41,9 +41,9 @@
 // Create GUI items
 //
 ///////////////////////////////////////////////////////////////
-CLanguageSelector::CLanguageSelector(CGUIElement* pMainMenuCanvas)
+CLanguageSelector::CLanguageSelector()
 {
-    CreateGUI(pMainMenuCanvas);
+    CreateGUI();
 }
 
 ///////////////////////////////////////////////////////////////
@@ -82,15 +82,16 @@ CLanguageSelector::~CLanguageSelector()
 // Create GUI items
 //
 ///////////////////////////////////////////////////////////////
-void CLanguageSelector::CreateGUI(CGUIElement* pMainMenuCanvas)
+void CLanguageSelector::CreateGUI()
 {
     //
     // Create current language button
     //
     CVector2D vecButtonSize(ITEM_SIZE_X + BUTTON_MARGIN_X * 2, ITEM_SIZE_Y + BUTTON_MARGIN_Y * 2);
-    CVector2D vecButtonPos = pMainMenuCanvas->GetSize() - vecButtonSize - CVector2D(10, 3);
+    CVector2D ScreenSize = g_pCore->GetGUI()->GetResolution();
+    CVector2D vecButtonPos = CVector2D(0, ScreenSize.fY - vecButtonSize.fY - 10);
     {
-        m_pButtonWindow = reinterpret_cast<CGUIScrollPane*>(g_pCore->GetGUI()->CreateScrollPane(pMainMenuCanvas));
+        m_pButtonWindow = reinterpret_cast<CGUIScrollPane*>(g_pCore->GetGUI()->CreateScrollPane());
         m_pButtonWindow->SetProperty("ContentPaneAutoSized", "False");
         m_pButtonWindow->SetPosition(vecButtonPos);
         m_pButtonWindow->SetSize(vecButtonSize);
@@ -142,7 +143,7 @@ void CLanguageSelector::CreateGUI(CGUIElement* pMainMenuCanvas)
     // Create all languages list
     //
     {
-        m_pListWindow = reinterpret_cast<CGUIWindow*>(g_pCore->GetGUI()->CreateWnd(pMainMenuCanvas));
+        m_pListWindow = reinterpret_cast<CGUIWindow*>(g_pCore->GetGUI()->CreateWnd());
         m_pListWindow->SetMovable(false);
         m_pListWindow->SetAlwaysOnTop(true);
         m_pListWindow->SetFrameEnabled(false);

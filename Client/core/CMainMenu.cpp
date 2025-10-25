@@ -207,7 +207,7 @@ CMainMenu::CMainMenu(CGUI* pManager)
     m_Settings.SetVisible(false);
     m_Credits.SetVisible(false);
     m_pNewsBrowser->SetVisible(false);
-    m_pLanguageSelector = new CLanguageSelector(m_pCanvas);
+    m_pLanguageSelector = new CLanguageSelector();
 
     // We're not ingame
     SetIsIngame(false);
