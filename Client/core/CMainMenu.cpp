@@ -209,6 +209,32 @@ CMainMenu::CMainMenu(CGUI* pManager)
     m_pNewsBrowser->SetVisible(false);
     m_pLanguageSelector = new CLanguageSelector();
 
+    CVector2D discordIconSize(32, 32);
+
+    // Discord button (bottom-right)
+    CVector2D vecDiscordPos(ScreenSize.fX - discordIconSize.fX - 50, ScreenSize.fY - discordIconSize.fY - 10);
+    m_pDiscordButton = reinterpret_cast<CGUIStaticImage*>(pManager->CreateStaticImage());
+    m_pDiscordButton->LoadFromFile(CalcMTASAPath("MTA\\cgui\\images\\discord_icon.png"));
+    m_pDiscordButton->SetPosition(vecDiscordPos, false);
+    m_pDiscordButton->SetSize(discordIconSize, false);
+    m_pDiscordButton->SetZOrderingEnabled(false);
+    m_pDiscordButton->SetAlwaysOnTop(true);
+    m_pDiscordButton->SetProperty("InheritsAlpha", "False");
+    m_pDiscordButton->SetClickHandler(GUI_CALLBACK(&CMainMenu::OnDiscordButtonClick, this));
+
+    CVector2D websiteIconSize(32, 32);
+
+    // Website button (to the right of discord)
+    CVector2D vecWebsitePos(ScreenSize.fX - websiteIconSize.fX - 10, ScreenSize.fY - websiteIconSize.fY - 10);
+    m_pWebsiteButton = reinterpret_cast<CGUIStaticImage*>(pManager->CreateStaticImage());
+    m_pWebsiteButton->LoadFromFile(CalcMTASAPath("MTA\\cgui\\images\\web_icon.png"));
+    m_pWebsiteButton->SetPosition(vecWebsitePos, false);
+    m_pWebsiteButton->SetSize(websiteIconSize, false);
+    m_pWebsiteButton->SetAlwaysOnTop(true);
+    m_pWebsiteButton->SetZOrderingEnabled(false);
+    m_pWebsiteButton->SetProperty("InheritsAlpha", "False");
+    m_pWebsiteButton->SetClickHandler(GUI_CALLBACK(&CMainMenu::OnWebsiteButtonClick, this));
+
     // We're not ingame
     SetIsIngame(false);
 
@@ -989,6 +1015,18 @@ bool CMainMenu::OnQuitButtonClick(CGUIElement* pElement)
     // Send "exit" command to the command handler
     CCommands::GetSingleton().Execute("exit", "");
 
+    return true;
+}
+
+bool CMainMenu::OnDiscordButtonClick(CGUIElement* pElement)
+{
+    ShellExecuteNonBlocking("open", "https://discord.gg/your-invite-link");
+    return true;
+}
+
+bool CMainMenu::OnWebsiteButtonClick(CGUIElement* pElement)
+{
+    ShellExecuteNonBlocking("open", "https://www.google.com");
     return true;
 }
 

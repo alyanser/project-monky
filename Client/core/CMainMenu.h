@@ -95,6 +95,8 @@ private:
     bool OnAboutButtonClick(CGUIElement* pElement);
     bool OnQuitButtonClick(CGUIElement* pElement);
     bool OnNewsButtonClick(CGUIElement* pElement);
+    bool OnDiscordButtonClick(CGUIElement* pElement);
+    bool OnWebsiteButtonClick(CGUIElement* pElement);
 
     void HideServerInfo();
 
@@ -108,6 +110,8 @@ private:
     CGUIStaticImage* m_pFiller2;
     CGUIStaticImage* m_pVersion;
     CGUIStaticImage* m_pMenuArea;
+    CGUIStaticImage* m_pDiscordButton;
+    CGUIStaticImage* m_pWebsiteButton;
 
     CGUIScrollPane* m_pCanvas;
 
