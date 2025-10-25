@@ -28,8 +28,8 @@
 #define CORE_MTA_FADER              0.05f // 1/20
 #define CORE_MTA_FADER_CREDITS      0.01f
 
-#define CORE_MTA_HOVER_SCALE        1.0f
-#define CORE_MTA_NORMAL_SCALE       0.6f
+#define CORE_MTA_HOVER_SCALE        1.1f
+#define CORE_MTA_NORMAL_SCALE       0.8f
 #define CORE_MTA_HOVER_ALPHA        1.0f
 #define CORE_MTA_NORMAL_ALPHA       0.6f
 
@@ -149,8 +149,9 @@ CMainMenu::CMainMenu(CGUI* pManager)
     m_pCanvas->MoveToBack();
     m_pCanvas->SetVisible(false);
 
-    float fBase = 0.613f;
-    float fGap = 0.043f;
+    float fBaseX = 0.5f;
+    float fBase = 0.48f;
+    float fGap = 0.07f;
     // Our disconnect item is shown/hidden dynamically, so we store it seperately
     m_pDisconnect = CreateItem(MENU_ITEM_DISCONNECT, "menu_disconnect.png", CVector2D(0.168f, fBase + fGap * 0));
     m_pDisconnect->image->SetVisible(false);
@@ -158,13 +159,11 @@ CMainMenu::CMainMenu(CGUI* pManager)
     // Create the menu items
     // Filepath, Relative position, absolute native size
     // And the font for the graphics is ?
-    m_menuItems.push_back(CreateItem(MENU_ITEM_QUICK_CONNECT, "menu_quick_connect.png", CVector2D(0.168f, fBase + fGap * 0)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_BROWSE_SERVERS, "menu_browse_servers.png", CVector2D(0.168f, fBase + fGap * 1)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_HOST_GAME, "menu_host_game.png", CVector2D(0.168f, fBase + fGap * 2)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_MAP_EDITOR, "menu_map_editor.png", CVector2D(0.168f, fBase + fGap * 3)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_SETTINGS, "menu_settings.png", CVector2D(0.168f, fBase + fGap * 4)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_ABOUT, "menu_about.png", CVector2D(0.168f, fBase + fGap * 5)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_QUIT, "menu_quit.png", CVector2D(0.168f, fBase + fGap * 6)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_QUICK_CONNECT, "menu_quick_connect.png", CVector2D(fBaseX, fBase + fGap * 0)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_MAP_EDITOR, "menu_map_editor.png", CVector2D(fBaseX, fBase + fGap * 1)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_SETTINGS, "menu_settings.png", CVector2D(fBaseX, fBase + fGap * 2)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_ABOUT, "menu_about.png", CVector2D(fBaseX, fBase + fGap * 3)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_QUIT, "menu_quit.png", CVector2D(fBaseX, fBase + fGap * 4)));
 
     // We store the position of the top item, and the second item.  These will be useful later
     float fFirstItemSize = m_menuItems.front()->image->GetSize(false).fY;
@@ -173,10 +172,22 @@ CMainMenu::CMainMenu(CGUI* pManager)
     m_iFirstItemCentre = (m_menuItems.front()->image)->GetPosition().fY + fFirstItemSize * 0.5f;
     m_iSecondItemCentre = (m_menuItems[1]->image)->GetPosition().fY + fSecondItemSize * 0.5f;
 
+    float fMaxButtonWidth = 0;
+
+    for (auto* item : m_menuItems)
+    {
+        float fItemWidth = (item->nativeSizeX / NATIVE_RES_X) * m_iMenuSizeX * CORE_MTA_NORMAL_SCALE;
+
+        if (fItemWidth > fMaxButtonWidth)
+        {
+            fMaxButtonWidth = fItemWidth;
+        }
+    }
+
     // Store some mouse over bounding box positions
-    m_menuAX = (0.168f * m_iMenuSizeX) + m_iXOff;                                                                      // Left side of the items
-    m_menuAY = m_iFirstItemCentre - fFirstItemSize * (CORE_MTA_HOVER_SCALE / CORE_MTA_NORMAL_SCALE) * 0.5f;            // Top side of the items
-    m_menuBX = m_menuAX + ((390 / NATIVE_RES_X) * m_iMenuSizeX);            // Right side of the items. We add the longest picture (browse_servers)
+    m_menuAX = (fBaseX * m_iMenuSizeX) - (fMaxButtonWidth * 0.5f) + m_iXOff;  // Left edge (center - half width)
+    m_menuAY = m_iFirstItemCentre - fFirstItemSize * (CORE_MTA_HOVER_SCALE / CORE_MTA_NORMAL_SCALE) * 0.5f;
+    m_menuBX = (fBaseX * m_iMenuSizeX) + (fMaxButtonWidth * 0.5f) + m_iXOff;  // Right edge (center + half width)
     m_menuAY += BODGE_FACTOR_1;
 
     m_pMenuArea = reinterpret_cast<CGUIStaticImage*>(pManager->CreateStaticImage(m_pCanvas));
@@ -216,9 +227,9 @@ CMainMenu::CMainMenu(CGUI* pManager)
 
     // Load the server lists
     CXMLNode* pConfig = CCore::GetSingletonPtr()->GetConfig();
-    m_ServerBrowser.LoadServerList(pConfig->FindSubNode(CONFIG_NODE_SERVER_FAV), CONFIG_FAVOURITE_LIST_TAG, m_ServerBrowser.GetFavouritesList());
-    m_ServerBrowser.LoadServerList(pConfig->FindSubNode(CONFIG_NODE_SERVER_REC), CONFIG_RECENT_LIST_TAG, m_ServerBrowser.GetRecentList());
-    m_ServerBrowser.LoadServerList(pConfig->FindSubNode(CONFIG_NODE_SERVER_HISTORY), CONFIG_HISTORY_LIST_TAG, m_ServerBrowser.GetHistoryList());
+    //m_ServerBrowser.LoadServerList(pConfig->FindSubNode(CONFIG_NODE_SERVER_FAV), CONFIG_FAVOURITE_LIST_TAG, m_ServerBrowser.GetFavouritesList());
+    //m_ServerBrowser.LoadServerList(pConfig->FindSubNode(CONFIG_NODE_SERVER_REC), CONFIG_RECENT_LIST_TAG, m_ServerBrowser.GetRecentList());
+    //m_ServerBrowser.LoadServerList(pConfig->FindSubNode(CONFIG_NODE_SERVER_HISTORY), CONFIG_HISTORY_LIST_TAG, m_ServerBrowser.GetHistoryList());
 
     // Remove unused node
     if (CXMLNode* pOldNode = pConfig->FindSubNode(CONFIG_NODE_SERVER_INT))
@@ -434,9 +445,13 @@ void CMainMenu::Update()
             float fHoveredIndex = ((cursor.y - m_menuAY) / (float)(m_menuBY - m_menuAY) * m_menuItems.size());
             fHoveredIndex = Clamp<float>(0, fHoveredIndex, m_menuItems.size() - 1);
             sMenuItem* pItem = m_menuItems[(int)floor(fHoveredIndex)];
-            int        iSizeX = (pItem->nativeSizeX / NATIVE_RES_X) * m_iMenuSizeX;
 
-            if (cursor.x < (iSizeX + m_menuAX))
+            int iSizeX = (pItem->nativeSizeX / NATIVE_RES_X) * m_iMenuSizeX * CORE_MTA_NORMAL_SCALE;
+            float fButtonCenterX = (0.5f * m_iMenuSizeX) + m_iXOff;
+            float fButtonLeft = fButtonCenterX - (iSizeX * 0.5f);
+            float fButtonRight = fButtonCenterX + (iSizeX * 0.5f);
+
+            if (cursor.x >= fButtonLeft && cursor.x <= fButtonRight)
             {
                 if ((m_pHoveredItem) && (m_pHoveredItem != pItem))
                 {
@@ -1029,6 +1044,7 @@ sMenuItem* CMainMenu::CreateItem(unsigned char menuType, const char* szFilename,
     iSizeY = iSizeY * CORE_MTA_NORMAL_SCALE;
     // Grab our draw position from which we enlarge from
     iPosY = iPosY - (iSizeY / 2);
+    iPosX = iPosX - (iSizeX / 2);
 
     pImage->SetParent(m_pCanvas);
     pImage->SetPosition(CVector2D(iPosX, iPosY), false);
@@ -1065,7 +1081,7 @@ bool CMainMenu::SetItemHoverProgress(sMenuItem* pItem, float fProgress, bool bHo
     int iSizeY = (pItem->nativeSizeY / NATIVE_RES_Y) * m_iMenuSizeY * fTargetScale;
 
     // Aligned to the left horizontally, aligned to the centre vertically
-    int iPosX = pItem->drawPositionX;
+    int iPosX = pItem->drawPositionX - (iSizeX * 0.5);
     int iPosY = (pItem->drawPositionY) - (iSizeY * 0.5);
 
     pItem->image->SetPosition(CVector2D(iPosX, iPosY), false);
