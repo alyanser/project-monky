@@ -153,13 +153,14 @@ CMainMenu::CMainMenu(CGUI* pManager)
     float fBaseY = 0.48f;
     float fGap = 0.06f;
     // Our disconnect item is shown/hidden dynamically, so we store it seperately
-    m_pDisconnect = CreateItem(MENU_ITEM_DISCONNECT, "menu_disconnect.png", CVector2D(fBaseX, fBaseY + fGap * 0));
+    m_pDisconnect = CreateItem(MENU_ITEM_DISCONNECT, "menu_disconnect.png", CVector2D(fBaseX, fBaseY));
     m_pDisconnect->image->SetVisible(false);
+
+    m_pPlayNow = CreateItem(MENU_ITEM_PLAY_NOW, "menu_play_now.png", CVector2D(fBaseX, fBaseY));
+    m_menuItems.push_back(m_pPlayNow);
 
     // Create the menu items
     // Filepath, Relative position, absolute native size
-    // And the font for the graphics is ?
-    m_menuItems.push_back(CreateItem(MENU_ITEM_PLAY_NOW, "menu_play_now.png", CVector2D(fBaseX, fBaseY + fGap * 0)));
     m_menuItems.push_back(CreateItem(MENU_ITEM_MAPPING_SERVER, "menu_mapping_server.png", CVector2D(fBaseX, fBaseY + fGap * 1)));
     m_menuItems.push_back(CreateItem(MENU_ITEM_SETTINGS, "menu_settings.png", CVector2D(fBaseX, fBaseY + fGap * 2)));
     m_menuItems.push_back(CreateItem(MENU_ITEM_CREDITS, "menu_credits.png", CVector2D(fBaseX, fBaseY + fGap * 3)));
@@ -365,27 +366,7 @@ CMainMenu::~CMainMenu()
 
 void CMainMenu::SetMenuVerticalPosition(int iPosY)
 {
-    if (m_pHoveredItem)
-    {
-        m_unhoveredItems.insert(m_pHoveredItem);
-        m_pHoveredItem = NULL;
-    }
-
-    float fFirstItemSize = m_menuItems.front()->image->GetSize(false).fY;
-    int   iMoveY = iPosY - m_menuItems.front()->image->GetPosition(false).fY - fFirstItemSize * 0.5f;
-
-    std::deque<sMenuItem*>::iterator it = m_menuItems.begin();
-    for (it; it != m_menuItems.end(); it++)
-    {
-        CVector2D vOrigPos = (*it)->image->GetPosition(false);
-        (*it)->drawPositionY = (*it)->drawPositionY + iMoveY;
-        (*it)->image->SetPosition(CVector2D(vOrigPos.fX, vOrigPos.fY + iMoveY), false);
-    }
-
-    m_menuAY = m_menuAY + iMoveY;
-    m_menuBY = m_menuBY + iMoveY;
-    m_pMenuArea->SetPosition(CVector2D(m_menuAX - m_iXOff, m_menuAY - m_iYOff) + BODGE_FACTOR_5, false);
-    m_pMenuArea->SetSize(CVector2D(m_menuBX - m_menuAX, m_menuBY - m_menuAY) + BODGE_FACTOR_6, false);
+    return;
 }
 
 void CMainMenu::SetMenuUnhovered()            // Dehighlight all our items
@@ -540,21 +521,18 @@ void CMainMenu::Update()
         if (fMoveTime == 1)
         {
             m_iMoveStartPos = 0;
+
             if (!m_bIsIngame)
+            {
+                m_menuItems[0] = m_pPlayNow;
+                m_pPlayNow->image->SetVisible(true);
                 m_pDisconnect->image->SetVisible(false);
+            }
             else
             {
-                m_menuItems.push_front(m_pDisconnect);
-
+                m_menuItems[0] = m_pDisconnect;
                 m_pDisconnect->image->SetVisible(true);
-
-                float fTopItemSize = m_pDisconnect->image->GetSize(false).fY;
-                float fTopItemCentre = m_pDisconnect->image->GetPosition(false).fY + fTopItemSize * 0.5f;
-                m_menuAY = fTopItemCentre - fTopItemSize * (CORE_MTA_HOVER_SCALE / CORE_MTA_NORMAL_SCALE) * 0.5f;            // Top side of the items
-                m_menuAY += BODGE_FACTOR_1;
-
-                m_pMenuArea->SetPosition(CVector2D(m_menuAX - m_iXOff, m_menuAY - m_iYOff) + BODGE_FACTOR_5, false);
-                m_pMenuArea->SetSize(CVector2D(m_menuBX - m_menuAX, m_menuBY - m_menuAY) + BODGE_FACTOR_6, false);
+                m_pPlayNow->image->SetVisible(false);
             }
         }
     }
@@ -675,8 +653,8 @@ void CMainMenu::Update()
     ulPreviousTick = GetTickCount32();
 
     // Call subdialog pulses
-    m_ServerBrowser.Update();
-    m_ServerInfo.DoPulse();
+    // m_ServerBrowser.Update();
+    // m_ServerInfo.DoPulse();
     m_pLanguageSelector->DoPulse();
 }
 
@@ -767,15 +745,10 @@ void CMainMenu::SetIsIngame(bool bIsIngame)
         else
         {
             if (m_menuItems.front() == m_pDisconnect)
-                m_menuItems.pop_front();
+            {
+                m_menuItems[0] = m_pPlayNow;
+            }
 
-            float fTopItemSize = m_menuItems.front()->image->GetSize(false).fY;
-            float fTopItemCentre = m_menuItems.front()->image->GetPosition(false).fY + fTopItemSize * 0.5f;
-            m_menuAY = fTopItemCentre - fTopItemSize * (CORE_MTA_HOVER_SCALE / CORE_MTA_NORMAL_SCALE) * 0.5f;
-            m_menuAY += BODGE_FACTOR_1;
-
-            m_pMenuArea->SetPosition(CVector2D(m_menuAX - m_iXOff, m_menuAY - m_iYOff) + BODGE_FACTOR_5, false);
-            m_pMenuArea->SetSize(CVector2D(m_menuBX - m_menuAX, m_menuBY - m_menuAY) + BODGE_FACTOR_6, false);
             m_iMoveTargetPos = m_iFirstItemCentre;
         }
         m_iMoveStartPos = m_menuAY;
@@ -829,9 +802,6 @@ bool CMainMenu::OnMenuClick(CGUIMouseEventArgs Args)
                 }
 
                 break;
-            case MENU_ITEM_PLAY_NOW:
-                AskUserIfHeWantsToDisconnect(m_pHoveredItem->menuType);
-                return true;
             default:
                 break;
         }
