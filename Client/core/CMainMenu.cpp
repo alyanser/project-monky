@@ -656,6 +656,17 @@ void CMainMenu::Update()
     // m_ServerBrowser.Update();
     // m_ServerInfo.DoPulse();
     m_pLanguageSelector->DoPulse();
+
+    if (m_bIsIngame)
+    {
+        m_pDiscordButton->SetVisible(false);
+        m_pWebsiteButton->SetVisible(false);
+    }
+    else
+    {
+        m_pDiscordButton->SetVisible(true);
+        m_pWebsiteButton->SetVisible(true);
+    }
 }
 
 void CMainMenu::Show(bool bOverlay)
@@ -852,23 +863,16 @@ bool CMainMenu::OnPlayNowButtonClick(CGUIElement* pElement, bool left)
     if (m_ucFade != FADE_VISIBLE)
         return false;
 
-    if (left)
+    if (!g_pCore->IsNetworkReady())
     {
-        if (!g_pCore->IsNetworkReady())
-        {
-            ShowNetworkNotReadyWindow();
-            return true;
-        }
-
-        g_pCore->GetConnectManager()->SetQuickConnect(true);
-        g_pCore->GetCommands()->Execute("reconnect", "");
-    }
-    else
-    {
-        m_ServerBrowser.SetVisible(true);
-        m_ServerBrowser.OnQuickConnectButtonClick();
+        ShowNetworkNotReadyWindow();
+        return true;
     }
 
+    std::string strNick;
+    CVARS_GET("nick", strNick);
+
+    g_pCore->GetConnectManager()->Connect("localhost", 22003, strNick.c_str(), "", false);
     return true;
 }
 
