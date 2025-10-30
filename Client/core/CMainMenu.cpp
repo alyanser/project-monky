@@ -150,20 +150,20 @@ CMainMenu::CMainMenu(CGUI* pManager)
     m_pCanvas->SetVisible(false);
 
     float fBaseX = 0.5f;
-    float fBase = 0.48f;
+    float fBaseY = 0.48f;
     float fGap = 0.06f;
     // Our disconnect item is shown/hidden dynamically, so we store it seperately
-    m_pDisconnect = CreateItem(MENU_ITEM_DISCONNECT, "menu_disconnect.png", CVector2D(0.168f, fBase + fGap * 0));
+    m_pDisconnect = CreateItem(MENU_ITEM_DISCONNECT, "menu_disconnect.png", CVector2D(fBaseX, fBaseY + fGap * 0));
     m_pDisconnect->image->SetVisible(false);
 
     // Create the menu items
     // Filepath, Relative position, absolute native size
     // And the font for the graphics is ?
-    m_menuItems.push_back(CreateItem(MENU_ITEM_PLAY_NOW, "menu_play_now.png", CVector2D(fBaseX, fBase + fGap * 0)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_MAPPING_SERVER, "menu_mapping_server.png", CVector2D(fBaseX, fBase + fGap * 1)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_SETTINGS, "menu_settings.png", CVector2D(fBaseX, fBase + fGap * 2)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_CREDITS, "menu_credits.png", CVector2D(fBaseX, fBase + fGap * 3)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_QUIT, "menu_quit.png", CVector2D(fBaseX, fBase + fGap * 4)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_PLAY_NOW, "menu_play_now.png", CVector2D(fBaseX, fBaseY + fGap * 0)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_MAPPING_SERVER, "menu_mapping_server.png", CVector2D(fBaseX, fBaseY + fGap * 1)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_SETTINGS, "menu_settings.png", CVector2D(fBaseX, fBaseY + fGap * 2)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_CREDITS, "menu_credits.png", CVector2D(fBaseX, fBaseY + fGap * 3)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_QUIT, "menu_quit.png", CVector2D(fBaseX, fBaseY + fGap * 4)));
 
     // We store the position of the top item, and the second item.  These will be useful later
     float fFirstItemSize = m_menuItems.front()->image->GetSize(false).fY;
