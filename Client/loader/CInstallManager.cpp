@@ -201,7 +201,7 @@ void CInstallManager::InitSequencer()
         //
         // Flow when game crashes:
         // 1. core.dll crash handler saves crash info to settings
-        // 2. core.dll launches "Multi Theft Auto.exe install_stage=crashed" (bypasses mutex)
+        // 2. core.dll launches "Monky.exe install_stage=crashed" (bypasses mutex)
         // 3. New launcher lands HERE at "crashed:" label
         // 4. Shows dialog with crash info from settings
         // 5. User chooses restart or quit
@@ -509,7 +509,7 @@ SString CInstallManager::_CheckOnRestartCommand()
 //////////////////////////////////////////////////////////
 SString CInstallManager::_MaybeSwitchToTempExe()
 {
-    // If a new "Multi Theft Auto.exe" exists, let that complete the install
+    // If a new "Monky.exe" exists, let that complete the install
     if (m_pSequencer->GetVariable(INSTALL_LOCATION) == "far")
     {
         ReleaseSingleInstanceMutex();
