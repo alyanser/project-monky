@@ -117,6 +117,7 @@ private:
     std::deque<sMenuItem*> m_menuItems;
     std::set<sMenuItem*>   m_unhoveredItems;
     sMenuItem*             m_pDisconnect;
+    sMenuItem*             m_pPlayNow;
     sMenuItem*             m_pHoveredItem;
     bool                   m_bMouseOverMenu;
 
