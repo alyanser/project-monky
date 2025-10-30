@@ -28,8 +28,8 @@
 #define CORE_MTA_FADER              0.05f // 1/20
 #define CORE_MTA_FADER_CREDITS      0.01f
 
-#define CORE_MTA_HOVER_SCALE        1.1f
-#define CORE_MTA_NORMAL_SCALE       0.8f
+#define CORE_MTA_HOVER_SCALE        1.8f
+#define CORE_MTA_NORMAL_SCALE       1.5f
 #define CORE_MTA_HOVER_ALPHA        1.0f
 #define CORE_MTA_NORMAL_ALPHA       0.6f
 
@@ -151,7 +151,7 @@ CMainMenu::CMainMenu(CGUI* pManager)
 
     float fBaseX = 0.5f;
     float fBase = 0.48f;
-    float fGap = 0.07f;
+    float fGap = 0.06f;
     // Our disconnect item is shown/hidden dynamically, so we store it seperately
     m_pDisconnect = CreateItem(MENU_ITEM_DISCONNECT, "menu_disconnect.png", CVector2D(0.168f, fBase + fGap * 0));
     m_pDisconnect->image->SetVisible(false);
@@ -159,10 +159,10 @@ CMainMenu::CMainMenu(CGUI* pManager)
     // Create the menu items
     // Filepath, Relative position, absolute native size
     // And the font for the graphics is ?
-    m_menuItems.push_back(CreateItem(MENU_ITEM_QUICK_CONNECT, "menu_quick_connect.png", CVector2D(fBaseX, fBase + fGap * 0)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_MAP_EDITOR, "menu_map_editor.png", CVector2D(fBaseX, fBase + fGap * 1)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_PLAY_NOW, "menu_play_now.png", CVector2D(fBaseX, fBase + fGap * 0)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_MAPPING_SERVER, "menu_mapping_server.png", CVector2D(fBaseX, fBase + fGap * 1)));
     m_menuItems.push_back(CreateItem(MENU_ITEM_SETTINGS, "menu_settings.png", CVector2D(fBaseX, fBase + fGap * 2)));
-    m_menuItems.push_back(CreateItem(MENU_ITEM_ABOUT, "menu_about.png", CVector2D(fBaseX, fBase + fGap * 3)));
+    m_menuItems.push_back(CreateItem(MENU_ITEM_CREDITS, "menu_credits.png", CVector2D(fBaseX, fBase + fGap * 3)));
     m_menuItems.push_back(CreateItem(MENU_ITEM_QUIT, "menu_quit.png", CVector2D(fBaseX, fBase + fGap * 4)));
 
     // We store the position of the top item, and the second item.  These will be useful later
@@ -807,7 +807,7 @@ bool CMainMenu::OnMenuClick(CGUIMouseEventArgs Args)
     if (!m_pHoveredItem)
         return true;
 
-    if (Args.button != LeftButton && m_pHoveredItem->menuType != MENU_ITEM_QUICK_CONNECT)
+    if (Args.button != LeftButton && m_pHoveredItem->menuType != MENU_ITEM_PLAY_NOW)
         return true;
 
     // For detecting startup problems
@@ -818,8 +818,7 @@ bool CMainMenu::OnMenuClick(CGUIMouseEventArgs Args)
     {
         switch (m_pHoveredItem->menuType)
         {
-            case MENU_ITEM_HOST_GAME:
-            case MENU_ITEM_MAP_EDITOR:
+            case MENU_ITEM_MAPPING_SERVER:
                 AskUserIfHeWantsToDisconnect(m_pHoveredItem->menuType);
                 return true;
             case MENU_ITEM_DISCONNECT:
@@ -830,7 +829,7 @@ bool CMainMenu::OnMenuClick(CGUIMouseEventArgs Args)
                 }
 
                 break;
-            case MENU_ITEM_QUICK_CONNECT:
+            case MENU_ITEM_PLAY_NOW:
                 AskUserIfHeWantsToDisconnect(m_pHoveredItem->menuType);
                 return true;
             default:
@@ -842,8 +841,7 @@ bool CMainMenu::OnMenuClick(CGUIMouseEventArgs Args)
         switch (m_pHoveredItem->menuType)
         {
             // case MENU_ITEM_QUICK_CONNECT:  // We only prevent it for left click in OnQuickConnectButtonClick.
-            case MENU_ITEM_HOST_GAME:
-            case MENU_ITEM_MAP_EDITOR:
+            case MENU_ITEM_MAPPING_SERVER:
                 ShowNetworkNotReadyWindow();
                 return true;
             default:
@@ -856,23 +854,17 @@ bool CMainMenu::OnMenuClick(CGUIMouseEventArgs Args)
         case MENU_ITEM_DISCONNECT:
             OnDisconnectButtonClick();
             break;
-        case MENU_ITEM_QUICK_CONNECT:
-            OnQuickConnectButtonClick(pElement, Args.button == LeftButton);
+        case MENU_ITEM_PLAY_NOW:
+            OnPlayNowButtonClick(pElement, Args.button == LeftButton);
             break;
-        case MENU_ITEM_BROWSE_SERVERS:
-            OnBrowseServersButtonClick(pElement);
-            break;
-        case MENU_ITEM_HOST_GAME:
-            OnHostGameButtonClick();
-            break;
-        case MENU_ITEM_MAP_EDITOR:
-            OnEditorButtonClick();
+        case MENU_ITEM_MAPPING_SERVER:
+            OnMappingServerButtonClick();
             break;
         case MENU_ITEM_SETTINGS:
             OnSettingsButtonClick(pElement);
             break;
-        case MENU_ITEM_ABOUT:
-            OnAboutButtonClick(pElement);
+        case MENU_ITEM_CREDITS:
+            OnCreditsButtonClick(pElement);
             break;
         case MENU_ITEM_QUIT:
             OnQuitButtonClick(pElement);
@@ -884,7 +876,7 @@ bool CMainMenu::OnMenuClick(CGUIMouseEventArgs Args)
     return true;
 }
 
-bool CMainMenu::OnQuickConnectButtonClick(CGUIElement* pElement, bool left)
+bool CMainMenu::OnPlayNowButtonClick(CGUIElement* pElement, bool left)
 {
     // Return if we haven't faded in yet
     if (m_ucFade != FADE_VISIBLE)
@@ -952,19 +944,7 @@ bool CMainMenu::OnDisconnectButtonClick()
     return true;
 }
 
-bool CMainMenu::OnHostGameButtonClick()
-{
-    // Return if we haven't faded in yet
-    if (m_ucFade != FADE_VISIBLE)
-        return false;
-
-    // Load deathmatch, but with local play
-    CModManager::GetSingleton().RequestLoad("local");
-
-    return true;
-}
-
-bool CMainMenu::OnEditorButtonClick()
+bool CMainMenu::OnMappingServerButtonClick()
 {
     // Return if we haven't faded in yet
     if (m_ucFade != FADE_VISIBLE)
@@ -993,7 +973,7 @@ bool CMainMenu::OnSettingsButtonClick(CGUIElement* pElement)
     return true;
 }
 
-bool CMainMenu::OnAboutButtonClick(CGUIElement* pElement)
+bool CMainMenu::OnCreditsButtonClick(CGUIElement* pElement)
 {
     // Return if we haven't faded in yet
     if (m_ucFade != FADE_VISIBLE)
@@ -1208,17 +1188,14 @@ void CMainMenu::WantsToDisconnectCallBack(void* pData, uint uiButton)
         int menuType = (int)pData;
         switch (menuType)
         {
-            case MENU_ITEM_HOST_GAME:
-                OnHostGameButtonClick();
-                break;
-            case MENU_ITEM_MAP_EDITOR:
-                OnEditorButtonClick();
+            case MENU_ITEM_MAPPING_SERVER:
+                OnMappingServerButtonClick();
                 break;
             case MENU_ITEM_DISCONNECT:
                 OnDisconnectButtonClick();
                 break;
-            case MENU_ITEM_QUICK_CONNECT:
-                OnQuickConnectButtonClick(nullptr, true);
+            case MENU_ITEM_PLAY_NOW:
+                OnPlayNowButtonClick(nullptr, true);
                 break;
             default:
                 break;

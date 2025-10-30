@@ -85,14 +85,13 @@ private:
     bool OnMenuEnter(CGUIElement* pElement);
     bool OnMenuExit(CGUIElement* pElement);
     bool OnMenuClick(CGUIMouseEventArgs Args);
-    bool OnQuickConnectButtonClick(CGUIElement* pElement, bool left);
+    bool OnPlayNowButtonClick(CGUIElement* pElement, bool left);
     bool OnResumeButtonClick(CGUIElement* pElement);
     bool OnBrowseServersButtonClick(CGUIElement* pElement);
-    bool OnHostGameButtonClick();
     bool OnDisconnectButtonClick();
-    bool OnEditorButtonClick();
+    bool OnMappingServerButtonClick();
     bool OnSettingsButtonClick(CGUIElement* pElement);
-    bool OnAboutButtonClick(CGUIElement* pElement);
+    bool OnCreditsButtonClick(CGUIElement* pElement);
     bool OnQuitButtonClick(CGUIElement* pElement);
     bool OnNewsButtonClick(CGUIElement* pElement);
     bool OnDiscordButtonClick(CGUIElement* pElement);
@@ -195,12 +194,10 @@ private:
     enum eMenuItems
     {
         MENU_ITEM_DISCONNECT,
-        MENU_ITEM_QUICK_CONNECT,
-        MENU_ITEM_BROWSE_SERVERS,
-        MENU_ITEM_HOST_GAME,
-        MENU_ITEM_MAP_EDITOR,
+        MENU_ITEM_PLAY_NOW,
+        MENU_ITEM_MAPPING_SERVER,
         MENU_ITEM_SETTINGS,
-        MENU_ITEM_ABOUT,
+        MENU_ITEM_CREDITS,
         MENU_ITEM_QUIT,
     };
 };
