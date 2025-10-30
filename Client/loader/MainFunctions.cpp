@@ -853,7 +853,7 @@ void HandleDuplicateLaunching()
             {
                 const SString strMessage = _("Trouble restarting MTA:SA\n\n"
                                             "If the problem persists, open Task Manager and\n"
-                                            "stop the 'gta_sa.exe' and 'Multi Theft Auto.exe' processes\n\n\n"
+                                            "stop the 'gta_sa.exe' and 'Monky.exe' processes\n\n\n"
                                             "Try to launch MTA:SA again?");
 
                 if (MessageBoxUTF8(0, strMessage, _("Error") + _E("CL04"), MB_ICONWARNING | MB_YESNO | MB_TOPMOST) == IDYES)

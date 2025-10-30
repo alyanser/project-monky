@@ -450,7 +450,7 @@ static HANDLE                                              ms_hCrashDialogProces
 [[nodiscard]] static std::array<SString, 2> BuildCrashDialogCandidates()
 {
     const SString          basePath = GetMTASABaseDir();
-    std::array<SString, 2> candidates = {SharedUtil::PathJoin(basePath, "Multi Theft Auto.exe"), SharedUtil::PathJoin(basePath, "Multi Theft Auto_d.exe")};
+    std::array<SString, 2> candidates = {SharedUtil::PathJoin(basePath, "Monky"), SharedUtil::PathJoin(basePath, "Monky_d.exe")};
 
     return candidates;
 }
