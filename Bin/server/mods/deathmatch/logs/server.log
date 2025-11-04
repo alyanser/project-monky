@@ -100,3 +100,42 @@
 [2025-11-03 14:01:08] CONNECT: WorthlessRadiosonde76 connected (IP: 127.0.0.1  Serial: 9F021BDB37FEDD6B6FA9015F72050343  Version: 1.7.0-5.25805.0)
 [2025-11-03 14:01:11] JOIN: WorthlessRadiosonde76 joined the game (IP: 127.0.0.1)
 [2025-11-03 14:24:51] QUIT: WorthlessRadiosonde76 left the game [Quit] 
+==================================================================
+= Multi Theft Auto: San Andreas v1.7-unstable-25805
+==================================================================
+= Server name      : Default MTA Server
+= Server IP address: auto
+= Server port      : 22003
+= 
+= Log file         : ../bin/server/mods/deathmatch/logs/server.log
+= Maximum players  : 32
+= HTTP port        : 22005
+= Voice Chat       : Disabled
+= Bandwidth saving : Medium
+==================================================================
+[2025-11-04 13:20:45] Resource 'acpanel' requests some acl rights. Use the command 'aclrequest list acpanel'
+[2025-11-04 13:20:52] Resource 'ip2c' requests some acl rights. Use the command 'aclrequest list ip2c'
+[2025-11-04 13:20:53] Resource 'mapmanager' requests some acl rights. Use the command 'aclrequest list mapmanager'
+[2025-11-04 13:20:57] Resource 'runcode' requests some acl rights. Use the command 'aclrequest list runcode'
+[2025-11-04 13:21:00] Resources: 207 loaded, 0 failed
+[2025-11-04 13:21:00] Starting resources...
+[2025-11-04 13:21:00] Server minclientversion is now 1.5.9-9.20957.0
+[2025-11-04 13:21:00] startResource: Resource 'ip2c' started
+[2025-11-04 13:21:01] Server minclientversion is now 1.6.0-9.22676
+[2025-11-04 13:21:01] Server minclientversion is now 1.6.0-9.22815
+[2025-11-04 13:21:01] Gamemode 'play' started.
+[2025-11-04 13:21:01] Authorized serial account protection is enabled for the ACL group(s): `Admin`  See http://multitheftauto.com/authserial
+[2025-11-04 13:21:01] WARNING: <owner_email_address> not set
+[2025-11-04 13:21:01] Server started and is ready to accept connections!
+[2025-11-04 13:21:01] To stop the server, type 'shutdown' or press Ctrl-C
+[2025-11-04 13:21:01] Type 'help' for a list of commands.
+[2025-11-04 13:21:01] Querying MTA master server... success! (Auto detected IP:39.49.168.144)
+[2025-11-04 13:21:34] CONNECT: WorthlessRadiosonde76 connected (IP: 127.0.0.1  Serial: 9F021BDB37FEDD6B6FA9015F72050343  Version: 1.7.0-5.25805.0)
+[2025-11-04 13:21:38] JOIN: WorthlessRadiosonde76 joined the game (IP: 127.0.0.1)
+[2025-11-04 13:21:48] QUIT: WorthlessRadiosonde76 left the game [Quit] 
+[2025-11-04 13:23:05] CONNECT: WorthlessRadiosonde76 connected (IP: 127.0.0.1  Serial: 9F021BDB37FEDD6B6FA9015F72050343  Version: 1.7.0-5.25805.0)
+[2025-11-04 13:23:06] JOIN: WorthlessRadiosonde76 joined the game (IP: 127.0.0.1)
+[2025-11-04 13:23:17] QUIT: WorthlessRadiosonde76 left the game [Quit] 
+[2025-11-04 13:28:56] Server stopped!
+[2025-11-04 13:28:57] Stopping resources..............................
+[2025-11-04 13:28:57] Closing SQLite3 database
