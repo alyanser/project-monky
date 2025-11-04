@@ -2099,7 +2099,7 @@ void RestartCallBack(void* ptr, unsigned int uiButton)
 
 void CSettings::ShowRestartQuestion()
 {
-    SString strMessage = _("Some settings will be changed when you next start MTA");
+    SString strMessage = _("Some settings will be changed when you next start Project Monky");
     strMessage += _("\n\nDo you want to restart now?");
     CQuestionBox* pQuestionBox = CCore::GetSingleton().GetLocalGUI()->GetMainMenu()->GetQuestionWindow();
     pQuestionBox->Reset();
