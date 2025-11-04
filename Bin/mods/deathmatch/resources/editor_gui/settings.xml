@@ -1,0 +1,36 @@
+<settings>
+    <scaling_fast_speed>1</scaling_fast_speed>
+    <currentbrowser_autosnap>true</currentbrowser_autosnap>
+    <invert_mouse_look>false</invert_mouse_look>
+    <camera_smooth_movement>true</camera_smooth_movement>
+    <rotate_slow_speed>0.25</rotate_slow_speed>
+    <movement_min_speed>0.025</movement_min_speed>
+    <alignment_bottommenu>left</alignment_bottommenu>
+    <tutorial_on_start>false</tutorial_on_start>
+    <rotate_normal_speed>2</rotate_normal_speed>
+    <camera_normal_speed>2</camera_normal_speed>
+    <enablerandomrot>false</enablerandomrot>
+    <enablerotpatch>true</enablerotpatch>
+    <enablebox>true</enablebox>
+    <movement_max_speed>1.57</movement_max_speed>
+    <camera_max_speed>12</camera_max_speed>
+    <movement_lock_to_axes>false</movement_lock_to_axes>
+    <icon_size>medium</icon_size>
+    <elemscalingsnap>0.0001</elemscalingsnap>
+    <scaling_slow_speed>0.01</scaling_slow_speed>
+    <fov>70</fov>
+    <enableprecisionrotation>false</enableprecisionrotation>
+    <enablecolpatch>false</enablecolpatch>
+    <scaling_normal_speed>0.1</scaling_normal_speed>
+    <camera_look_sensitivity>0.73</camera_look_sensitivity>
+    <randomizerotaxis>XYZ</randomizerotaxis>
+    <enableprecisionsnap>true</enableprecisionsnap>
+    <precisionrotlevel>30</precisionrotlevel>
+    <alignment_topmenu>center</alignment_topmenu>
+    <precisionlevel>0.1</precisionlevel>
+    <enablesounds>true</enablesounds>
+    <enablexyzlines>true</enablexyzlines>
+    <camera_min_speed>0.2</camera_min_speed>
+    <rotate_fast_speed>10</rotate_fast_speed>
+    <movement_normal_speed>0.25</movement_normal_speed>
+</settings>
