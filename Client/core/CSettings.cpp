@@ -1355,7 +1355,7 @@ void CSettings::CreateGUI()
     m_pCheckBoxDynamicPedShadows->SetPosition(CVector2D(vecTemp.fX, vecTemp.fY + 110.0f));
     m_pCheckBoxDynamicPedShadows->AutoSize(NULL, 20.0f);
 
-    m_pCheckBoxBlur = reinterpret_cast<CGUICheckBox*>(pManager->CreateCheckBox(pTabVideo, _("Motion blur"), true));
+    m_pCheckBoxBlur = reinterpret_cast<CGUICheckBox*>(pManager->CreateCheckBox(pTabVideo, _("Motion blur"), false));
     m_pCheckBoxBlur->SetPosition(CVector2D(vecTemp.fX, vecTemp.fY + 130.0f));
     m_pCheckBoxBlur->AutoSize(NULL, 20.0f);
 
@@ -2665,7 +2665,7 @@ bool CSettings::OnVideoDefaultClick(CGUIElement* pElement)
     CVARS_SET("tyre_smoke_enabled", true);
     CVARS_SET("high_detail_vehicles", false);
     CVARS_SET("high_detail_peds", false);
-    CVARS_SET("blur", true);
+    CVARS_SET("blur", false);
     CVARS_SET("corona_reflections", false);
     CVARS_SET("dynamic_ped_shadows", false);
     CVARS_SET("borderless_gamma_power", kBorderlessGammaDefault);
@@ -2693,7 +2693,7 @@ bool CSettings::OnVideoDefaultClick(CGUIElement* pElement)
     CVARS_SET("streaming_memory", g_pCore->GetMaxStreamingMemory());
 
     // Player map defaults
-    CVARS_SET("mapalpha", 155);
+    CVARS_SET("mapalpha", 255);
     CVARS_SET("mapimage", 0);
 
     // Display restart required message if required
