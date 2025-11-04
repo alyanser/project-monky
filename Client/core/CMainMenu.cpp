@@ -974,13 +974,13 @@ bool CMainMenu::OnQuitButtonClick(CGUIElement* pElement)
 
 bool CMainMenu::OnDiscordButtonClick(CGUIElement* pElement)
 {
-    ShellExecuteNonBlocking("open", "https://discord.gg/your-invite-link");
+    ShellExecuteNonBlocking("open", "https://discord.gg/SFBUHknpxy");
     return true;
 }
 
 bool CMainMenu::OnWebsiteButtonClick(CGUIElement* pElement)
 {
-    ShellExecuteNonBlocking("open", "https://www.google.com");
+    ShellExecuteNonBlocking("open", "https://www.monkygaming.com/");
     return true;
 }
 
