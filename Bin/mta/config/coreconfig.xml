@@ -102,7 +102,7 @@
         <ask_before_disconnect>1</ask_before_disconnect>
         <allow_steam_client>0</allow_steam_client>
         <locale>en_US</locale>
-        <display_resolution>1366x768x32</display_resolution>
+        <display_resolution>1024x768x32</display_resolution>
         <streaming_memory>256</streaming_memory>
         <current_skin>Default 2023</current_skin>
         <reportsettings>filter2@+all,-{1000~2007},-2050,-2051,-{3211},-{4002},-4023,-5132,-5133,-7011,-7043,-7411,-7420,-7601,-7744,-7745,-7801,-{7832~7833},-{7842~7845},-7940,-8070,-8613,-7711,-9423;max@88001;min@11</reportsettings>
