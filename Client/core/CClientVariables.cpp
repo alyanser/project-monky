@@ -300,7 +300,7 @@ void CClientVariables::LoadDefaults()
     DEFAULT("fps_limit", 100);                                           // frame limiter
     DEFAULT("vsync", true);                                              // vsync
     DEFAULT("chat_font", 2);                                             // chatbox font type
-    DEFAULT("chat_lines", 10);                                           // chatbox lines
+    DEFAULT("chat_lines", 15);                                           // chatbox lines
     DEFAULT("chat_color", CColor(0, 0, 0, 0));                           // chatbox background color
     DEFAULT("chat_text_color", CColor(172, 213, 254, 255));              // chatbox text color
     DEFAULT("chat_text_outline", false);
@@ -331,7 +331,7 @@ void CClientVariables::LoadDefaults()
     DEFAULT("mastervolume", 1.0f);                                                    // master volume
     DEFAULT("mtavolume", 1.0f);                                                       // custom sound's volume
     DEFAULT("voicevolume", 1.0f);                                                     // voice chat output volume
-    DEFAULT("mapalpha", 155);                                                         // player map alpha
+    DEFAULT("mapalpha", 255);                                                         // player map alpha
     DEFAULT("mapimage", 0);                                                           // player map image
     DEFAULT("browser_speed", 1);                                                      // Browser speed
     DEFAULT("single_download", 0);                                                    // Single connection for downloads
@@ -348,7 +348,7 @@ void CClientVariables::LoadDefaults()
     DEFAULT("tyre_smoke_enabled", 1);                                                 // Enable tyre smoke
     DEFAULT("high_detail_vehicles", 0);                                               // Disable rendering high detail vehicles all the time
     DEFAULT("high_detail_peds", 0);                                                   // Disable rendering high detail peds all the time
-    DEFAULT("blur", 1);                                                               // Enable blur
+    DEFAULT("blur", 0);                                                               // Enable blur
     DEFAULT("corona_reflections", 0);                                                 // Disable corona rain reflections
     DEFAULT("dynamic_ped_shadows", 0);                                                // Disable dynamic ped shadows
     DEFAULT("fast_clothes_loading", 1);                                               // 0-off 1-auto 2-on
