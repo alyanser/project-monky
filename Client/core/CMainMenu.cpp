@@ -1101,7 +1101,7 @@ void CMainMenu::ReloadNews()
 void CMainMenu::AskUserIfHeWantsToDisconnect(uchar menuType)
 {
     SStringX strMessage(
-        _("This will disconnect you from the current server."
+        _("This will disconnect you from the server."
           "\n\nAre you sure you want to disconnect?"));
     CQuestionBox* pQuestionBox = CCore::GetSingleton().GetLocalGUI()->GetMainMenu()->GetQuestionWindow();
     pQuestionBox->Reset();
