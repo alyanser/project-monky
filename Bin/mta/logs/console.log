@@ -1,155 +1,8 @@
-[2025-11-02 13:20:42] [Output] : * Connected! [MTA:SA Server 1.7 [Windows]]
-[2025-11-02 13:20:42] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-02 13:20:42] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-02 13:20:46] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-02 13:20:46] [Output] : * WorthlessRadiosonde76 has joined the game
-[2025-11-02 13:20:46] [Output] : Welcome to Freeroam
-[2025-11-02 13:20:46] [Output] : Press F1 to show/hide controls
-[2025-11-02 13:20:48] [Output] : Server AC info: [Allowed client files: None] [Disabled AC: None] [Enabled SD: None]
-[2025-11-02 13:21:09] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-02 13:21:09] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-02 13:21:09] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-02 13:21:09] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 14:01:08] [Output] : * Connected! [MTA:SA Server 1.7 [Windows]]
-[2025-11-03 14:01:08] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 14:01:08] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 14:01:11] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 14:01:11] [Output] : * WorthlessRadiosonde76 has joined the game
-[2025-11-03 14:01:11] [Output] : Welcome to Freeroam
-[2025-11-03 14:01:11] [Output] : Press F1 to show/hide controls
-[2025-11-03 14:01:13] [Output] : Server AC info: [Allowed client files: None] [Disabled AC: None] [Enabled SD: None]
-[2025-11-03 14:24:52] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 14:24:52] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 14:24:52] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:35:25] [Output] : Server process failed to start [error: 00000003]: failed to create process 
-[2025-11-03 23:35:25] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:35:25] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:35:29] [Output] : Server process failed to start [error: 00000003]: failed to create process 
-[2025-11-03 23:35:29] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:35:29] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:36:11] [Output] : Server process has started [pid: 7060] 
-[2025-11-03 23:36:11] [Output] : MTA:BLUE Server for MTA:SA  
-[2025-11-03 23:36:13] [Output] : ================================================================== = Multi Theft Auto: San Andreas v1.7-unstable-25805 ============
-[2025-11-03 23:36:13] [Output] : ====================================================== = Server name      : Map Editor Server = Server IP address: auto = Server port      : 22010 =  = Log file         : ..rver/mods/deathmatch/logs/editor_server.log = Maximum players  : 1 = HTTP port        : 22011 = Voice Chat       : Disabled = Bandwidth saving : None ================================================================== 
-[2025-11-03 23:36:14] [Output] : [23:36:14] Resource 'acpanel' requests some acl rights. Use the command 'aclrequest list acpanel' 
-[2025-11-03 23:36:21] [Output] : [23:36:21] Resource 'ip2c' requests some acl rights. Use the command 'aclrequest list ip2c' 
-[2025-11-03 23:36:24] [Output] : [23:36:24] Resource 'mapmanager' requests some acl rights. Use the command 'aclrequest list mapmanager' 
-[2025-11-03 23:36:29] [Output] : [23:36:29] Resource 'runcode' requests some acl rights. Use the command 'aclrequest list runcode' 
-[2025-11-03 23:36:32] [Output] : [23:36:32] Resources: 205 loaded, 0 failed 
-[2025-11-03 23:36:32] [Output] : [23:36:32] Starting resources...
-[2025-11-03 23:36:32] [Output] :  [23:36:32] Server minclientversion is now 1.5.9-9.21313.0 
-[2025-11-03 23:36:33] [Output] : [23:36:33] Server minclientversion is now 1.6.0 
-[2025-11-03 23:36:33] [Output] : [23:36:33] Server started and is ready to accept connections! [23:36:33] To stop the server, type 'shutdown' or press Ctrl-C [23:36:33] Type 'help' for a list of commands. 
-[2025-11-03 23:36:34] [Output] : [23:36:34] CONNECT: WorthlessRadiosonde76 connected (IP: 127.0.0.1  Serial: 9F021BDB37FEDD6B6FA9015F72050343  Version: 1.7.0-5.25805.0) 
-[2025-11-03 23:36:34] [Output] : * Connected! [MTA:SA Server 1.7 [Windows]]
-[2025-11-03 23:36:34] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:36:34] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:36:36] [Output] : [23:36:36] JOIN: WorthlessRadiosonde76 joined the game (IP: 127.0.0.1) 
-[2025-11-03 23:36:36] [Output] : * WorthlessRadiosonde76 has joined the game
-[2025-11-03 23:36:37] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:36:37] [Output] : Server AC info: [Allowed client files: None] [Disabled AC: None] [Enabled SD: None]
-[2025-11-03 23:36:40] [Output] : GUI load time measures (ms):
-[2025-11-03 23:36:40] [Output] : createWorldDetector() : 1
-[2025-11-03 23:36:40] [Output] : createCurrentBrowser() : 6
-[2025-11-03 23:36:40] [Output] : createOptionsDialog() : 67
-[2025-11-03 23:36:40] [Output] : createLocationsMenu() : 11
-[2025-11-03 23:36:40] [Output] : createBrowser() : 5
-[2025-11-03 23:36:40] [Output] : createMapSettings() : 21
-[2025-11-03 23:36:40] [Output] : createDefinitionsDialog() : 2
-[2025-11-03 23:36:40] [Output] : createLoadDialog() : 2
-[2025-11-03 23:36:40] [Output] : createSaveDialog() : 3
-[2025-11-03 23:36:40] [Output] : createGUILayout() : 13
-[2025-11-03 23:36:40] [Output] : createTestDialog() : 1
-[2025-11-03 23:36:40] [Output] : createPropertiesBox() : 21
-[2025-11-03 23:39:01] [Output] : Sent 'exit' command to the server to shut it down 
-[2025-11-03 23:39:03] [Output] : [23:39:01] QUIT: WorthlessRadiosonde76 left the game [Quit]  exit  [23:39:02] Server stopped! [23:39:02] Stopping resources........... [23:39:03] Closing SQLite3 database 
-[2025-11-03 23:39:03] [Output] : Server process has been terminated [00000000]: Server stopped 
-[2025-11-03 23:39:03] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:39:03] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:39:03] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:43:11] [Output] : Server process has started [pid: 7608] 
-[2025-11-03 23:43:11] [Output] : MTA:BLUE Server for MTA:SA  
-[2025-11-03 23:43:12] [Output] : ================================================================== = Multi Theft Auto: San Andreas v1.7-unstable-25805 ================================================================== = Server name      : Map Editor Server = Server IP address: auto = Server port      : 22010 =  = Log file         : ..rver/mods/deathmatch/logs/editor_server.log = Maximum players  : 1 = HTTP port        : 22011 = Voice Chat       : Disabled = Bandwidth saving : None ================================================================== 
-[2025-11-03 23:43:12] [Output] : [23:43:12] Resource 'acpanel' requests some acl rights. Use the command 'aclrequest list acpanel' 
-[2025-11-03 23:43:13] [Output] : [23:43:13] Resource 'ip2c' requests some acl rights. Use the command 'aclrequest list ip2c' 
-[2025-11-03 23:43:13] [Output] : [23:43:13] Resource 'mapmanager' requests some acl rights. Use the command 'aclrequest list mapmanager' 
-[2025-11-03 23:43:14] [Output] : [23:43:14] Resource 'runcode' requests some acl rights. Use the command 'aclrequest list runcode' 
-[2025-11-03 23:43:14] [Output] : [23:43:14] Resources: 206 loaded, 0 failed 
-[2025-11-03 23:43:14] [Output] : [23:43:14] Starting resources...
-[2025-11-03 23:43:14] [Output] :  [23:43:14] Server minclientversion is now 1.5.9-9.21313.0 
-[2025-11-03 23:43:14] [Output] : [23:43:14] Server minclientversion is now 1.6.0 
-[2025-11-03 23:43:14] [Output] : [23:43:14] Server started and is ready to accept connections! [23:43:14] To stop the server, type 'shutdown' or press Ctrl-C [23:43:14] Type 'help' for a list of commands. 
-[2025-11-03 23:43:15] [Output] : [23:43:15] CONNECT: WorthlessRadiosonde76 connected (IP: 127.0.0.1  Serial: 9F021BDB37FEDD6B6FA9015F72050343  Version: 1.7.0-5.25805.0) 
-[2025-11-03 23:43:15] [Output] : * Connected! [MTA:SA Server 1.7 [Windows]]
-[2025-11-03 23:43:15] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:43:15] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:43:16] [Output] : [23:43:16] JOIN: WorthlessRadiosonde76 joined the game (IP: 127.0.0.1) 
-[2025-11-03 23:43:16] [Output] : * WorthlessRadiosonde76 has joined the game
-[2025-11-03 23:43:17] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:43:17] [Output] : Server AC info: [Allowed client files: None] [Disabled AC: None] [Enabled SD: None]
-[2025-11-03 23:43:17] [Output] : GUI load time measures (ms):
-[2025-11-03 23:43:17] [Output] : createWorldDetector() : 1
-[2025-11-03 23:43:17] [Output] : createCurrentBrowser() : 5
-[2025-11-03 23:43:17] [Output] : createOptionsDialog() : 53
-[2025-11-03 23:43:17] [Output] : createLocationsMenu() : 12
-[2025-11-03 23:43:17] [Output] : createBrowser() : 5
-[2025-11-03 23:43:17] [Output] : createMapSettings() : 23
-[2025-11-03 23:43:17] [Output] : createDefinitionsDialog() : 3
-[2025-11-03 23:43:17] [Output] : createLoadDialog() : 2
-[2025-11-03 23:43:17] [Output] : createSaveDialog() : 4
-[2025-11-03 23:43:17] [Output] : createGUILayout() : 27
-[2025-11-03 23:43:17] [Output] : createTestDialog() : 3
-[2025-11-03 23:43:17] [Output] : createPropertiesBox() : 14
-[2025-11-03 23:43:27] [Output] : [23:43:27] CHAT: WorthlessRadiosonde76: new 
-[2025-11-03 23:43:27] [Output] : WorthlessRadiosonde76: new
-[2025-11-03 23:43:39] [Output] : [23:43:39] CHAT: WorthlessRadiosonde76: ho are you doing today? This is the finest shit i've ever seen in my life 
-[2025-11-03 23:43:39] [Output] : WorthlessRadiosonde76: ho are you doing today? This is the finest shit i've ever seen in my life
-[2025-11-03 23:43:49] [Output] : Suspending editor_main.
-[2025-11-03 23:43:49] [Output] : Welcome to Freeroam
-[2025-11-03 23:43:49] [Output] : Press F1 to show/hide controls
-[2025-11-03 23:43:49] [Output] : [23:43:49] Starting freeroam [23:43:49] Starting playerblips [23:43:49] playerblips: Start the playercolors resource if you want random nametag and blip colors. [23:43:49] Server minclientversion is now 1.6.0-9.22676 [23:43:49] startResource: Resource 'freeroam' started [23:43:49] Resource 'editor_test' changed, reloading and starting [23:43:49] Starting editor_test [23:43:49] startResource: Resource 'editor_test' started 
-[2025-11-03 23:44:10] [Output] : [23:44:10] Server minclientversion is now 1.6.0 [23:44:10] Stopping freeroam [23:44:10] Stopping playerblips [23:44:10] Stopping editor_test 
-[2025-11-03 23:44:10] [Output] : Resuming editor_main.
-[2025-11-03 23:44:17] [Output] : Suspending editor_main.
-[2025-11-03 23:44:17] [Output] : Press F6 to leave basic test
-[2025-11-03 23:44:40] [Output] : Sent 'exit' command to the server to shut it down 
-[2025-11-03 23:44:41] [Output] : [23:44:40] QUIT: WorthlessRadiosonde76 left the game [Quit]  exit  [23:44:41] Server stopped! [23:44:41] Stopping resources........... [23:44:41] Closing SQLite3 database 
-[2025-11-03 23:44:41] [Output] : Server process has been terminated [00000000]: Server stopped 
-[2025-11-03 23:44:41] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:44:41] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-03 23:44:41] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:21:34] [Output] : * Connected! [MTA:SA Server 1.7 [Windows]]
-[2025-11-04 13:21:34] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:21:34] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:21:38] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:21:38] [Output] : * WorthlessRadiosonde76 has joined the game
-[2025-11-04 13:21:38] [Output] : Welcome to Freeroam
-[2025-11-04 13:21:38] [Output] : Press F1 to show/hide controls
-[2025-11-04 13:21:40] [Output] : Server AC info: [Allowed client files: None] [Disabled AC: None] [Enabled SD: None]
-[2025-11-04 13:21:49] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:21:49] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:21:49] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:23:05] [Output] : * Connected! [MTA:SA Server 1.7 [Windows]]
-[2025-11-04 13:23:05] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:23:05] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:23:06] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:23:06] [Output] : * WorthlessRadiosonde76 has joined the game
-[2025-11-04 13:23:06] [Output] : Welcome to Freeroam
-[2025-11-04 13:23:06] [Output] : Press F1 to show/hide controls
-[2025-11-04 13:23:08] [Output] : Server AC info: [Allowed client files: None] [Disabled AC: None] [Enabled SD: None]
-[2025-11-04 13:23:16] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:23:17] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:23:17] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-04 13:23:17] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-06 14:33:43] [Output] : * Connected! [MTA:SA Server 1.7 [Windows]]
-[2025-11-06 14:33:43] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-06 14:33:43] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-06 14:33:47] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-06 14:33:47] [Output] : * WorthlessRadiosonde76 has joined the game
-[2025-11-06 14:33:47] [Output] : Welcome to Freeroam
-[2025-11-06 14:33:47] [Output] : Press F1 to show/hide controls
-[2025-11-06 14:33:49] [Output] : Server AC info: [Allowed client files: None] [Disabled AC: None] [Enabled SD: None]
-[2025-11-06 14:34:10] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-06 14:34:10] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-06 14:34:10] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
-[2025-11-06 14:34:10] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
+[2025-11-06 14:50:24] [Output] : * Connected! [MTA:SA Server 1.7 [Windows]]
+[2025-11-06 14:50:24] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
+[2025-11-06 14:50:24] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
+[2025-11-06 14:50:26] [Output] : FPSLimiter: FPS limit changed to 60 (Enforced by: vsync)
+[2025-11-06 14:50:26] [Output] : * PeacefulTwister92 has joined the game
+[2025-11-06 14:50:26] [Output] : Welcome to Freeroam
+[2025-11-06 14:50:26] [Output] : Press F1 to show/hide controls
+[2025-11-06 14:50:28] [Output] : Server AC info: [Allowed client files: None] [Disabled AC: None] [Enabled SD: None]

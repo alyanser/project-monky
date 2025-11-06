@@ -1,6 +1,6 @@
 <mainconfig>
     <settings>
-        <nick>WorthlessRadiosonde76</nick>
+        <nick>PeacefulTwister92</nick>
         <host>localhost</host>
         <port>22003</port>
         <password></password>
@@ -11,7 +11,7 @@
         <fps_limit>100</fps_limit>
         <vsync>1</vsync>
         <chat_font>2</chat_font>
-        <chat_lines>10</chat_lines>
+        <chat_lines>15</chat_lines>
         <chat_color>0 0 0 0</chat_color>
         <chat_text_color>172 213 254 255</chat_text_color>
         <chat_text_outline>0</chat_text_outline>
@@ -41,8 +41,8 @@
         <mastervolume>1.000000</mastervolume>
         <mtavolume>1.000000</mtavolume>
         <voicevolume>1.000000</voicevolume>
-        <mapalpha>155</mapalpha>
-        <mapimage>1</mapimage>
+        <mapalpha>255</mapalpha>
+        <mapimage>0</mapimage>
         <browser_speed>1</browser_speed>
         <single_download>0</single_download>
         <packet_tag>0</packet_tag>
@@ -58,7 +58,7 @@
         <tyre_smoke_enabled>1</tyre_smoke_enabled>
         <high_detail_vehicles>0</high_detail_vehicles>
         <high_detail_peds>0</high_detail_peds>
-        <blur>1</blur>
+        <blur>0</blur>
         <corona_reflections>0</corona_reflections>
         <dynamic_ped_shadows>0</dynamic_ped_shadows>
         <fast_clothes_loading>1</fast_clothes_loading>
@@ -101,21 +101,15 @@
         <process_cpu_affinity>1</process_cpu_affinity>
         <ask_before_disconnect>1</ask_before_disconnect>
         <allow_steam_client>0</allow_steam_client>
-        <locale>da_DK</locale>
+        <locale>en_US</locale>
         <display_resolution>1366x768x32</display_resolution>
         <streaming_memory>256</streaming_memory>
-        <current_skin>Default 2023</current_skin>
+        <current_skin>Lighter black</current_skin>
         <reportsettings>filter2@+all,-{1000~2007},-2050,-2051,-{3211},-{4002},-4023,-5132,-5133,-7011,-7043,-7411,-7420,-7601,-7744,-7745,-7801,-{7832~7833},-{7842~7845},-7940,-8070,-8613,-7711,-9423;max@88001;min@11</reportsettings>
-        <save_server_passwords>0</save_server_passwords>
-        <auto_refresh_browser>0</auto_refresh_browser>
-        <photosaving>0</photosaving>
+        <save_server_passwords></save_server_passwords>
+        <auto_refresh_browser></auto_refresh_browser>
+        <photosaving></photosaving>
     </settings>
-    <serverbrowser_options>
-        <list id="0" include_empty="1" include_full="1" include_locked="1" active="1"></list>
-        <list id="1" include_empty="1" include_full="1" include_locked="1"></list>
-        <list id="2" include_empty="1" include_full="1" include_locked="1" include_offline="1"></list>
-        <list id="3" include_empty="1" include_full="1" include_locked="1" include_offline="1"></list>
-    </serverbrowser_options>
     <binds>
         <bind key="num_0" control="fire"></bind>
         <bind key="lctrl" control="fire"></bind>
@@ -140,6 +134,7 @@
         <bind key="pgdn" control="zoom_out"></bind>
         <bind key="z" control="zoom_out"></bind>
         <bind key="mouse_wheel_down" control="zoom_out"></bind>
+        <bind key="enter" control="enter_exit"></bind>
         <bind key="f" control="enter_exit"></bind>
         <bind key="v" control="change_camera"></bind>
         <bind key="home" control="change_camera"></bind>
@@ -160,12 +155,10 @@
         <bind key="arrow_l" control="vehicle_left"></bind>
         <bind key="d" control="vehicle_right"></bind>
         <bind key="arrow_r" control="vehicle_right"></bind>
-        <bind key="num_8" control="steer_forward"></bind>
-        <bind key="num_2" control="steer_back"></bind>
+        <bind key="arrow_u" control="steer_forward"></bind>
+        <bind key="arrow_d" control="steer_back"></bind>
         <bind key="w" control="accelerate"></bind>
-        <bind key="arrow_u" control="accelerate"></bind>
         <bind key="s" control="brake_reverse"></bind>
-        <bind key="arrow_d" control="brake_reverse"></bind>
         <bind key="insert" control="radio_next"></bind>
         <bind key="4" control="radio_next"></bind>
         <bind key="mouse_wheel_up" control="radio_next"></bind>
@@ -224,15 +217,12 @@
     </binds>
     <updater>
         <var>
-            <version_lastchecktime>2025-11-06 14:33:16</version_lastchecktime>
-            <master_lastchecktime>2025-11-06 14:32:58</master_lastchecktime>
+            <version_lastchecktime>2025-11-06 14:56:57</version_lastchecktime>
+            <master_lastchecktime>2025-11-06 14:48:36</master_lastchecktime>
             <master_highestnotifyrevision></master_highestnotifyrevision>
-            <news_lastchecktime>2025-11-06 14:32:59</news_lastchecktime>
+            <news_lastchecktime>2025-11-06 14:48:39</news_lastchecktime>
             <news_lastnewsdate>2023-06-16</news_lastnewsdate>
-            <crashdump_historylist>
-                <dump date="20251103_1424" tag="1.7-unstable-25805.0.000_core_000faff9"></dump>
-                <dump date="20251106_1433" tag="1.7-unstable-25810.0.000_core_000faf39"></dump>
-            </crashdump_historylist>
+            <crashdump_historylist></crashdump_historylist>
         </var>
         <mastercache>
             <master>
@@ -318,6 +308,13 @@
             </misc>
         </mastercache>
     </updater>
+    <serverbrowser_options>
+        <list id="0" include_empty="1" include_full="1" include_locked="1" active="1"></list>
+        <list id="1" include_empty="1" include_full="1" include_locked="1"></list>
+        <list id="2" include_empty="1" include_full="1" include_locked="1" include_offline="1"></list>
+        <list id="3" include_empty="1" include_full="1" include_locked="1" include_offline="1"></list>
+    </serverbrowser_options>
+    <server_passwords></server_passwords>
     <recently_played_servers>
         <recently_played_server host="127.0.0.1" port="22003"></recently_played_server>
     </recently_played_servers>
