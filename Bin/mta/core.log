@@ -1,23 +1,23 @@
 ** -- Unhandled exception -- **
 
 Version = 1.7-unstable-25810.0.000
-Time = Thu Nov  6 14:59:30 2025
+Time = Thu Nov  6 16:52:40 2025
 Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
 Code = 0xE06D7363
 Offset = 0x000FA799
 
-EAX=147F9518  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
-EDI=14C25AF0  EBP=0177EB24  ESP=0177EAE4  EIP=726AA799  FLG=00200246
+EAX=1442CB38  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
+EDI=14569C78  EBP=0177EB24  ESP=0177EAE4  EIP=7253A799  FLG=00200246
 CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
 
 InvalidParameterCount = 0
 CrashZone = 0
-ThreadId = 6404
+ThreadId = 6868
 
 
-Precise crash time: 2025-11-06 14:59:29.048
-Thread ID: 6404
-Process ID: 1988
+Precise crash time: 2025-11-06 16:52:38.342
+Thread ID: 6868
+Process ID: 11136
 Exception Type: C++
 Exception: C++ Exception
 Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
@@ -25,38 +25,676 @@ Resolved Module Base: core.dll
 Resolved Module Offset: 0x000FA799
 Fatal Exception: Yes
 Stack trace:
-  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1919592345]
-  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1920528129]
-  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1920445617]
-  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1920446418]
-  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1920433253]
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1918085017]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1919020801]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1918938289]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1918939090]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1918925925]
   RtlInterlockedCompareExchange64 [0x1997312610]
   RtlInterlockedCompareExchange64 [0x1997312564]
   KiUserExceptionDispatcher [0x1997231894]
-  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1852949250]
-  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1852952979]
-  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1852288335]
-  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1919113877]
-  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1919023220]
-  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1919019352]
-  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1918758923]
-  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1918865713]
-  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1918688336]
-  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1918698123]
-  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1919118349]
-  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1919114601]
-  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1852224763]
-  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1852293867]
-  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1852771078]
-  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1852598988]
-  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1852577009]
-  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1852398329]
-  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1852610677]
-  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1852298544]
-  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1919027099]
-  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1919156140]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1849869058]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1849872787]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1849208143]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1917606549]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1917515892]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1917512024]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1917251595]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1917358385]
+  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1917181008]
+  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1917190795]
+  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1917611021]
+  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1917607273]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1849144571]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1849213675]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1849690886]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1849518796]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1849496817]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1849318137]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1849530485]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1849218352]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1917519771]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1917648812]
   AddClipboardFormatListener [0x1986075659]
   GetClassLongW [0x1986036426]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1650.dmp
+** -- End of unhandled exception -- **
+
+
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 16:52:50 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FA799
+
+EAX=0A7A1AF8  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
+EDI=11AFF4D8  EBP=0177EB24  ESP=0177EAE4  EIP=7253A799  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 1452
+
+
+Precise crash time: 2025-11-06 16:52:49.125
+Thread ID: 1452
+Process ID: 12772
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FA799
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1918085017]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1919020801]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1918938289]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1918939090]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1918925925]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1849869058]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1849872787]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1849208143]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1917606549]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1917515892]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1917512024]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1917251595]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1917358385]
+  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1917181008]
+  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1917190795]
+  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1917611021]
+  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1917607273]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1849144571]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1849213675]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1849690886]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1849518796]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1849496817]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1849318137]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1849530485]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1849218352]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1917519771]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1917648812]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1652.dmp
+** -- End of unhandled exception -- **
+
+
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 16:54:33 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FA799
+
+EAX=01CC2D00  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
+EDI=14BED520  EBP=0177EB24  ESP=0177EAE4  EIP=7253A799  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 5484
+
+
+Precise crash time: 2025-11-06 16:54:31.513
+Thread ID: 5484
+Process ID: 12280
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FA799
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1918085017]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1919020801]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1918938289]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1918939090]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1918925925]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1849869058]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1849872787]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1849208143]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1917606549]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1917515892]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1917512024]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1917251595]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1917358385]
+  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1917181008]
+  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1917190795]
+  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1917611021]
+  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1917607273]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1849144571]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1849213675]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1849690886]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1849518796]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1849496817]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1849318137]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1849530485]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1849218352]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1917519771]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1917648812]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1652.dmp
+** -- End of unhandled exception -- **
+
+
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 16:55:33 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FA799
+
+EAX=01920D60  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
+EDI=0EC2FF50  EBP=0177EB24  ESP=0177EAE4  EIP=7253A799  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 12736
+
+
+Precise crash time: 2025-11-06 16:55:32.049
+Thread ID: 12736
+Process ID: 14084
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FA799
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1918085017]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1919020801]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1918938289]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1918939090]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1918925925]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1849869058]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1849872787]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1849208143]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1917606549]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1917515892]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1917512024]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1917251595]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1917358385]
+  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1917181008]
+  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1917190795]
+  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1917611021]
+  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1917607273]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1849144571]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1849213675]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1849690886]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1849518796]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1849496817]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1849318137]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1849530485]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1849218352]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1917519771]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1917648812]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1654.dmp
+** -- End of unhandled exception -- **
+
+
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 16:57:15 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FA799
+
+EAX=01A43120  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
+EDI=01A4AE20  EBP=0177EB24  ESP=0177EAE4  EIP=7253A799  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 12344
+
+
+Precise crash time: 2025-11-06 16:57:13.439
+Thread ID: 12344
+Process ID: 9320
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FA799
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1918085017]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1919020801]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1918938289]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1918939090]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1918925925]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1849869058]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1849872787]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1849208143]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:358) [0x1917606989]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1917515892]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1917512024]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1917251595]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1917358385]
+  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1917181008]
+  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1917190795]
+  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1917611021]
+  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1917607273]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1849144571]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1849213675]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1849690886]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1849518796]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1849496817]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1849318137]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1849530485]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1849218352]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1917519771]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1917648812]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1655.dmp
+** -- End of unhandled exception -- **
+
+
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 16:58:18 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FA799
+
+EAX=14CBC788  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
+EDI=14CC2908  EBP=0177EB24  ESP=0177EAE4  EIP=7253A799  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 188
+
+
+Precise crash time: 2025-11-06 16:58:16.681
+Thread ID: 188
+Process ID: 11292
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FA799
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1918085017]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1919020801]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1918938289]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1918939090]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1918925925]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1849869058]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1849872787]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1849208143]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1917606549]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1917515892]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1917512024]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1917251595]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1917358385]
+  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1917181008]
+  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1917190795]
+  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1917611021]
+  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1917607273]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1849144571]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1849213675]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1849690886]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1849518796]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1849496817]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1849318137]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1849530485]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1849218352]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1917519771]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1917648812]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1657.dmp
+** -- End of unhandled exception -- **
+
+
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 17:07:39 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FA799
+
+EAX=01AF8A10  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
+EDI=0AC45658  EBP=0177EB24  ESP=0177EAE4  EIP=7253A799  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 12964
+
+
+Precise crash time: 2025-11-06 17:07:37.415
+Thread ID: 12964
+Process ID: 10236
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FA799
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1918085017]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1919020801]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1918938289]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1918939090]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1918925925]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1849869058]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1849872787]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1849208143]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1917606549]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1917515892]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1917512024]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1917251595]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1917358385]
+  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1917181008]
+  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1917190795]
+  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1917611021]
+  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1917607273]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1849144571]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1849213675]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1849690886]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1849518796]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1849496817]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1849318137]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1849530485]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1849218352]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1917519771]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1917648812]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1658.dmp
+** -- End of unhandled exception -- **
+
+
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 17:12:05 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FA799
+
+EAX=11FB8F10  EBX=0177EA54  ECX=00000000  EDX=00000000  ESI=0177EA58
+EDI=0AA6BD98  EBP=0177EA6C  ESP=0177EA2C  EIP=7253A799  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 11876
+
+
+Precise crash time: 2025-11-06 17:12:03.047
+Thread ID: 11876
+Process ID: 1692
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FA799
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1918085017]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1919020801]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1918938289]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1918939090]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1918925925]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1849869058]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1849872787]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1849208143]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1917606549]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1917515892]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1917512024]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1917251595]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1917358385]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:196) [0x1917646738]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+  GetClassLongW [0x1986035424]
+  CallNextHookEx [0x1986053039]
+  KiUserCallbackDispatcher [0x1997231821]
+  MBToWCSEx [0x1985954620]
+  Ordinal132 [0x1959867845]
+  Ordinal45 [0x1959852769]
+  GetThemeBackgroundRegion [0x1959824408]
+  MBToWCSEx [0x1985954524]
+  0x7636056 [0x7636056]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1707.dmp
+** -- End of unhandled exception -- **
+
+
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 17:14:07 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FA799
+
+EAX=14E86B60  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
+EDI=14973C28  EBP=0177EB24  ESP=0177EAE4  EIP=730EA799  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 2192
+
+
+Precise crash time: 2025-11-06 17:14:06.136
+Thread ID: 2192
+Process ID: 8328
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FA799
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1930340249]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1931276033]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1931193521]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1931194322]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1931181157]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1858847490]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1858851219]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1858186575]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1929861781]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1929771124]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1929767256]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1929506827]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1929613617]
+  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1929436240]
+  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1929446027]
+  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1929866253]
+  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1929862505]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1858123003]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1858192107]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1858669318]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1858497228]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1858475249]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1858296569]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1858508917]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1858196784]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1929775003]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1929904044]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1712.dmp
+** -- End of unhandled exception -- **
+
+
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 17:14:19 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FA799
+
+EAX=01A9E2E0  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
+EDI=1484AF50  EBP=0177EB24  ESP=0177EAE4  EIP=730EA799  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 6688
+
+
+Precise crash time: 2025-11-06 17:14:18.575
+Thread ID: 6688
+Process ID: 11712
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FA799
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1930340249]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1931276033]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1931193521]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1931194322]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1931181157]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1858847490]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1858851219]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1858186575]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1929861781]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1929771124]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1929767256]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1929506827]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1929613617]
+  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1929436240]
+  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1929446027]
+  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1929866253]
+  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1929862505]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1858123003]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1858192107]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1858669318]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1858497228]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1858475249]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1858296569]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1858508917]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1858196784]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1929775003]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1929904044]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1714.dmp
+** -- End of unhandled exception -- **
+
+
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 17:14:41 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FA799
+
+EAX=01A38780  EBX=0177EB0C  ECX=00000000  EDX=00000000  ESI=0177EB10
+EDI=01B2A7A0  EBP=0177EB24  ESP=0177EAE4  EIP=730EA799  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 916
+
+
+Precise crash time: 2025-11-06 17:14:39.885
+Thread ID: 916
+Process ID: 12672
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FA799
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1930340249]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1931276033]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1931193521]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1931194322]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1931181157]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1858847490]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1858851219]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1858186575]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1929861781]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1929771124]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1929767256]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1929506827]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1929613617]
+  CCommandFuncs::Exit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommandFuncs.cpp:40) [0x1929436240]
+  CCommands::Execute (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCommands.cpp:137) [0x1929446027]
+  CMainMenu::OnMenuClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:858) [0x1929866253]
+  CGUICallbackMethod<CMainMenu,bool,CGUIMouseEventArgs>::operator() (C:\Users\alyys\Downloads\mtasa-blue\Client\sdk\gui\CGUICallback.h:54) [0x1929862505]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:638) [0x1858123003]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1858192107]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1858669318]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1858497228]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1858475249]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1858296569]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1858508917]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1858196784]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1929775003]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1929904044]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+
+Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\client_1.7-unstable-25810.0.000_core_000fa799_7363_CUADMB_00000001_55F3_FFF_9F021_20251106_1714.dmp
 ** -- End of unhandled exception -- **
 
 
