@@ -1,4 +1,4 @@
-/*****************************************************************************
+﻿/*****************************************************************************
  *
  *  PROJECT:     Multi Theft Auto
  *  LICENSE:     See LICENSE in the top level directory
@@ -14,6 +14,10 @@
 
 #include "resource.h"
 #include <chrono>
+#include <gdiplus.h>
+#pragma comment(lib, "gdiplus.lib")
+
+using namespace Gdiplus;
 
 static UINT GetWindowDpi(HWND window);
 static SIZE GetPrimaryMonitorSize();
@@ -38,7 +42,6 @@ public:
 
     bool Update();
     void Paint(HDC windowContext, bool drawBackground) const;
-    void UpdateLoadingBar();
     void OnDestroy();
 
     void Show() const;
@@ -55,15 +58,10 @@ private:
     HBITMAP m_bgBitmap{};
     HDC     m_bgContext{};
 
-    // Loading bar bitmap
-    hrc::time_point m_barLastUpdate{};
-    HBITMAP         m_barBitmap{};
-    HDC             m_barContext{};
-    HRGN            m_barRegion{};
-    int             m_barWidth{};
-    int             m_barHeight{};
-    int             m_barX{};
-    int             m_barY{};
+
+    Gdiplus::Bitmap* m_pSplashBitmap;  // ADD THIS
+    ULONG_PTR m_gdiplusToken;           // ADD THIS
+    RECT             m_previousRect;
 };
 
 static Splash g_splash{};
@@ -73,15 +71,18 @@ static Splash g_splash{};
  */
 static long CALLBACK HandleSplashWindowMessage(HWND window, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    if (message == WM_ERASEBKGND)
-        return 1;
+    // NO LONGER SKIPPING WM_ERASEBKGND
+    // if (message == WM_ERASEBKGND)
+    //     return 1; 
 
     if (message == WM_PAINT)
     {
         PAINTSTRUCT ps{};
-        HDC         windowContext = BeginPaint(window, &ps);
+        HDC windowContext = BeginPaint(window, &ps);
         {
-            g_splash.Paint(windowContext, ps.rcPaint.top == 0);
+            // Now, we assume WM_ERASEBKGND happened or we draw on top.
+            // The key is the logic inside Splash::Paint
+            g_splash.Paint(windowContext, true); // Always draw the background (or clear)
         }
         EndPaint(window, &ps);
         return 0;
@@ -95,7 +96,6 @@ static long CALLBACK HandleSplashWindowMessage(HWND window, UINT message, WPARAM
 
     return DefWindowProc(window, message, wParam, lParam);
 }
-
 /**
  * @brief Creates the splash window.
  * @param instance The instance handle of the loader DLL.
@@ -139,12 +139,7 @@ bool Splash::CreateSplashWindow(HINSTANCE instance)
     MoveWindow(window, x, y, m_width, m_height, TRUE);
     ShowWindow(window, SW_SHOW);
 
-    // Calculate the position and size of the loading bar.
-    m_barLastUpdate = hrc::now();
-    m_barX = {};
-    m_barY = ScaleToDpi(197, dpi);
-    m_barWidth = m_width;
-    m_barHeight = ScaleToDpi(5, dpi) + 1;            // We add 1 pixel because scaling can cause the bar to be too small.
+    SetWindowLong(window, GWL_EXSTYLE, GetWindowLong(window, GWL_EXSTYLE) | WS_EX_LAYERED);
 
     m_windowClass = windowClass;
     m_window = window;
@@ -179,117 +174,22 @@ bool Splash::CreateDeviceResources()
     if (!m_window)
         return false;
 
-    ReleaseDeviceResources();
-
-    HBITMAP backgroundResource = LoadBitmap(m_windowClass.hInstance, MAKEINTRESOURCE(IDB_BITMAP1));
-    if (backgroundResource == nullptr)
-        return false;
-
-    HBITMAP barResource = LoadBitmap(m_windowClass.hInstance, MAKEINTRESOURCE(IDB_BITMAP2));
-    if (barResource == nullptr)
+    // Initialize GDI+ once
+    static bool gdiplusInitialized = false;
+    if (!gdiplusInitialized)
     {
-        DeleteObject(backgroundResource);
-        return false;
+        GdiplusStartupInput gdiplusStartupInput;
+        GdiplusStartup(&m_gdiplusToken, &gdiplusStartupInput, NULL);
+        gdiplusInitialized = true;
     }
 
-    HDC windowContext = GetDC(m_window);
-    if (windowContext == nullptr)
-    {
-        DeleteObject(barResource);
-        DeleteObject(backgroundResource);
+    // Load the banana image with transparency
+    SString strPath = CalcMTASAPath("MTA\\cgui\\images\\banana.png");
+    m_pSplashBitmap = Bitmap::FromFile(FromUTF8(strPath));
+    
+    if (m_pSplashBitmap == nullptr || m_pSplashBitmap->GetLastStatus() != Ok)
         return false;
-    }
 
-    HDC sourceContext = CreateCompatibleDC(windowContext);
-    if (sourceContext == nullptr)
-    {
-        ReleaseDC(m_window, windowContext);
-        DeleteObject(barResource);
-        DeleteObject(backgroundResource);
-        return false;
-    }
-
-    HBITMAP bgBitmap{};
-    HDC     bgContext{};
-    HBITMAP barBitmap{};
-    HDC     barContext{};
-    HRGN    barRegion{};
-    bool    success = false;
-
-    BITMAP source{};
-
-    do
-    {
-        SelectObject(sourceContext, backgroundResource);
-
-        bgBitmap = CreateCompatibleBitmap(windowContext, m_width, m_height);
-        if (bgBitmap == nullptr)
-            break;
-
-        bgContext = CreateCompatibleDC(windowContext);
-        if (bgContext == nullptr)
-            break;
-
-        SelectObject(bgContext, bgBitmap);
-
-        if (!GetObject(backgroundResource, sizeof(source), &source))
-            break;
-
-        SetStretchBltMode(bgContext, HALFTONE);
-        if (!StretchBlt(bgContext, 0, 0, m_width, m_height, sourceContext, 0, 0, source.bmWidth, source.bmHeight, SRCCOPY))
-            break;
-
-        SelectObject(sourceContext, barResource);
-
-        barBitmap = CreateCompatibleBitmap(windowContext, m_barWidth, m_barHeight);
-        if (barBitmap == nullptr)
-            break;
-
-        barContext = CreateCompatibleDC(windowContext);
-        if (barContext == nullptr)
-            break;
-
-        SelectObject(barContext, barBitmap);
-
-        if (!GetObject(barResource, sizeof(source), &source))
-            break;
-
-        SetStretchBltMode(barContext, HALFTONE);
-        if (!StretchBlt(barContext, 0, 0, m_barWidth, m_barHeight, sourceContext, 0, 0, source.bmWidth, source.bmHeight, SRCCOPY))
-            break;
-
-        barRegion = CreateRectRgn(0, m_barY, m_width, m_barY + m_barHeight);
-        if (barRegion == nullptr)
-            break;
-
-        success = true;
-    } while (false);
-
-    DeleteDC(sourceContext);
-    ReleaseDC(m_window, windowContext);
-    DeleteObject(barResource);
-    DeleteObject(backgroundResource);
-
-    if (!success)
-    {
-        if (barRegion)
-            DeleteObject(barRegion);
-        if (barContext)
-            DeleteDC(barContext);
-        if (barBitmap)
-            DeleteObject(barBitmap);
-        if (bgContext)
-            DeleteDC(bgContext);
-        if (bgBitmap)
-            DeleteObject(bgBitmap);
-        return false;
-    }
-
-    m_bgBitmap = bgBitmap;
-    m_bgContext = bgContext;
-    m_barBitmap = barBitmap;
-    m_barContext = barContext;
-    m_barRegion = barRegion;
     return true;
 }
 
@@ -309,28 +209,16 @@ void Splash::ReleaseDeviceResources()
         DeleteObject(m_bgBitmap);
         m_bgBitmap = {};
     }
-
-    if (m_barContext)
-    {
-        DeleteDC(m_barContext);
-        m_barContext = {};
-    }
-
-    if (m_barBitmap)
-    {
-        DeleteObject(m_barBitmap);
-        m_barBitmap = {};
-    }
-
-    if (m_barRegion != nullptr)
-    {
-        DeleteObject(m_barRegion);
-        m_barRegion = {};
-    }
 }
 
 /**
- * @brief Polls the splash window message queue and updates the loading bar.
+ * @brief Polls the splash window message queue and updates
+ */
+/**
+ * @brief Polls the splash window message queue and updates
+ */
+/**
+ * @brief Polls the splash window message queue and updates
  */
 bool Splash::Update()
 {
@@ -351,7 +239,11 @@ bool Splash::Update()
         }
     }
 
-    UpdateLoadingBar();
+    // **CRITICAL FIX: Invalidate the entire window area.**
+    // FALSE tells Windows NOT to send a WM_ERASEBKGND message.
+    // This allows WM_PAINT to fire every frame for animation.
+    InvalidateRect(m_window, nullptr, FALSE); 
+    
     return true;
 }
 
@@ -370,45 +262,56 @@ void Splash::OnDestroy()
  */
 void Splash::Paint(HDC windowContext, bool drawBackground) const
 {
-    if (drawBackground)
-    {
-        SelectClipRgn(windowContext, nullptr);
-        BitBlt(windowContext, 0, 0, m_width, m_height, m_bgContext, 0, 0, SRCCOPY);
-    }
-
-    SelectClipRgn(windowContext, m_barRegion);
-
-    if (m_barX > 0)
-        BitBlt(windowContext, 0, m_barY, m_width, m_height, m_barContext, m_width - m_barX, 0, SRCCOPY);
-
-    BitBlt(windowContext, m_barX, m_barY, m_width, m_height, m_barContext, 0, 0, SRCCOPY);
-}
-
-/**
- * @brief Updates the progress of the loading bar and invalidates the loading bar region of the window.
- */
-void Splash::UpdateLoadingBar()
-{
-    constexpr int       PIXELS_PER_UPDATE = 3;
-    constexpr long long UPDATE_RATE_IN_MS = 16;
-
-    const hrc::time_point now = hrc::now();
-    const long long       elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now - m_barLastUpdate).count();
-
-    if (elapsed < UPDATE_RATE_IN_MS)
+    if (!drawBackground || !m_pSplashBitmap)
         return;
 
-    const long long numUpdates = elapsed / UPDATE_RATE_IN_MS;
-    m_barLastUpdate += std::chrono::milliseconds(numUpdates * UPDATE_RATE_IN_MS);
-
-    m_barX += PIXELS_PER_UPDATE * static_cast<int>(numUpdates);
-
-    if (m_barX >= m_width)
-        m_barX = 0;
-
-    // Only invalidate the loading bar region to avoid flickering.
-    RECT invalidate{0, m_barY, m_width, m_barY + m_barHeight};
-    InvalidateRect(m_window, &invalidate, FALSE);
+    // Create a compatible bitmap with 32-bit ARGB for transparency
+    HDC memDC = CreateCompatibleDC(windowContext);
+    HBITMAP memBitmap = CreateCompatibleBitmap(windowContext, m_width, m_height);
+    HBITMAP oldBitmap = (HBITMAP)SelectObject(memDC, memBitmap);
+    
+    {
+        // Use GDI+ to draw on our memory bitmap
+        Graphics graphics(memDC);
+        graphics.SetSmoothingMode(SmoothingModeAntiAlias);
+        graphics.SetCompositingQuality(CompositingQualityHighQuality);
+        graphics.SetInterpolationMode(InterpolationModeHighQualityBicubic);
+        
+        // Clear to fully transparent
+        SolidBrush transparentBrush(Color(0, 0, 0, 0));
+        graphics.FillRectangle(&transparentBrush, 0, 0, m_width, m_height);
+        
+        // Calculate rotation
+        float angle = ((GetTickCount32() % 2000) / 2000.0f) * 360.0f;
+        
+        int imgWidth = m_pSplashBitmap->GetWidth();
+        int imgHeight = m_pSplashBitmap->GetHeight();
+        
+        // Calculate center position within the window
+        float centerX = m_width / 2.0f;
+        float centerY = m_height / 2.0f;
+        
+        // Set up transformation for rotation around center of window
+        graphics.TranslateTransform(centerX, centerY);  // Move to center of window
+        graphics.RotateTransform(angle);                // Rotate
+        graphics.TranslateTransform(-imgWidth / 2.0f, -imgHeight / 2.0f);  // Adjust for image center
+        
+        // Draw the rotating banana with its native transparency
+        graphics.DrawImage(m_pSplashBitmap, 0, 0, imgWidth, imgHeight);
+    }
+    
+    // Use UpdateLayeredWindow for true per-pixel transparency
+    POINT ptDst = {0, 0};
+    SIZE size = {m_width, m_height};
+    POINT ptSrc = {0, 0};
+    BLENDFUNCTION blend = {AC_SRC_OVER, 0, 255, AC_SRC_ALPHA};
+    
+    UpdateLayeredWindow(m_window, NULL, NULL, &size, memDC, &ptSrc, 0, &blend, ULW_ALPHA);
+    
+    // Cleanup
+    SelectObject(memDC, oldBitmap);
+    DeleteObject(memBitmap);
+    DeleteDC(memDC);
 }
 
 /**
