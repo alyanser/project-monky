@@ -188,3 +188,65 @@ Crash dump file: C:\Users\alyys\Downloads\mtasa-blue\Bin\mta\dumps\private\clien
 ** -- End of unhandled exception -- **
 
 
+** -- Unhandled exception -- **
+
+Version = 1.7-unstable-25810.0.000
+Time = Thu Nov  6 14:33:09 2025
+Module = C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Code = 0xE06D7363
+Offset = 0x000FAF39
+
+EAX=06786658  EBX=0177ED24  ECX=00000000  EDX=00000000  ESI=0177ED28
+EDI=018C6640  EBP=0177ED3C  ESP=0177ECFC  EIP=71CBAF39  FLG=00200246
+CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
+
+InvalidParameterCount = 0
+CrashZone = 0
+ThreadId = 2676
+
+
+Precise crash time: 2025-11-06 14:33:06.879
+Thread ID: 2676
+Process ID: 7768
+Exception Type: C++
+Exception: C++ Exception
+Resolved Module Path: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\core.dll
+Resolved Module Base: core.dll
+Resolved Module Offset: 0x000FAF39
+Fatal Exception: Yes
+Stack trace:
+  CppTerminateHandler (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CrashHandler.cpp:1437) [0x1909174073]
+  terminate (minkernel\crts\ucrt\src\appcrt\misc\terminate.cpp:49) [0x1910110065]
+  FindHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:601) [0x1910027553]
+  __InternalCxxFrameHandler<__FrameHandler3> (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\frame.cpp:396) [0x1910028354]
+  __CxxFrameHandler3 (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\i386\trnsctrl.cpp:271) [0x1910015189]
+  RtlInterlockedCompareExchange64 [0x1997312610]
+  RtlInterlockedCompareExchange64 [0x1997312564]
+  KiUserExceptionDispatcher [0x1997231894]
+  _CxxThrowException (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\throw.cpp:79) [0x1841677058]
+  __RTDynamicCast (D:\a\_work\1\s\src\vctools\crt\vcruntime\src\eh\rtti.cpp:293) [0x1841680787]
+  CGUI_Impl::DestroyElementRecursive (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:24) [0x1841016143]
+  CMainMenu::~CMainMenu (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMainMenu.cpp:316) [0x1908695589]
+  CLocalGUI::DestroyWindows (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:209) [0x1908604116]
+  CLocalGUI::~CLocalGUI (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:53) [0x1908600200]
+  CCore::~CCore (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:241) [0x1908338699]
+  CCore::Quit (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CCore.cpp:1513) [0x1908445489]
+  RestartCallBack (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CSettings.cpp:2077) [0x1908953983]
+  CQuestionBox::OnButtonClick (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CQuestionBox.cpp:218) [0x1908766250]
+  CGUIElement_Impl::Event_OnClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUIElement_Impl.cpp:622) [0x1840952487]
+  CGUI_Impl::Event_MouseClick (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:1087) [0x1841021675]
+  CEGUI::Event::operator() (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEvent.cpp:106) [0x1841498886]
+  CEGUI::GlobalEventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIGlobalEventSet.cpp:125) [0x1841326796]
+  CEGUI::EventSet::fireEvent (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIEventSet.cpp:177) [0x1841304817]
+  CEGUI::Window::onMouseClicked (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUIWindow.cpp:4124) [0x1841126137]
+  CEGUI::System::injectMouseButtonUp (C:\Users\alyys\Downloads\mtasa-blue\vendor\cegui-0.4.0-custom\src\CEGUISystem.cpp:969) [0x1841338485]
+  CGUI_Impl::ProcessMouseInput (C:\Users\alyys\Downloads\mtasa-blue\Client\gui\CGUI_Impl.cpp:304) [0x1841026352]
+  CLocalGUI::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CGUI.cpp:641) [0x1908607995]
+  CMessageLoopHook::ProcessMessage (C:\Users\alyys\Downloads\mtasa-blue\Client\core\CMessageLoopHook.cpp:469) [0x1908737868]
+  AddClipboardFormatListener [0x1986075659]
+  GetClassLongW [0x1986036426]
+  DispatchMessageW [0x1986030448]
+  DispatchMessageA [0x1985972464]
+** -- End of unhandled exception -- **
+
+

@@ -101,8 +101,8 @@
         <process_cpu_affinity>1</process_cpu_affinity>
         <ask_before_disconnect>1</ask_before_disconnect>
         <allow_steam_client>0</allow_steam_client>
-        <locale>en_US</locale>
-        <display_resolution>1024x768x32</display_resolution>
+        <locale>da_DK</locale>
+        <display_resolution>1366x768x32</display_resolution>
         <streaming_memory>256</streaming_memory>
         <current_skin>Default 2023</current_skin>
         <reportsettings>filter2@+all,-{1000~2007},-2050,-2051,-{3211},-{4002},-4023,-5132,-5133,-7011,-7043,-7411,-7420,-7601,-7744,-7745,-7801,-{7832~7833},-{7842~7845},-7940,-8070,-8613,-7711,-9423;max@88001;min@11</reportsettings>
@@ -224,13 +224,14 @@
     </binds>
     <updater>
         <var>
-            <version_lastchecktime>2025-11-04 13:15:30</version_lastchecktime>
-            <master_lastchecktime>2025-11-03 14:00:48</master_lastchecktime>
+            <version_lastchecktime>2025-11-06 14:33:16</version_lastchecktime>
+            <master_lastchecktime>2025-11-06 14:32:58</master_lastchecktime>
             <master_highestnotifyrevision></master_highestnotifyrevision>
-            <news_lastchecktime>2025-11-04 13:15:31</news_lastchecktime>
+            <news_lastchecktime>2025-11-06 14:32:59</news_lastchecktime>
             <news_lastnewsdate>2023-06-16</news_lastnewsdate>
             <crashdump_historylist>
                 <dump date="20251103_1424" tag="1.7-unstable-25805.0.000_core_000faff9"></dump>
+                <dump date="20251106_1433" tag="1.7-unstable-25810.0.000_core_000faf39"></dump>
             </crashdump_historylist>
         </var>
         <mastercache>

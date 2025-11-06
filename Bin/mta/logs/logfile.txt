@@ -1,128 +1,160 @@
-13:31:32 - [DEBUG] BeginEventLog
-13:31:33 - [DEBUG] Localization set to 'en_US'
-13:31:34 - [DEBUG] Localization: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\locale\/en_US/client.pot:20: warning: unknown Plural-Forms given: 
-13:31:34 - [DEBUG] Localization: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\locale\/en_US/client.pot:20: warning: charset not specified for .po, fallback to utf-8: 
-13:31:35 - [DEBUG] AV health: good (0) [Ena0:Windows Defender[61100]]
-13:31:36 - [DEBUG] D3DStuff -------------------------
-13:31:36 - [DEBUG] D3DStuff - Direct3DCreate9: 0x00574ba0
-13:31:36 - [DEBUG] D3DStuff - 1 Adapters
-13:31:36 - [DEBUG] D3DStuff 0 Identifier -     Driver:igdumdim32.dll
-13:31:36 - [DEBUG]     Description:Intel(R) HD Graphics 5500
-13:31:36 - [DEBUG]     DeviceName:\\.\DISPLAY1
-13:31:36 - [DEBUG]     DriverVersion:0x00140013 0x000f1406
-13:31:36 - [DEBUG]     VendorId:0x00008086  DeviceId:0x00001616  SubSysId:0x2248103c  Revision:0x00000009  WHQLLevel:0x00000000
-13:31:36 - [DEBUG]     DeviceIdentifier:d7b78e66-5556-11cf-8a67-4702b5c2d935
-13:31:36 - [DEBUG] D3DStuff 0 DisplayMode -  Width:1366 Height:768 RefreshRate:60 Format:22
-13:31:36 - [DEBUG] D3DStuff 0  hMonitor:0x00010001  ModeCount:4
-13:31:36 - [DEBUG] D3DStuff 0 Caps9 -  VertexShaderVersion:0xfffe0300 PixelShaderVersion:0xffff0300 DeclTypes:0x37f 
-13:31:36 - [DEBUG] general.progress-animation-disable:  
-13:31:36 - [DEBUG] general.aero-enabled: 1 
-13:31:36 - [DEBUG] general.driver-overrides-disabled:  
-13:31:36 - [DEBUG] general.device-selection-disabled: 0 
-13:31:36 - [DEBUG] general.customized-sa-files-using:  
-13:31:36 - [DEBUG] general.times-connected: 5 
-13:31:36 - [DEBUG] general.times-connected-editor: 2 
-13:31:36 - [DEBUG] nvhacks.nvidia: 0 
-13:31:36 - [DEBUG] nvhacks.optimus-force-detection:  
-13:31:36 - [DEBUG] nvhacks.optimus-export-enablement: 0 
-13:31:36 - [DEBUG] nvhacks.optimus: 0 
-13:31:36 - [DEBUG] nvhacks.optimus-alt-startup: 0 
-13:31:36 - [DEBUG] nvhacks.optimus-force-windowed: 0 
-13:31:36 - [DEBUG] nvhacks.optimus-dialog-skip:  
-13:31:36 - [DEBUG] nvhacks.optimus-startup-option: 0 
-13:31:36 - [DEBUG] watchdog.L0: 1 SECTION_NOT_CLEAN_GTA_EXIT
-13:31:36 - [DEBUG] watchdog.L1: 1 SECTION_NOT_STARTED_ONLINE_GAME
-13:31:36 - [DEBUG] diagnostics.send-dumps:  
-13:31:36 - [DEBUG] general.noav-user-says-skip:  
-13:31:36 - [DEBUG] general.noav-last-asked-time:  
-13:31:36 - [DEBUG] Loader - Process created: C:\ProgramData\MTA San Andreas All\1.7\GTA San Andreas\gta_sa.exe 9F021BDB37FEDD6B6FA9015F72050343
-13:31:36 - [DEBUG] Loader - Process ID: 8692, Thread ID: 3088
-13:31:36 - [DEBUG] ModuleFileName: C:\ProgramData\MTA San Andreas All\1.7\GTA San Andreas\gta_sa.exe
-13:31:36 - [DEBUG] Loading xml
-13:31:36 - [DEBUG] XML loaded.
-13:31:36 - [DEBUG] XML initialized.
-13:31:36 - [DEBUG] Localization set to 'en_US'
-13:31:36 - [DEBUG] Localization: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\locale\/en_US/client.pot:20: warning: unknown Plural-Forms given: 
-13:31:36 - [DEBUG] Localization: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\locale\/en_US/client.pot:20: warning: charset not specified for .po, fallback to utf-8: 
-13:31:36 - [DEBUG] CCommands::CCommands
-13:31:36 - [DEBUG] CCore::CCore
-13:31:36 - [DEBUG] CDirectInputHookManager::CDirectInputHookManager
-13:31:36 - [DEBUG] CMessageLoopHook::CMessageLoopHook
-13:31:36 - [DEBUG] CSetCursorPosHook::CSetCursorPosHook
-13:31:36 - [DEBUG] CCore::ApplyHooks
-13:31:36 - [DEBUG] CDirectInputHook8::CDirectInputHook8
-13:31:37 - [DEBUG] DirectInput8 ANSI Interface Created.
-13:31:37 - [DEBUG] CProxyDirectInput8::CProxyDirectInput8 0195d7b8
-13:31:37 - [DEBUG] CProxyDirectInputDevice8::CProxyDirectInputDevice8 01955cb0
-13:31:37 - [DEBUG] CCore::ApplyHooks2
-13:31:37 - [DEBUG] CDirect3DHook9::CDirect3DHook9
-13:31:37 - [DEBUG] Direct3D9 hook applied 6f7c0678
-13:31:37 - [DEBUG]    CProxyDirectInputDevice8 Device:019e8c3c  Type:0x12  SubType:0x1  HID:0x0  ProductName:Mouse
-13:31:37 - [DEBUG] Loading network
-13:31:37 - [DEBUG] Network loaded.
-13:31:39 - [DEBUG] Network initialized.
-13:31:39 - [DEBUG] Loading game
-13:31:39 - [DEBUG] Game loaded.
-13:31:39 - [DEBUG] Game initialized.
-13:31:39 - [DEBUG] Loading multiplayer
-13:31:39 - [DEBUG] Multiplayer loaded.
-13:31:39 - [DEBUG] Multiplayer initialized.
-13:31:39 - [DEBUG] Loading gui
-13:31:39 - [DEBUG] GUI loaded.
-13:31:39 - [DEBUG] D3DXCheckVersion success (D3D_SDK_VERSION: 32  D3DX_SDK_VERSION: 42  SDKVersion: 31)
-13:31:39 - [DEBUG] Calling Direct3DCreate9
-13:31:39 - [DEBUG] Direct3DCreate9 succeded
-13:31:39 - [DEBUG] CProxyDirect3D9::CProxyDirect3D9 01a92ae8
-13:31:39 - [DEBUG] D3DXCheckVersion success (D3D_SDK_VERSION: 32  D3DX_SDK_VERSION: 42  SDKVersion: 31)
-13:31:39 - [DEBUG] Calling Direct3DCreate9
-13:31:39 - [DEBUG] Direct3DCreate9 succeded
-13:31:39 - [DEBUG] CProxyDirect3D9::CProxyDirect3D9 01a92b00
-13:31:39 - [DEBUG] CProxyDirect3D9::~CProxyDirect3D9 01a92b00
-13:31:39 - [DEBUG] CProxyDirect3D9::CreateDevice
-13:31:39 - [DEBUG]     Adapter:0  DeviceType:1  BehaviorFlags:0x50
-13:31:39 - [DEBUG]     BackBufferWidth:1366  Height:768  Format:21  Count:1
-13:31:39 - [DEBUG]     MultiSampleType:0  Quality:0
-13:31:39 - [DEBUG]     SwapEffect:2  Windowed:0  EnableAutoDepthStencil:1  AutoDepthStencilFormat:75  Flags:0x0
-13:31:39 - [DEBUG]     FullScreen_RefreshRateInHz:60  PresentationInterval:0x80000000
-13:31:40 - [DEBUG] CDirect3DEvents9::OnDirect3DDeviceCreate
-13:31:40 - [DEBUG] GUI initialized.
-13:31:41 - [DEBUG]     Adapter:0  DeviceType:1  BehaviorFlags:0x40  ReadableDepth:INTZ
-13:31:41 - [DEBUG]     Driver:igdumdim32.dll
-13:31:41 - [DEBUG]     Description:Intel(R) HD Graphics 5500
-13:31:41 - [DEBUG]     DeviceName:\\.\DISPLAY1
-13:31:41 - [DEBUG]     DriverVersion:0x00140013 0x000f1406
-13:31:41 - [DEBUG]     VendorId:0x00008086  DeviceId:0x00001616  SubSysId:0x2248103c  Revision:0x00000009  WHQLLevel:0x00000000
-13:31:41 - [DEBUG]     DeviceIdentifier:d7b78e66-5556-11cf-8a67-4702b5c2d935
-13:31:41 - [DEBUG] CreateDevice success
-13:31:41 - [DEBUG]     Adapter:0  DeviceType:1  BehaviorFlags:0x40
-13:31:41 - [DEBUG]     BackBufferWidth:1366  Height:768  Format:21  Count:1
-13:31:41 - [DEBUG]     MultiSampleType:0  Quality:0
-13:31:41 - [DEBUG]     SwapEffect:2  Windowed:0  EnableAutoDepthStencil:1  AutoDepthStencilFormat:75  Flags:0x0
-13:31:41 - [DEBUG]     FullScreen_RefreshRateInHz:0  PresentationInterval:0x80000000
-13:31:41 - [DEBUG] ModuleFileName - C:\ProgramData\MTA San Andreas All\1.7\GTA San Andreas\gta_sa.exe 
-13:31:41 - [DEBUG] CapsReport GTACaps9 -  VSVer:0xfffe0300 PSVer:0xffff0300 DeclTypes:0x37f VerProcCaps:0x17b MaxLights:0x8 MaxClips:0x6 TexOpCaps:0x03ffffff S30MaxSlots:32768/32768 TexMaxSize:8192/8192/2048 
-13:31:41 - [DEBUG] IDirect3D9 CapsReport Caps9 -  VSVer:0xfffe0300 PSVer:0xffff0300 DeclTypes:0x37f VerProcCaps:0x17b MaxLights:0x8 MaxClips:0x6 TexOpCaps:0x03ffffff S30MaxSlots:32768/32768 TexMaxSize:8192/8192/2048 
-13:31:41 - [DEBUG] IDirect3DDevice9 CapsReport Caps9 -  VSVer:0xfffe0300 PSVer:0xffff0300 DeclTypes:0x37f VerProcCaps:0x17b MaxLights:0xa MaxClips:0x6 TexOpCaps:0x03ffffff S30MaxSlots:32768/32768 TexMaxSize:8192/8192/2048 
-13:31:41 - [DEBUG] CreateVertexDecl fail: hr:80004005 [0,0,14,0,0,0]
-13:31:41 - [DEBUG] CapsReport - CreateVertexDeclarations MatchesCaps:10/10
-13:31:41 - [DEBUG] DeviceCaps==GTACaps:1  DeviceCaps==D3DCaps9:1
-13:31:41 - [DEBUG] Cleared sRGB color correction for fullscreen mode
-13:31:41 - [DEBUG] CDirect3DEvents9::OnInvalidate
-13:31:41 - [DEBUG] Cleared sRGB color correction for fullscreen mode
-13:31:41 - [DEBUG] CDirect3DEvents9::OnRestore
-13:31:42 - [DEBUG] InitDirectInput - No Joystick found
-13:31:42 - [DEBUG] CDirect3DEvents9::OnInvalidate
-13:31:42 - [DEBUG] Cleared sRGB color correction for fullscreen mode
-13:31:42 - [DEBUG] CDirect3DEvents9::OnRestore
-13:31:42 - [DEBUG] Loader - L3 closed
-13:31:42 - [DEBUG] Loader - Wait for game to exit
-13:31:44 - [DEBUG] Cleared sRGB color correction for fullscreen mode
-13:31:44 - [DEBUG] Cleared sRGB color correction for fullscreen mode
-13:31:44 - [DEBUG] Cleared sRGB color correction for fullscreen mode
-13:31:44 - [DEBUG] Cleared sRGB color correction for fullscreen mode
-13:31:54 - [DEBUG] Cleared sRGB color correction for fullscreen mode
-13:32:41 - [DEBUG] CDirect3DEvents9::SetRenderTargetGuarded skipped due to device state: 88760869
-13:32:41 - [DEBUG] CDirect3DEvents9::SetDepthStencilSurfaceGuarded skipped due to device state: 88760869
-13:32:41 - [DEBUG] CDirect3DEvents9::OnInvalidate
-13:32:41 - [DEBUG] Cleared sRGB color correction for fullscreen mode
-13:32:41 - [DEBUG] CDirect3DEvents9::OnRestore
+14:33:10 - [DEBUG] BeginEventLog
+14:33:10 - [DEBUG] Localization set to 'en_US'
+14:33:10 - [DEBUG] Localization: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\locale\/en_US/client.pot:20: warning: unknown Plural-Forms given: 
+14:33:10 - [DEBUG] Localization: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\locale\/en_US/client.pot:20: warning: charset not specified for .po, fallback to utf-8: 
+14:33:11 - [DEBUG] AV health: good (0) [Ena0:Windows Defender[61100]]
+14:33:11 - [DEBUG] D3DStuff -------------------------
+14:33:11 - [DEBUG] D3DStuff - Direct3DCreate9: 0x01617140
+14:33:11 - [DEBUG] D3DStuff - 1 Adapters
+14:33:11 - [DEBUG] D3DStuff 0 Identifier -     Driver:igdumdim32.dll
+14:33:11 - [DEBUG]     Description:Intel(R) HD Graphics 5500
+14:33:11 - [DEBUG]     DeviceName:\\.\DISPLAY1
+14:33:11 - [DEBUG]     DriverVersion:0x00140013 0x000f1406
+14:33:11 - [DEBUG]     VendorId:0x00008086  DeviceId:0x00001616  SubSysId:0x2248103c  Revision:0x00000009  WHQLLevel:0x00000000
+14:33:11 - [DEBUG]     DeviceIdentifier:d7b78e66-5556-11cf-8a67-4702b5c2d935
+14:33:11 - [DEBUG] D3DStuff 0 DisplayMode -  Width:1366 Height:768 RefreshRate:60 Format:22
+14:33:11 - [DEBUG] D3DStuff 0  hMonitor:0x00010001  ModeCount:4
+14:33:11 - [DEBUG] D3DStuff 0 Caps9 -  VertexShaderVersion:0xfffe0300 PixelShaderVersion:0xffff0300 DeclTypes:0x37f 
+14:33:11 - [DEBUG] general.progress-animation-disable:  
+14:33:11 - [DEBUG] general.aero-enabled: 1 
+14:33:11 - [DEBUG] general.driver-overrides-disabled:  
+14:33:11 - [DEBUG] general.device-selection-disabled: 0 
+14:33:11 - [DEBUG] general.customized-sa-files-using:  
+14:33:11 - [DEBUG] general.times-connected:  
+14:33:11 - [DEBUG] general.times-connected-editor:  
+14:33:11 - [DEBUG] nvhacks.nvidia: 0 
+14:33:11 - [DEBUG] nvhacks.optimus-force-detection:  
+14:33:11 - [DEBUG] nvhacks.optimus-export-enablement: 0 
+14:33:11 - [DEBUG] nvhacks.optimus: 0 
+14:33:11 - [DEBUG] nvhacks.optimus-alt-startup: 0 
+14:33:11 - [DEBUG] nvhacks.optimus-force-windowed: 0 
+14:33:11 - [DEBUG] nvhacks.optimus-dialog-skip:  
+14:33:11 - [DEBUG] nvhacks.optimus-startup-option: 0 
+14:33:11 - [DEBUG] watchdog.L0: 1 SECTION_NOT_CLEAN_GTA_EXIT
+14:33:11 - [DEBUG] watchdog.L1: 1 SECTION_NOT_STARTED_ONLINE_GAME
+14:33:11 - [DEBUG] watchdog.lastruncrash: 1 
+14:33:11 - [DEBUG] watchdog.uncleanstop: 1 
+14:33:11 - [DEBUG] diagnostics.send-dumps:  
+14:33:11 - [DEBUG] general.noav-user-says-skip:  
+14:33:11 - [DEBUG] general.noav-last-asked-time:  
+14:33:11 - [DEBUG] Loader - Process created: C:\ProgramData\MTA San Andreas All\1.7\GTA San Andreas\gta_sa.exe 9F021BDB37FEDD6B6FA9015F72050343
+14:33:11 - [DEBUG] Loader - Process ID: 6776, Thread ID: 9612
+14:33:11 - [DEBUG] ModuleFileName: C:\ProgramData\MTA San Andreas All\1.7\GTA San Andreas\gta_sa.exe
+14:33:11 - [DEBUG] Loading xml
+14:33:11 - [DEBUG] XML loaded.
+14:33:11 - [DEBUG] XML initialized.
+14:33:11 - [DEBUG] Localization set to 'en_US'
+14:33:11 - [DEBUG] Localization: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\locale\/en_US/client.pot:20: warning: unknown Plural-Forms given: 
+14:33:11 - [DEBUG] Localization: C:\Users\alyys\Downloads\mtasa-blue\Bin\MTA\locale\/en_US/client.pot:20: warning: charset not specified for .po, fallback to utf-8: 
+14:33:11 - [DEBUG] CCommands::CCommands
+14:33:11 - [DEBUG] CCore::CCore
+14:33:11 - [DEBUG] CDirectInputHookManager::CDirectInputHookManager
+14:33:11 - [DEBUG] CMessageLoopHook::CMessageLoopHook
+14:33:11 - [DEBUG] CSetCursorPosHook::CSetCursorPosHook
+14:33:11 - [DEBUG] CCore::ApplyHooks
+14:33:11 - [DEBUG] CDirectInputHook8::CDirectInputHook8
+14:33:11 - [DEBUG] DirectInput8 ANSI Interface Created.
+14:33:11 - [DEBUG] CProxyDirectInput8::CProxyDirectInput8 0189aac8
+14:33:11 - [DEBUG] CProxyDirectInputDevice8::CProxyDirectInputDevice8 01891c08
+14:33:11 - [DEBUG] CCore::ApplyHooks2
+14:33:11 - [DEBUG] CDirect3DHook9::CDirect3DHook9
+14:33:11 - [DEBUG] Direct3D9 hook applied 6d790678
+14:33:11 - [DEBUG]    CProxyDirectInputDevice8 Device:0192b5dc  Type:0x12  SubType:0x1  HID:0x0  ProductName:Mouse
+14:33:11 - [DEBUG] Loading network
+14:33:11 - [DEBUG] Network loaded.
+14:33:13 - [DEBUG] Network initialized.
+14:33:13 - [DEBUG] Loading game
+14:33:13 - [DEBUG] Game loaded.
+14:33:13 - [DEBUG] Game initialized.
+14:33:13 - [DEBUG] Loading multiplayer
+14:33:13 - [DEBUG] Multiplayer loaded.
+14:33:13 - [DEBUG] Multiplayer initialized.
+14:33:13 - [DEBUG] Loading gui
+14:33:13 - [DEBUG] GUI loaded.
+14:33:13 - [DEBUG] D3DXCheckVersion success (D3D_SDK_VERSION: 32  D3DX_SDK_VERSION: 42  SDKVersion: 31)
+14:33:13 - [DEBUG] Calling Direct3DCreate9
+14:33:13 - [DEBUG] Direct3DCreate9 succeded
+14:33:13 - [DEBUG] CProxyDirect3D9::CProxyDirect3D9 06963208
+14:33:13 - [DEBUG] D3DXCheckVersion success (D3D_SDK_VERSION: 32  D3DX_SDK_VERSION: 42  SDKVersion: 31)
+14:33:13 - [DEBUG] Calling Direct3DCreate9
+14:33:13 - [DEBUG] Direct3DCreate9 succeded
+14:33:13 - [DEBUG] CProxyDirect3D9::CProxyDirect3D9 069632f8
+14:33:13 - [DEBUG] CProxyDirect3D9::~CProxyDirect3D9 069632f8
+14:33:13 - [DEBUG] CProxyDirect3D9::CreateDevice
+14:33:13 - [DEBUG]     Adapter:0  DeviceType:1  BehaviorFlags:0x50
+14:33:13 - [DEBUG]     BackBufferWidth:1366  Height:768  Format:21  Count:1
+14:33:13 - [DEBUG]     MultiSampleType:0  Quality:0
+14:33:13 - [DEBUG]     SwapEffect:2  Windowed:0  EnableAutoDepthStencil:1  AutoDepthStencilFormat:75  Flags:0x0
+14:33:13 - [DEBUG]     FullScreen_RefreshRateInHz:60  PresentationInterval:0x80000000
+14:33:14 - [DEBUG] CDirect3DEvents9::OnDirect3DDeviceCreate
+14:33:14 - [DEBUG] GUI initialized.
+14:33:15 - [DEBUG]     Adapter:0  DeviceType:1  BehaviorFlags:0x40  ReadableDepth:INTZ
+14:33:15 - [DEBUG]     Driver:igdumdim32.dll
+14:33:15 - [DEBUG]     Description:Intel(R) HD Graphics 5500
+14:33:15 - [DEBUG]     DeviceName:\\.\DISPLAY1
+14:33:15 - [DEBUG]     DriverVersion:0x00140013 0x000f1406
+14:33:15 - [DEBUG]     VendorId:0x00008086  DeviceId:0x00001616  SubSysId:0x2248103c  Revision:0x00000009  WHQLLevel:0x00000000
+14:33:15 - [DEBUG]     DeviceIdentifier:d7b78e66-5556-11cf-8a67-4702b5c2d935
+14:33:15 - [DEBUG] CreateDevice success
+14:33:15 - [DEBUG]     Adapter:0  DeviceType:1  BehaviorFlags:0x40
+14:33:15 - [DEBUG]     BackBufferWidth:1366  Height:768  Format:21  Count:1
+14:33:15 - [DEBUG]     MultiSampleType:0  Quality:0
+14:33:15 - [DEBUG]     SwapEffect:2  Windowed:0  EnableAutoDepthStencil:1  AutoDepthStencilFormat:75  Flags:0x0
+14:33:15 - [DEBUG]     FullScreen_RefreshRateInHz:0  PresentationInterval:0x80000000
+14:33:15 - [DEBUG] ModuleFileName - C:\ProgramData\MTA San Andreas All\1.7\GTA San Andreas\gta_sa.exe 
+14:33:15 - [DEBUG] CapsReport GTACaps9 -  VSVer:0xfffe0300 PSVer:0xffff0300 DeclTypes:0x37f VerProcCaps:0x17b MaxLights:0x8 MaxClips:0x6 TexOpCaps:0x03ffffff S30MaxSlots:32768/32768 TexMaxSize:8192/8192/2048 
+14:33:15 - [DEBUG] IDirect3D9 CapsReport Caps9 -  VSVer:0xfffe0300 PSVer:0xffff0300 DeclTypes:0x37f VerProcCaps:0x17b MaxLights:0x8 MaxClips:0x6 TexOpCaps:0x03ffffff S30MaxSlots:32768/32768 TexMaxSize:8192/8192/2048 
+14:33:15 - [DEBUG] IDirect3DDevice9 CapsReport Caps9 -  VSVer:0xfffe0300 PSVer:0xffff0300 DeclTypes:0x37f VerProcCaps:0x17b MaxLights:0xa MaxClips:0x6 TexOpCaps:0x03ffffff S30MaxSlots:32768/32768 TexMaxSize:8192/8192/2048 
+14:33:15 - [DEBUG] CreateVertexDecl fail: hr:80004005 [0,0,14,0,0,0]
+14:33:15 - [DEBUG] CapsReport - CreateVertexDeclarations MatchesCaps:10/10
+14:33:15 - [DEBUG] DeviceCaps==GTACaps:1  DeviceCaps==D3DCaps9:1
+14:33:15 - [DEBUG] Cleared sRGB color correction for fullscreen mode
+14:33:15 - [DEBUG] CDirect3DEvents9::OnInvalidate
+14:33:15 - [DEBUG] Cleared sRGB color correction for fullscreen mode
+14:33:15 - [DEBUG] CDirect3DEvents9::OnRestore
+14:33:15 - [DEBUG] Loader - L3 closed
+14:33:15 - [DEBUG] Loader - Wait for game to exit
+14:33:15 - [DEBUG] InitDirectInput - No Joystick found
+14:33:15 - [DEBUG] CDirect3DEvents9::OnInvalidate
+14:33:15 - [DEBUG] Cleared sRGB color correction for fullscreen mode
+14:33:15 - [DEBUG] CDirect3DEvents9::OnRestore
+14:33:23 - [DEBUG] CDirect3DEvents9::SetRenderTargetGuarded skipped due to device state: 88760869
+14:33:23 - [DEBUG] CDirect3DEvents9::SetDepthStencilSurfaceGuarded skipped due to device state: 88760869
+14:33:23 - [DEBUG] CDirect3DEvents9::OnInvalidate
+14:33:23 - [DEBUG] Cleared sRGB color correction for fullscreen mode
+14:33:23 - [DEBUG] CDirect3DEvents9::OnRestore
+14:33:37 - [DEBUG] CDirect3DEvents9::SetRenderTargetGuarded skipped due to device state: 88760869
+14:33:37 - [DEBUG] CDirect3DEvents9::SetDepthStencilSurfaceGuarded skipped due to device state: 88760869
+14:33:37 - [DEBUG] CDirect3DEvents9::OnInvalidate
+14:33:38 - [DEBUG] Cleared sRGB color correction for fullscreen mode
+14:33:38 - [DEBUG] CDirect3DEvents9::OnRestore
+14:33:39 - [DEBUG] Connecting to localhost:22003 ...
+14:34:47 - [DEBUG] CDirect3DEvents9::SetRenderTargetGuarded skipped due to device state: 88760869
+14:34:47 - [DEBUG] CDirect3DEvents9::SetDepthStencilSurfaceGuarded skipped due to device state: 88760869
+14:34:47 - [DEBUG] CDirect3DEvents9::OnInvalidate
+14:34:47 - [DEBUG] Cleared sRGB color correction for fullscreen mode
+14:34:47 - [DEBUG] CDirect3DEvents9::OnRestore
+14:34:56 - [DEBUG] Localization set to 'da_DK'
+14:35:01 - [DEBUG] CCore::~CCore
+14:35:01 - [DEBUG] CCore::DestroyNetwork
+14:35:01 - [DEBUG] CCore::DestroyMultiplayer
+14:35:01 - [DEBUG] CCore::DestroyGame
+14:35:01 - [DEBUG] CCommands::~CCommands
+14:35:01 - [DEBUG] CSetCursorPosHook::~CSetCursorPosHook
+14:35:01 - [DEBUG] Direct3D9 hook suspended.
+14:35:01 - [DEBUG] CDirect3DHook9::~CDirect3DHook9
+14:35:01 - [DEBUG] CDirectInputHookManager::~CDirectInputHookManager
+14:35:02 - [DEBUG] CDirectInputHook8::~CDirectInputHook8
+14:35:02 - [DEBUG] CCore::DestroyWeb
+14:35:02 - [DEBUG] CCore::DestroyGUI
+14:35:02 - [DEBUG] All glyphs freed
+14:35:02 - [DEBUG] All glyphs freed
+14:35:02 - [DEBUG] All glyphs freed
+14:35:02 - [DEBUG] All glyphs freed
+14:35:02 - [DEBUG] All glyphs freed
+14:35:02 - [DEBUG] All glyphs freed
+14:35:02 - [DEBUG] All glyphs freed
+14:35:02 - [DEBUG] All glyphs freed
+14:35:02 - [DEBUG] CCore::DestroyXML
+14:35:02 - [DEBUG] CMessageLoopHook::~CMessageLoopHook
+14:35:03 - [DEBUG] Loader - Finishing

@@ -50,6 +50,22 @@
     <group name="DevGroup">
         <acl name="DevACL"></acl>
     </group>
+    <group name="autoGroup_acpanel">
+        <acl name="autoACL_acpanel"></acl>
+        <object name="resource.acpanel"></object>
+    </group>
+    <group name="autoGroup_ip2c">
+        <acl name="autoACL_ip2c"></acl>
+        <object name="resource.ip2c"></object>
+    </group>
+    <group name="autoGroup_mapmanager">
+        <acl name="autoACL_mapmanager"></acl>
+        <object name="resource.mapmanager"></object>
+    </group>
+    <group name="autoGroup_runcode">
+        <acl name="autoACL_runcode"></acl>
+        <object name="resource.runcode"></object>
+    </group>
     <acl name="Default">
         <right name="general.ModifyOtherObjects" access="false"></right>
         <right name="general.http" access="false"></right>
@@ -882,5 +898,22 @@
         <right name="command.deletescreenshot" access="false"></right>
         <right name="command.viewscreenshot" access="false"></right>
         <right name="command.listscreenshots" access="false"></right>
+    </acl>
+    <acl name="autoACL_acpanel">
+        <right name="function.setServerConfigSetting" access="false" who="" pending="true" date=""></right>
+        <right name="function.kickPlayer" access="false" who="" pending="true" date=""></right>
+        <right name="function.fetchRemote" access="false" who="" pending="true" date=""></right>
+    </acl>
+    <acl name="autoACL_ip2c">
+        <right name="function.fetchRemote" access="false" who="" pending="true" date=""></right>
+    </acl>
+    <acl name="autoACL_mapmanager">
+        <right name="function.startResource" access="false" who="" pending="true" date=""></right>
+        <right name="function.restartResource" access="false" who="" pending="true" date=""></right>
+        <right name="function.stopResource" access="false" who="" pending="true" date=""></right>
+        <right name="function.refreshResources" access="false" who="" pending="true" date=""></right>
+    </acl>
+    <acl name="autoACL_runcode">
+        <right name="function.loadstring" access="false" who="" pending="true" date=""></right>
     </acl>
 </acl>
