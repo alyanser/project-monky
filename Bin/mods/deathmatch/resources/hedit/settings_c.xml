@@ -1,8 +1,0 @@
-<config>
-    <usedKey>b</usedKey>
-    <dragmeterEnabled>true</dragmeterEnabled>
-    <template>default</template>
-    <lockVehicleWhenEditing>true</lockVehicleWhenEditing>
-    <usedCommand>hedit</usedCommand>
-    <language>english</language>
-</config>
