@@ -294,8 +294,8 @@ CDuplicateLineFilter<SReportLine> ms_ReportLineFilter;
 
 #ifdef MTA_CLIENT
 
-#define PRODUCT_REGISTRY_PATH       "Software\\Multi Theft Auto: San Andreas All"       // HKLM
-#define PRODUCT_COMMON_DATA_DIR     "MTA San Andreas All"                               // C:\ProgramData
+#define PRODUCT_REGISTRY_PATH       "Software\\Project Monky: San Andreas All"       // HKLM
+#define PRODUCT_COMMON_DATA_DIR     "Monky San Andreas All"                               // C:\ProgramData
 #define TROUBLE_URL1 "https://help.multitheftauto.com/sa/trouble/?v=_VERSION_&id=_ID_&tr=_TROUBLE_"
 
 //
@@ -336,7 +336,7 @@ SString SharedUtil::GetParentProcessPathFilename(int pid)
                     WCHAR szModuleName[MAX_PATH * 2] = {0};
                     DWORD dwSize = GetModuleFileNameExW(hProcess, nullptr, szModuleName, NUMELMS(szModuleName) - 1);
                     CloseHandle(hProcess);
-                    
+
                     if (dwSize > 0)
                     {
                         // Ensure null termination
@@ -377,7 +377,7 @@ SString SharedUtil::GetMTASABaseDir()
             strInstallRoot = GetRegistryValue("", "Last Run Location");
             if (strInstallRoot.empty())
             {
-                MessageBoxUTF8(0, _("Multi Theft Auto has not been installed properly, please reinstall."), _("Error") + _E("U01"),
+                MessageBoxUTF8(0, _("Project Monky has not been installed properly, please reinstall."), _("Error") + _E("U01"),
                                MB_OK | MB_ICONERROR | MB_TOPMOST);
                 TerminateProcess(GetCurrentProcess(), 9);
             }
@@ -1025,9 +1025,9 @@ SString SharedUtil::GetPostUpdateConnect()
     {
         char* endptr;
         long long result = strtoll(strTimeString.c_str(), &endptr, 10);
-        
+
         // Check for valid conversion
-        if (endptr != strTimeString.c_str() && *endptr == '\0' && 
+        if (endptr != strTimeString.c_str() && *endptr == '\0' &&
             result >= 0 && result <= LLONG_MAX)
         {
             timeThen = static_cast<time_t>(result);
@@ -1081,14 +1081,14 @@ int SharedUtil::GetApplicationSettingInt(const SString& strPath, const SString& 
 
     char* endptr;
     long result = strtol(strValue.c_str(), &endptr, 10);
-    
+
     // Check for conversion errors
     if (endptr == strValue.c_str() || *endptr != '\0')
         return 0;  // Invalid conversion
 
     if (result > INT_MAX || result < INT_MIN)
         return 0;
-    
+
     return static_cast<int>(result);
 }
 
@@ -1568,10 +1568,10 @@ void SharedUtil::AddExceptionReportLog(uint uiId, const char* szExceptionName, c
     GetSystemTime(&s);
 
     // Use _snprintf_s to prevent buffer overflow and ensure null termination
-    int result = _snprintf_s(szOutput, TOTAL_BUFFER_SIZE, _TRUNCATE, 
-                            "%u: %04hu-%02hu-%02hu %02hu:%02hu:%02hu - Caught %.*s exception: %.*s\n", 
-                            uiId, s.wYear, s.wMonth, s.wDay, s.wHour, s.wMinute, s.wSecond, 
-                            (int)MAX_EXCEPTION_NAME_SIZE, szExceptionName ? szExceptionName : "Unknown", 
+    int result = _snprintf_s(szOutput, TOTAL_BUFFER_SIZE, _TRUNCATE,
+                            "%u: %04hu-%02hu-%02hu %02hu:%02hu:%02hu - Caught %.*s exception: %.*s\n",
+                            uiId, s.wYear, s.wMonth, s.wDay, s.wHour, s.wMinute, s.wSecond,
+                            (int)MAX_EXCEPTION_NAME_SIZE, szExceptionName ? szExceptionName : "Unknown",
                             (int)MAX_EXCEPTION_TEXT_SIZE, szExceptionText ? szExceptionText : "" );
 
     OutputDebugString("[ReportLog] ");
@@ -1986,7 +1986,7 @@ static LONG SafeNtQueryInformationThread(HANDLE ThreadHandle, INT ThreadInformat
 
         if (lookup.module)
             lookup.function = static_cast<FunctionPointer>(static_cast<void*>(GetProcAddress(lookup.module, "NtQueryInformationThread")));
-        else 
+        else
             return 0xC0000135L;            // STATUS_DLL_NOT_FOUND
     }
 
@@ -2295,16 +2295,16 @@ std::wstring SharedUtil::ANSIToUTF16(const SString& input)
 {
     if (input.empty())
         return L"";
-        
+
     size_t len = mbstowcs(NULL, input.c_str(), input.length());
     if (len == (size_t)-1)
         return L"?";
-    
+
     std::vector<wchar_t> wcsOutput(len + 1);  // Use vector for automatic cleanup
     size_t result = mbstowcs(wcsOutput.data(), input.c_str(), len);
     if (result == (size_t)-1 || result != len)
         return L"?";
-    
+
     wcsOutput[len] = 0;  // Null terminate the string
     return std::wstring(wcsOutput.data());
 }
@@ -2611,7 +2611,7 @@ namespace SharedUtil
         };
 
         static ProcessorNumberLookup lookup = {};
-																																		   
+
 
         if (!lookup.once)
         {

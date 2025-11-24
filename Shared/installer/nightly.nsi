@@ -1,5 +1,7 @@
+SetCompress off                    ; No compression at all
+SetDatablockOptimize off          ; Skip optimization passes
+
 RequestExecutionLevel user
-SetCompressor /SOLID lzma
 
 !addincludedir "NSIS dirs\Include"
 !addplugindir "NSIS dirs\Plugins"
@@ -50,7 +52,7 @@ Var ClientExePath
 Var ServerExePath
 Var UninstallExePath
 
-; Games explorer: With each new X.X, update this GUID and the file at MTA10\launch\NEU\Multi Theft Auto.gdf.xml
+; Games explorer: With each new X.X, update this GUID and the file at MTA10\launch\NEU\Project Monky.gdf.xml
 !define GUID "{8A7FC5C7-0023-4CD7-B1D6-89073CFD838F}"
 
 !ifndef MAJOR_VER
@@ -61,16 +63,16 @@ Var UninstallExePath
 !define 0.0 "${MAJOR_VER}.${MINOR_VER}"
 !define 0.0.0 "${MAJOR_VER}.${MINOR_VER}.${MAINT_VER}"
 
-!define APPLICATION_ID "Multi Theft Auto ${0.0}"
+!define APPLICATION_ID "Project Monky ${0.0}"
 
 ; ###########################################################################################################
 !ifndef FILES_ROOT
     !define LIGHTBUILD    ; enable LIGHTBUILD for nightly
     !define FILES_ROOT "../../Bin"
     !define SERVER_FILES_ROOT "${FILES_ROOT}/server"
-    !define INSTALL_OUTPUT "mtasa-${0.0.0}-unstable-00000-0-000-nsis.exe"
-    !define PRODUCT_VERSION "v${0.0.0}-unstable-00000-0-000"
-    !define REVISION "0"
+    !define INSTALL_OUTPUT "monky-${0.0.0}-r1-installer.exe"
+    !define PRODUCT_VERSION "v${0.0.0}"
+    !define REVISION "1"
 !endif
 !ifndef LIGHTBUILD
     !define INCLUDE_DEVELOPMENT
@@ -91,12 +93,12 @@ Var UninstallExePath
     !define REVISION_TAG ""
 !endif
 
-!define PRODUCT_NAME "MTA:SA ${0.0}"
-!define PRODUCT_NAME_NO_VER "MTA:SA"
+!define PRODUCT_NAME "Monky:SA ${0.0}"
+!define PRODUCT_NAME_NO_VER "Monky:SA"
 
-!define PRODUCT_PUBLISHER "Multi Theft Auto"
-!define PRODUCT_WEB_SITE "https://www.multitheftauto.com"
-!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Multi Theft Auto ${0.0}.exe"
+!define PRODUCT_PUBLISHER "Project Monky"
+!define PRODUCT_WEB_SITE "https://monkygaming.com"
+!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Project Monky ${0.0}.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
@@ -145,7 +147,7 @@ Page custom CustomDirectoryPage CustomDirectoryPageLeave
 ;Note: Assumes NSIS Unicode edition compiler
 !define MUI_LANGDLL_ALLLANGUAGES
 !define MUI_LANGDLL_REGISTRY_ROOT "HKLM"
-!define MUI_LANGDLL_REGISTRY_KEY "SOFTWARE\Multi Theft Auto: San Andreas All\${0.0}"
+!define MUI_LANGDLL_REGISTRY_KEY "SOFTWARE\Project Monky: San Andreas All\${0.0}"
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 !insertmacro MUI_RESERVEFILE_LANGDLL ;Solid compression optimization for multilang
 
@@ -182,14 +184,14 @@ Page custom CustomDirectoryPage CustomDirectoryPageLeave
     !else
         !define VI_PRODUCT_VERSION "${0.0.0}.0"
     !endif
-    !define VI_PRODUCT_NAME "MTA San Andreas"
-    !define VI_COMPANY_NAME "Multi Theft Auto"
+    !define VI_PRODUCT_NAME "Monky San Andreas"
+    !define VI_COMPANY_NAME "Project Monky"
     !define /date DATE_YEAR "%Y"
-    !define VI_LEGAL_COPYRIGHT "(C) 2003 - ${DATE_YEAR} Multi Theft Auto"
+    !define VI_LEGAL_COPYRIGHT "(C) 2003 - ${DATE_YEAR} Project Monky"
     !ifndef LIGHTBUILD
-        !define VI_FILE_DESCRIPTION "Multi Theft Auto Full Installer"
+        !define VI_FILE_DESCRIPTION "Project Monky Full Installer"
     !else
-        !define VI_FILE_DESCRIPTION "Multi Theft Auto Nightly Installer"
+        !define VI_FILE_DESCRIPTION "Project Monky Nightly Installer"
     !endif
 !endif
 VIProductVersion "${VI_PRODUCT_VERSION}"
@@ -202,37 +204,37 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "${VI_PRODUCT_VERSION}"
 
 ;@INSERT_TRANSLATIONS@
 
-LangString	GET_XPVISTA_PLEASE	${LANG_ENGLISH} "The version of MTA:SA you've downloaded does not support Windows XP or Vista.  Please download an alternative version from www.multitheftauto.com."
-LangString	GET_WIN81_PLEASE	${LANG_ENGLISH} "The version of MTA:SA you've downloaded does not support Windows 7, 8 or 8.1.  Please download an alternative version from www.multitheftauto.com."
-LangString  GET_MASTER_PLEASE	${LANG_ENGLISH} "The version of MTA:SA you've downloaded is designed for old versions of Windows.  Please download an alternative version from www.multitheftauto.com."
+LangString	GET_XPVISTA_PLEASE	${LANG_ENGLISH} "The version of Monky:SA you've downloaded does not support Windows XP or Vista.  Please download an alternative version from www.multitheftauto.com."
+LangString	GET_WIN81_PLEASE	${LANG_ENGLISH} "The version of Monky:SA you've downloaded does not support Windows 7, 8 or 8.1.  Please download an alternative version from www.multitheftauto.com."
+LangString  GET_MASTER_PLEASE	${LANG_ENGLISH} "The version of Monky:SA you've downloaded is designed for old versions of Windows.  Please download an alternative version from www.multitheftauto.com."
 LangString  WELCOME_TEXT  ${LANG_ENGLISH}   "This wizard will guide you through the installation or update of $(^Name) ${REVISION_TAG}\n\n\
 It is recommended that you close all other applications before starting Setup.\n\n\
 [Admin access may be requested for Vista and up]\n\n\
 Click Next to continue."
 LangString  HEADER_Text         ${LANG_ENGLISH} "Grand Theft Auto: San Andreas location"
 LangString  DIRECTORY_Text_Dest ${LANG_ENGLISH} "Grand Theft Auto: San Andreas folder"
-LangString  DIRECTORY_Text_Top  ${LANG_ENGLISH} "Please select your Grand Theft Auto: San Andreas folder.$\n$\nYou MUST have Grand Theft Auto: San Andreas 1.0 installed to use MTA:SA, it does not support any other versions.$\n$\nClick Install to begin installing."
+LangString  DIRECTORY_Text_Top  ${LANG_ENGLISH} "Please select your Grand Theft Auto: San Andreas folder.$\n$\nYou MUST have Grand Theft Auto: San Andreas 1.0 installed to use Monky:SA, it does not support any other versions.$\n$\nClick Install to begin installing."
 
 ; Language files
 LangString  DESC_Section10          ${LANG_ENGLISH} "Create a Start Menu group for installed applications"
-LangString  DESC_Section11          ${LANG_ENGLISH} "Create a Desktop Shortcut for the MTA:SA Client."
+LangString  DESC_Section11          ${LANG_ENGLISH} "Create a Desktop Shortcut for the Monky:SA Client."
 LangString  DESC_Section12          ${LANG_ENGLISH} "Register mtasa:// protocol for browser clickable-ness."
 LangString  DESC_Section13          ${LANG_ENGLISH} "Add to Windows Games Explorer (if present)."
 LangString  DESC_DirectX            ${LANG_ENGLISH} "Install or update DirectX (if required)."
-LangString  DESC_Section1           ${LANG_ENGLISH} "The core components required to run Multi Theft Auto."
-LangString  DESC_Section2           ${LANG_ENGLISH} "The MTA:SA modification, allowing you to play online."
-;LangString DESC_Section3           ${LANG_ENGLISH} "The Multi Theft Auto:Editor for MTA:SA, allowing you to create and edit maps."
-;LangString DESC_SectionGroupMods   ${LANG_ENGLISH} "Modifications for Multi Theft Auto. Without at least one of these, you cannot play Multi Theft Auto."
-LangString  DESC_SectionGroupServer  ${LANG_ENGLISH}    "The Multi Theft Auto Server. This allows you to host games from your computer. This requires a fast internet connection."
-LangString  DESC_Section4           ${LANG_ENGLISH} "The Multi Theft Auto server. This is a required component."
-LangString  DESC_Section5           ${LANG_ENGLISH} "The MTA:SA modification for the server."
+LangString  DESC_Section1           ${LANG_ENGLISH} "The core components required to run Project Monky."
+LangString  DESC_Section2           ${LANG_ENGLISH} "The Monky:SA modification, allowing you to play online."
+;LangString DESC_Section3           ${LANG_ENGLISH} "The Project Monky:Editor for Monky:SA, allowing you to create and edit maps."
+;LangString DESC_SectionGroupMods   ${LANG_ENGLISH} "Modifications for Project Monky. Without at least one of these, you cannot play Project Monky."
+LangString  DESC_SectionGroupServer  ${LANG_ENGLISH}    "The Project Monky Server. This allows you to host games from your computer. This requires a fast internet connection."
+LangString  DESC_Section4           ${LANG_ENGLISH} "The Project Monky server. This is a required component."
+LangString  DESC_Section5           ${LANG_ENGLISH} "The Monky:SA modification for the server."
 LangString  DESC_Section6           ${LANG_ENGLISH} "This is a set of required resources for your server."
 LangString  DESC_Section7           ${LANG_ENGLISH} "This is an optional set of gamemodes and maps for your server."
-LangString  DESC_Section8           ${LANG_ENGLISH} "The MTA:SA 1.0 Map Editor.  This can be used to create your very own maps for use in gamemodes for MTA."
+LangString  DESC_Section8           ${LANG_ENGLISH} "The Monky:SA 1.0 Map Editor.  This can be used to create your very own maps for use in gamemodes for MTA."
 LangString  DESC_Section9           ${LANG_ENGLISH} "This is the SDK for creating binary modules for the MTA server. Only install if you have a good understanding of C++!"
 ;LangString DESC_Blank          ${LANG_ENGLISH} ""
-LangString  DESC_SectionGroupDev        ${LANG_ENGLISH} "Development code and tools that aid in the creation of mods for Multi Theft Auto"
-LangString  DESC_SectionGroupClient  ${LANG_ENGLISH}    "The client is the program you run to play on a Multi Theft Auto server"
+LangString  DESC_SectionGroupDev        ${LANG_ENGLISH} "Development code and tools that aid in the creation of mods for Project Monky"
+LangString  DESC_SectionGroupClient  ${LANG_ENGLISH}    "The client is the program you run to play on a Project Monky server"
 
 
 Function LaunchLink
@@ -269,27 +271,27 @@ Function .onInit
 
     SetShellVarContext all
 
-    ${LogSetFileName} "$APPDATA\MTA San Andreas All\Common\Installer" "nsis.log"
+    ${LogSetFileName} "$APPDATA\Monky San Andreas All\Common\Installer" "nsis.log"
     ${LogText} "${PRODUCT_VERSION} ${REVISION_TAG}"
     ${LogText} "+Function begin - .onInit"
 
-    ; Try to find previously saved MTA:SA install path
-    ReadRegStr $Install_Dir HKLM "SOFTWARE\Multi Theft Auto: San Andreas All\${0.0}" "Last Install Location"
+    ; Try to find previously saved Monky:SA install path
+    ReadRegStr $Install_Dir HKLM "SOFTWARE\Project Monky: San Andreas All\${0.0}" "Last Install Location"
     ${If} $Install_Dir == ""
-        ReadRegStr $Install_Dir HKLM "SOFTWARE\Multi Theft Auto: San Andreas ${0.0}" "Last Install Location"
+        ReadRegStr $Install_Dir HKLM "SOFTWARE\Project Monky: San Andreas ${0.0}" "Last Install Location"
     ${EndIf}
     ${If} $Install_Dir != ""
         Call NoteMTAWasPresent
     ${EndIf}
 
     ${If} $Install_Dir == ""
-        strcpy $Install_Dir "$PROGRAMFILES\MTA San Andreas ${0.0}"
+        strcpy $Install_Dir "$PROGRAMFILES\Monky San Andreas ${0.0}"
     ${EndIf}
     strcpy $INSTDIR $Install_Dir
     ${LogText} "Using install directory:'$INSTDIR'"
 
     ; Setup for install dir dialog
-    strcpy $DEFAULT_INSTDIR "$PROGRAMFILES\MTA San Andreas ${0.0}"
+    strcpy $DEFAULT_INSTDIR "$PROGRAMFILES\Monky San Andreas ${0.0}"
     strcpy $LAST_INSTDIR $Install_Dir
     strcpy $CUSTOM_INSTDIR $DEFAULT_INSTDIR
     ${If} $DEFAULT_INSTDIR == $LAST_INSTDIR
@@ -311,15 +313,15 @@ Function .onInit
     ${EndIf}
 
     ; Try to find previously saved GTA:SA install path
-    ReadRegStr $2 HKLM "SOFTWARE\Multi Theft Auto: San Andreas All\Common" "GTA:SA Path"
+    ReadRegStr $2 HKLM "SOFTWARE\Project Monky: San Andreas All\Common" "GTA:SA Path"
     ${If} $2 == ""
-        ReadRegStr $2 HKCU "SOFTWARE\Multi Theft Auto: San Andreas" "GTA:SA Path"
+        ReadRegStr $2 HKCU "SOFTWARE\Project Monky: San Andreas" "GTA:SA Path"
     ${EndIf}
     ${If} $2 == ""
         ReadRegStr $2 HKLM "SOFTWARE\Rockstar Games\GTA San Andreas\Installation" "ExePath"
     ${EndIf}
     ${If} $2 == ""
-        ReadRegStr $2 HKLM "SOFTWARE\Multi Theft Auto: San Andreas" "GTA:SA Path"
+        ReadRegStr $2 HKLM "SOFTWARE\Project Monky: San Andreas" "GTA:SA Path"
     ${EndIf}
     ${If} $2 == ""
         ReadRegStr $3 HKCU "Software\Valve\Steam\Apps\12120" "Installed"
@@ -330,7 +332,7 @@ Function .onInit
         ${EndIf}
     ${EndIf}
     ${If} $2 == ""
-        ReadRegStr $2 HKCU "SOFTWARE\Multi Theft Auto: San Andreas ${0.0}" "GTA:SA Path Backup"
+        ReadRegStr $2 HKCU "SOFTWARE\Project Monky: San Andreas ${0.0}" "GTA:SA Path Backup"
     ${EndIf}
 
     ; Report previous install status
@@ -367,8 +369,8 @@ Function .onInstSuccess
     ${LogText} "+Function begin - .onInstSuccess"
     SetShellVarContext all
 
-    WriteRegStr HKLM "SOFTWARE\Multi Theft Auto: San Andreas All\Common" "GTA:SA Path" $GTA_DIR
-    WriteRegStr HKLM "SOFTWARE\Multi Theft Auto: San Andreas All\${0.0}" "Last Install Location" $INSTDIR
+    WriteRegStr HKLM "SOFTWARE\Project Monky: San Andreas All\Common" "GTA:SA Path" $GTA_DIR
+    WriteRegStr HKLM "SOFTWARE\Project Monky: San Andreas All\${0.0}" "Last Install Location" $INSTDIR
 
     # Add 'MaxLoaderThreads' DWORD value for gta_sa.exe to disable multi-threaded loading of DLLs.
     WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\gta_sa.exe" "MaxLoaderThreads" 1
@@ -437,7 +439,7 @@ Function .onInstSuccess
 
     ${If} $RegisterProtocol == 1
         ; Add the protocol handler
-        WriteRegStr HKCR "mtasa" "" "URL:MTA San Andreas Protocol"
+        WriteRegStr HKCR "mtasa" "" "URL:Monky San Andreas Protocol"
         WriteRegStr HKCR "mtasa" "URL Protocol" ""
         WriteRegStr HKCR "mtasa\DefaultIcon" "" "$INSTDIR\Monky.exe"
         WriteRegStr HKCR "mtasa\shell\open\command" "" '"$INSTDIR\Monky.exe"%1'
@@ -458,7 +460,7 @@ Name "${PRODUCT_NAME_NO_VER} ${PRODUCT_VERSION}"
 OutFile "${INSTALL_OUTPUT}"
 
 ;InstallDir "$PROGRAMfiles San Andreas"
-InstallDirRegKey HKLM "SOFTWARE\Multi Theft Auto: San Andreas All\${0.0}" "Last Install Location"
+InstallDirRegKey HKLM "SOFTWARE\Project Monky: San Andreas All\${0.0}" "Last Install Location"
 ShowInstDetails show
 ShowUnInstDetails show
 
@@ -534,12 +536,12 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
         ${EndIf}
         #############################################################
 
-        WriteRegStr HKLM "SOFTWARE\Multi Theft Auto: San Andreas All\Common" "GTA:SA Path" $GTA_DIR
-        WriteRegStr HKLM "SOFTWARE\Multi Theft Auto: San Andreas All\${0.0}" "Last Install Location" $INSTDIR
+        WriteRegStr HKLM "SOFTWARE\Project Monky: San Andreas All\Common" "GTA:SA Path" $GTA_DIR
+        WriteRegStr HKLM "SOFTWARE\Project Monky: San Andreas All\${0.0}" "Last Install Location" $INSTDIR
 
         # Create fixed path data directories
-        CreateDirectory "$APPDATA\MTA San Andreas All\Common"
-        CreateDirectory "$APPDATA\MTA San Andreas All\${0.0}"
+        CreateDirectory "$APPDATA\Monky San Andreas All\Common"
+        CreateDirectory "$APPDATA\Monky San Andreas All\${0.0}"
 
         # Ensure install dir exists so the permissions can be set
         SetOutPath "$INSTDIR\MTA"
@@ -547,7 +549,7 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
 
         #############################################################
         # Make the directory "$INSTDIR" read write accessible by all users
-        # Make the directory "$APPDATA\MTA San Andreas All" read write accessible by all users
+        # Make the directory "$APPDATA\Monky San Andreas All" read write accessible by all users
         # Make the directory "$GTA_DIR" read write accessible by all users
 
         ${If} ${AtLeastWinVista}
@@ -586,8 +588,8 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
                 FastPerms::FullAccessPlox "$INSTDIR\server" "($PermissionsGroup)"
                 FastPerms::FullAccessPlox "$INSTDIR\skins" "($PermissionsGroup)"
             ${EndIf}
-            ${LogText} "FullAccess $APPDATA\MTA San Andreas All"
-            FastPerms::FullAccessPlox "$APPDATA\MTA San Andreas All" "($PermissionsGroup)"
+            ${LogText} "FullAccess $APPDATA\Monky San Andreas All"
+            FastPerms::FullAccessPlox "$APPDATA\Monky San Andreas All" "($PermissionsGroup)"
 
             # Remove MTA virtual store
             StrCpy $0 $INSTDIR
@@ -644,7 +646,7 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
         SetOverwrite on
 
         # Make some keys in HKLM read write accessible by all users
-        AccessControl::GrantOnRegKey HKLM "SOFTWARE\Multi Theft Auto: San Andreas All" "($PermissionsGroup)" "FullAccess"
+        AccessControl::GrantOnRegKey HKLM "SOFTWARE\Project Monky: San Andreas All" "($PermissionsGroup)" "FullAccess"
 
         SetOutPath "$INSTDIR\MTA"
         File "${FILES_ROOT}\mta\cgui.dll"
@@ -715,7 +717,7 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
 
         ${If} "$(LANGUAGE_CODE)" != ""
             # Write our language to registry
-            WriteRegStr HKLM "SOFTWARE\Multi Theft Auto: San Andreas All\${0.0}\Settings\general" "locale" "$(LANGUAGE_CODE)"
+            WriteRegStr HKLM "SOFTWARE\Project Monky: San Andreas All\${0.0}\Settings\general" "locale" "$(LANGUAGE_CODE)"
         ${EndIf}
 
     SetOutPath "$INSTDIR\MTA"
@@ -857,7 +859,7 @@ FunctionEnd
 
 LangString UNINST_REQUEST ${LANG_ENGLISH}   "Are you sure you want to completely remove $(^Name) and all of its components?"
 LangString UNINST_REQUEST_NOTE ${LANG_ENGLISH}  "Uninstalling before update?\
-$\r$\nIt is not necessary to uninstall before installing a new version of MTA:SA\
+$\r$\nIt is not necessary to uninstall before installing a new version of Monky:SA\
 $\r$\nRun the new installer to upgrade and preserve your settings."
 
 Function un.onInit
@@ -940,17 +942,17 @@ Section Uninstall
         Delete "$INSTDIR\MTA\*.dat"
         Delete "$INSTDIR\MTA\*.bin"
 
-        RmDir /r "$APPDATA\MTA San Andreas All\${0.0}"
-        ; Delete "$APPDATA\MTA San Andreas All" if "Common" is the only directory in it.
-        ${RmDirWithSingleChildDir} "$APPDATA\MTA San Andreas All" "Common"
+        RmDir /r "$APPDATA\Monky San Andreas All\${0.0}"
+        ; Delete "$APPDATA\Monky San Andreas All" if "Common" is the only directory in it.
+        ${RmDirWithSingleChildDir} "$APPDATA\Monky San Andreas All" "Common"
 
         DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
         DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
-        DeleteRegKey HKLM "SOFTWARE\Multi Theft Auto: San Andreas ${0.0}"
-        DeleteRegKey HKCU "SOFTWARE\Multi Theft Auto: San Andreas ${0.0}"
-        DeleteRegKey HKLM "SOFTWARE\Multi Theft Auto: San Andreas All\${0.0}"
-        ; Delete "SOFTWARE\Multi Theft Auto: San Andreas All" if "Common" is the only one left.
-        ${RemoveRegistryGroupWithSingleKey} HKLM "SOFTWARE\Multi Theft Auto: San Andreas All" "Common"
+        DeleteRegKey HKLM "SOFTWARE\Project Monky: San Andreas ${0.0}"
+        DeleteRegKey HKCU "SOFTWARE\Project Monky: San Andreas ${0.0}"
+        DeleteRegKey HKLM "SOFTWARE\Project Monky: San Andreas All\${0.0}"
+        ; Delete "SOFTWARE\Project Monky: San Andreas All" if "Common" is the only one left.
+        ${RemoveRegistryGroupWithSingleKey} HKLM "SOFTWARE\Project Monky: San Andreas All" "Common"
 
         ReadRegStr $0 HKLM "Software\Classes\mtasa\DefaultIcon" ""
         ${If} $0 == "$INSTDIR\Monky.exe"
@@ -964,14 +966,14 @@ Section Uninstall
         ${GameExplorer_RemoveGame} ${GUID}
 
         ; Delete client shortcuts
-        Delete "$SMPROGRAMS\\MTA San Andreas ${0.0}\MTA San Andreas.lnk"
-        Delete "$SMPROGRAMS\\MTA San Andreas ${0.0}\Uninstall MTA San Andreas.lnk"
-        Delete "$DESKTOP\MTA San Andreas ${0.0}.lnk"
+        Delete "$SMPROGRAMS\\Monky San Andreas ${0.0}\Monky San Andreas.lnk"
+        Delete "$SMPROGRAMS\\Monky San Andreas ${0.0}\Uninstall Monky San Andreas.lnk"
+        Delete "$DESKTOP\Monky San Andreas ${0.0}.lnk"
 
         ; Delete server shortcuts
-        Delete "$SMPROGRAMS\\MTA San Andreas ${0.0}\MTA Server.lnk"
-        Delete "$SMPROGRAMS\\MTA San Andreas ${0.0}\Uninstall MTA San Andreas Server.lnk"
-        RmDir /r "$SMPROGRAMS\\MTA San Andreas ${0.0}"
+        Delete "$SMPROGRAMS\\Monky San Andreas ${0.0}\MTA Server.lnk"
+        Delete "$SMPROGRAMS\\Monky San Andreas ${0.0}\Uninstall Monky San Andreas Server.lnk"
+        RmDir /r "$SMPROGRAMS\\Monky San Andreas ${0.0}"
 
         RmDir "$INSTDIR" ; fix for #3898
 
@@ -983,7 +985,7 @@ Section Uninstall
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\server\MTA Server.exe.ApplicationCompany"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\server\MTA Server64.exe.FriendlyAppName"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\server\MTA Server64.exe.ApplicationCompany"
-        DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$APPDATA\MTA San Andreas All\${0.0}\GTA San Andreas\gta_sa.exe.FriendlyAppName"
+        DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$APPDATA\Monky San Andreas All\${0.0}\GTA San Andreas\gta_sa.exe.FriendlyAppName"
         DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\Monky.exe"
         DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\server\MTA Server.exe"
         DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\server\MTA Server64.exe"
@@ -1035,7 +1037,7 @@ Section Uninstall
         SimpleFC::RemoveApplication "$INSTDIR\server\MTA Server.exe"
         SimpleFC::RemoveApplication "$INSTDIR\server\MTA Server64.exe"
         SimpleFC::RemoveApplication "$INSTDIR\Uninstall.exe"
-        SimpleFC::RemoveApplication "$APPDATA\MTA San Andreas All\${0.0}\GTA San Andreas\gta_sa.exe"
+        SimpleFC::RemoveApplication "$APPDATA\Monky San Andreas All\${0.0}\GTA San Andreas\gta_sa.exe"
 
         SetAutoClose true
 SectionEnd
@@ -1399,7 +1401,7 @@ Function ResizeSharedDialogContents
     Call MoveDialogItem
 
     StrCpy $ITEM_PARENT $HWNDPARENT
-    StrCpy $ITEM_ID 1038    ; Static - "Choose which features of MTA:SA v1.0 you want to install."
+    StrCpy $ITEM_ID 1038    ; Static - "Choose which features of Monky:SA v1.0 you want to install."
     Call MoveDialogItem
 
     ${If} "$(LANGUAGE_RTL)" == "1"
@@ -1554,8 +1556,8 @@ Function RemoveVirtualStore
         ${LogText} "No VirtualStore detected at $3"
     ${EndIf}
 
-    ; Also remove VirtualStore\ProgramData\MTA San Andreas All
-    StrCpy $3 "$LOCALAPPDATA\VirtualStore\ProgramData\MTA San Andreas All"
+    ; Also remove VirtualStore\ProgramData\Monky San Andreas All
+    StrCpy $3 "$LOCALAPPDATA\VirtualStore\ProgramData\Monky San Andreas All"
     ${If} ${FileExists} $3
         ${LogText} "Removing $3"
         RmDir /r "$3"
@@ -1959,7 +1961,7 @@ Function CustomDirectoryPageDirRequestChange
 FunctionEnd
 
 Function CustomDirectoryPageSetDefaultButtonClick
-    StrCpy $INSTDIR "$PROGRAMFILES\MTA San Andreas ${0.0}"
+    StrCpy $INSTDIR "$PROGRAMFILES\Monky San Andreas ${0.0}"
     ${NSD_SetText} $DirRequest $INSTDIR
     Call CustomDirectoryPageSetUpgradeMessage
 FunctionEnd
@@ -2374,7 +2376,7 @@ FunctionEnd
 ; Out $NetMsgURL = URL
 Function NetComposeURL
     ${If} $NetMsgURL == ""
-        IfFileExists "$APPDATA\MTA San Andreas All" 0 skip
+        IfFileExists "$APPDATA\Monky San Andreas All" 0 skip
             StrCpy $NetPrevInfo "$NetPrevInfo&pp=1"
         skip:
         StrCpy $NetPrevInfo "$NetPrevInfo&ver=${0.0.0}"
@@ -2455,7 +2457,7 @@ Function MTACreateShortсut
 		0 \
 		SW_SHOWNORMAL \
 		"" \
-		"Play Multi Theft Auto: San Andreas"
+		"Play Project Monky: San Andreas"
 	${If} ${Errors}
 		${LogText} "Error creating shortcut for EXE $2"
 	${EndIf}
@@ -2480,11 +2482,11 @@ FunctionEnd
 
 Function MTAInitFileNamesAndPaths
 	# Shortcuts names
-	StrCpy $ClientShortcutName "MTA San Andreas"
+	StrCpy $ClientShortcutName "Monky San Andreas"
 	StrCpy $ServerShortcutName "MTA Server"
-	StrCpy $UninstallShortcutName "Uninstall MTA San Andreas"
+	StrCpy $UninstallShortcutName "Uninstall Monky San Andreas"
 	# Shostcuts paths
-	StrCpy $StartMenuMTAFolderPath "$SMPROGRAMS\MTA San Andreas ${0.0}"
+	StrCpy $StartMenuMTAFolderPath "$SMPROGRAMS\Monky San Andreas ${0.0}"
 	StrCpy $StartMenuClientShortcutPath "$StartMenuMTAFolderPath\$ClientShortcutName.lnk"
 	StrCpy $StartMenuServerShortcutPath "$StartMenuMTAFolderPath\$ServerShortcutName.lnk"
 	StrCpy $StartMenuUninstallShortcutPath "$StartMenuMTAFolderPath\$UninstallShortcutName.lnk"
