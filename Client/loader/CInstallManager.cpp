@@ -439,7 +439,7 @@ SString CInstallManager::_ShowCrashFailDialog()
     SetApplicationSetting("diagnostics", "last-crash-reason", "");
 
     SString strMessage = GetApplicationSetting("diagnostics", "last-crash-info");
-    
+
     if (strReason == "direct3ddevice-reset")
     {
         strMessage += _("** The crash was caused by a graphics driver error **\n\n** Please update your graphics drivers **");
@@ -592,7 +592,7 @@ SString CInstallManager::_ShowCopyFailDialog()
 
 void ShowLayoutError(const SString& strExtraInfo)
 {
-    MessageBoxUTF8(0, SString(_("Multi Theft Auto has not been installed properly, please reinstall. %s"), *strExtraInfo), _("Error") + _E("CL03"),
+    MessageBoxUTF8(0, SString(_("Project Monky has not been installed properly, please reinstall. %s"), *strExtraInfo), _("Error") + _E("CL03"),
                    MB_OK | MB_ICONERROR | MB_TOPMOST);
     TerminateProcess(GetCurrentProcess(), 9);
 }
