@@ -68,7 +68,6 @@ Var UninstallExePath
     !define LIGHTBUILD    ; enable LIGHTBUILD for nightly
     !define FILES_ROOT "../../Bin"
     !define SERVER_FILES_ROOT "${FILES_ROOT}/server"
-    !define FILES_MODULE_SDK "${FILES_ROOT}/development/publicsdk"
     !define INSTALL_OUTPUT "mtasa-${0.0.0}-unstable-00000-0-000-nsis.exe"
     !define PRODUCT_VERSION "v${0.0.0}-unstable-00000-0-000"
     !define REVISION "0"
@@ -130,9 +129,9 @@ Var UninstallExePath
 Page custom CustomNetMessagePage CustomNetMessagePageLeave
 
 ; Components page
-!define MUI_PAGE_CUSTOMFUNCTION_SHOW "ComponentsShowProc"
-!define MUI_PAGE_CUSTOMFUNCTION_LEAVE "ComponentsLeaveProc"
-!insertmacro MUI_PAGE_COMPONENTS
+; !define MUI_PAGE_CUSTOMFUNCTION_SHOW "ComponentsShowProc"
+; !define MUI_PAGE_CUSTOMFUNCTION_LEAVE "ComponentsLeaveProc"
+; !insertmacro MUI_PAGE_COMPONENTS
 
 ; Game directory page
 #!define MUI_PAGE_CUSTOMFUNCTION_SHOW "DirectoryShowProc"
@@ -240,7 +239,7 @@ Function LaunchLink
     SetOutPath "$INSTDIR"
     # Problem: 'non-admin nsis' and 'admin nsis' run at the same time and can have different values for $INSTDIR
     # Fix: Copy to temp variable
-    StrCpy $1 "$INSTDIR\Multi Theft Auto.exe"
+    StrCpy $1 "$INSTDIR\Monky.exe"
     !insertmacro UAC_AsUser_ExecShell "" "$1" "" "" ""
 FunctionEnd
 
@@ -373,7 +372,7 @@ Function .onInstSuccess
 
     # Add 'MaxLoaderThreads' DWORD value for gta_sa.exe to disable multi-threaded loading of DLLs.
     WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\gta_sa.exe" "MaxLoaderThreads" 1
-	
+
 	# Initilize variables holding paths and names
 	Call MTAInitFileNamesAndPaths
     ; Start menu items
@@ -440,8 +439,8 @@ Function .onInstSuccess
         ; Add the protocol handler
         WriteRegStr HKCR "mtasa" "" "URL:MTA San Andreas Protocol"
         WriteRegStr HKCR "mtasa" "URL Protocol" ""
-        WriteRegStr HKCR "mtasa\DefaultIcon" "" "$INSTDIR\Multi Theft Auto.exe"
-        WriteRegStr HKCR "mtasa\shell\open\command" "" '"$INSTDIR\Multi Theft Auto.exe"%1'
+        WriteRegStr HKCR "mtasa\DefaultIcon" "" "$INSTDIR\Monky.exe"
+        WriteRegStr HKCR "mtasa\shell\open\command" "" '"$INSTDIR\Monky.exe"%1'
     ${EndIf}
 
     ;UAC::Unload ;Must call unload!
@@ -451,9 +450,9 @@ FunctionEnd
 LangString INST_CLIENTSERVER ${LANG_ENGLISH}    "Client and Server"
 LangString INST_SERVER ${LANG_ENGLISH}  "Server only"
 
-
-InstType "$(INST_CLIENTSERVER)"
-InstType "$(INST_SERVER)"
+; We don't ship server for now
+;InstType "$(INST_CLIENTSERVER)"
+;InstType "$(INST_SERVER)"
 
 Name "${PRODUCT_NAME_NO_VER} ${PRODUCT_VERSION}"
 OutFile "${INSTALL_OUTPUT}"
@@ -470,27 +469,27 @@ LangString INST_GAMES_EXPLORER      ${LANG_ENGLISH} "Add to Games Explorer"
 LangString INST_DIRECTX             ${LANG_ENGLISH} "Install DirectX"
 
 Section "$(INST_STARTMENU_GROUP)" SEC10
-    SectionIn 1 2
+    SectionIn RO
     StrCpy $CreateSMShortcuts 1
 SectionEnd
 
 Section "$(INST_DESKTOP_ICON)" SEC11
-    SectionIn 1 2
+    SectionIn RO
     StrCpy $CreateDesktopIcon 1
 SectionEnd
 
 Section "$(INST_PROTOCOL)" SEC12
-    SectionIn 1 2
+    SectionIn RO
     StrCpy $RegisterProtocol 1
 SectionEnd
 
 Section "$(INST_GAMES_EXPLORER)" SEC13
-    SectionIn 1 2
+    SectionIn RO
     StrCpy $AddToGameExplorer 1
 SectionEnd
 
 Section "$(INST_DIRECTX)" SEC_DIRECTX
-    SectionIn 1 2
+    SectionIn RO
     SetOutPath "$TEMP"
     File "${FILES_ROOT}\redist\dxwebsetup.exe"
     DetailPrint "Running DirectX Setup..."
@@ -706,7 +705,7 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
         #File "${FILES_ROOT}\mta\CEF\cef_100_percent.pak"
         #File "${FILES_ROOT}\mta\CEF\cef_200_percent.pak"
         #File "${FILES_ROOT}\mta\CEF\devtools_resources.pak"
-		
+
 	# Below file was included in the deprecation referenced above, but already disabled in MTA beforehand
         #File "${FILES_ROOT}\mta\CEF\cef_extensions.pak"
 
@@ -719,101 +718,94 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
             WriteRegStr HKLM "SOFTWARE\Multi Theft Auto: San Andreas All\${0.0}\Settings\general" "locale" "$(LANGUAGE_CODE)"
         ${EndIf}
 
-        !ifndef LIGHTBUILD
+    SetOutPath "$INSTDIR\MTA"
+    File "${FILES_ROOT}\mta\d3dx9_42.dll"
+    File "${FILES_ROOT}\mta\D3DCompiler_42.dll"
+    File "${FILES_ROOT}\mta\sa.dat"
+    File "${FILES_ROOT}\mta\XInput9_1_0_mta.dll"
+    File "${FILES_ROOT}\mta\xinput1_3_mta.dll"
 
-            SetOutPath "$INSTDIR\MTA"
-            File "${FILES_ROOT}\mta\d3dx9_42.dll"
-            File "${FILES_ROOT}\mta\D3DCompiler_42.dll"
-            File "${FILES_ROOT}\mta\sa.dat"
-            File "${FILES_ROOT}\mta\XInput9_1_0_mta.dll"
-            File "${FILES_ROOT}\mta\xinput1_3_mta.dll"
+    File "${FILES_ROOT}\mta\d3dcompiler_43.dll"
+    File "${FILES_ROOT}\mta\d3dcompiler_47.dll"
 
-            File "${FILES_ROOT}\mta\d3dcompiler_43.dll"
-            File "${FILES_ROOT}\mta\d3dcompiler_47.dll"
+    SetOutPath "$INSTDIR\MTA\data"
+    File "${FILES_ROOT}\mta\data\gta_sa_diff.dat"
 
-            SetOutPath "$INSTDIR\MTA\data"
-            File "${FILES_ROOT}\mta\data\gta_sa_diff.dat"
+    SetOutPath "$INSTDIR\skins\Classic"
+    File "${FILES_ROOT}\skins\Classic\CGUI.is.xml"
+    File "${FILES_ROOT}\skins\Classic\CGUI.lnf.xml"
+    File "${FILES_ROOT}\skins\Classic\CGUI.png"
+    File "${FILES_ROOT}\skins\Classic\CGUI.xml"
 
-            SetOutPath "$INSTDIR\MTA\config"
-            File "${FILES_ROOT}\mta\config\chatboxpresets.xml"
+    SetOutPath "$INSTDIR\skins\Default"
+    File "${FILES_ROOT}\skins\Default\CGUI.is.xml"
+    File "${FILES_ROOT}\skins\Default\CGUI.lnf.xml"
+    File "${FILES_ROOT}\skins\Default\CGUI.png"
+    File "${FILES_ROOT}\skins\Default\CGUI.xml"
 
-            SetOutPath "$INSTDIR\skins\Classic"
-            File "${FILES_ROOT}\skins\Classic\CGUI.is.xml"
-            File "${FILES_ROOT}\skins\Classic\CGUI.lnf.xml"
-            File "${FILES_ROOT}\skins\Classic\CGUI.png"
-            File "${FILES_ROOT}\skins\Classic\CGUI.xml"
+    SetOutPath "$INSTDIR\skins\Lighter black"
+    File "${FILES_ROOT}\skins\Lighter black\CGUI.is.xml"
+    File "${FILES_ROOT}\skins\Lighter black\CGUI.lnf.xml"
+    File "${FILES_ROOT}\skins\Lighter black\CGUI.png"
+    File "${FILES_ROOT}\skins\Lighter black\CGUI.xml"
 
-            SetOutPath "$INSTDIR\skins\Default"
-            File "${FILES_ROOT}\skins\Default\CGUI.is.xml"
-            File "${FILES_ROOT}\skins\Default\CGUI.lnf.xml"
-            File "${FILES_ROOT}\skins\Default\CGUI.png"
-            File "${FILES_ROOT}\skins\Default\CGUI.xml"
+    SetOutPath "$INSTDIR\skins\Default 2023"
+    File "${FILES_ROOT}\skins\Default 2023\CGUI.is.xml"
+    File "${FILES_ROOT}\skins\Default 2023\CGUI.lnf.xml"
+    File "${FILES_ROOT}\skins\Default 2023\CGUI.png"
+    File "${FILES_ROOT}\skins\Default 2023\CGUI.xml"
 
-            SetOutPath "$INSTDIR\skins\Lighter black"
-            File "${FILES_ROOT}\skins\Lighter black\CGUI.is.xml"
-            File "${FILES_ROOT}\skins\Lighter black\CGUI.lnf.xml"
-            File "${FILES_ROOT}\skins\Lighter black\CGUI.png"
-            File "${FILES_ROOT}\skins\Lighter black\CGUI.xml"
+    SetOutPath "$INSTDIR\skins\GWEN Blue"
+    File "${FILES_ROOT}\skins\GWEN Blue\CGUI.is.xml"
+    File "${FILES_ROOT}\skins\GWEN Blue\CGUI.lnf.xml"
+    File "${FILES_ROOT}\skins\GWEN Blue\CGUI.png"
+    File "${FILES_ROOT}\skins\GWEN Blue\CGUI.xml"
 
-            SetOutPath "$INSTDIR\skins\Default 2023"
-            File "${FILES_ROOT}\skins\Default 2023\CGUI.is.xml"
-            File "${FILES_ROOT}\skins\Default 2023\CGUI.lnf.xml"
-            File "${FILES_ROOT}\skins\Default 2023\CGUI.png"
-            File "${FILES_ROOT}\skins\Default 2023\CGUI.xml"
+    SetOutPath "$INSTDIR\skins\GWEN Orange"
+    File "${FILES_ROOT}\skins\GWEN Orange\CGUI.is.xml"
+    File "${FILES_ROOT}\skins\GWEN Orange\CGUI.lnf.xml"
+    File "${FILES_ROOT}\skins\GWEN Orange\CGUI.png"
+    File "${FILES_ROOT}\skins\GWEN Orange\CGUI.xml"
 
-            SetOutPath "$INSTDIR\skins\GWEN Blue"
-            File "${FILES_ROOT}\skins\GWEN Blue\CGUI.is.xml"
-            File "${FILES_ROOT}\skins\GWEN Blue\CGUI.lnf.xml"
-            File "${FILES_ROOT}\skins\GWEN Blue\CGUI.png"
-            File "${FILES_ROOT}\skins\GWEN Blue\CGUI.xml"
+    SetOutPath "$INSTDIR\MTA\cgui"
+    File "${FILES_ROOT}\mta\cgui\Falagard.xsd"
+    File "${FILES_ROOT}\mta\cgui\Font.xsd"
+    File "${FILES_ROOT}\mta\cgui\GUIScheme.xsd"
+    File "${FILES_ROOT}\mta\cgui\Imageset.xsd"
+    File "${FILES_ROOT}\mta\cgui\pricedown.ttf"
+    File "${FILES_ROOT}\mta\cgui\sabankgothic.ttf"
+    File "${FILES_ROOT}\mta\cgui\sagothic.ttf"
+    File "${FILES_ROOT}\mta\cgui\saheader.ttf"
+    File "${FILES_ROOT}\mta\cgui\sans.ttf"
+    File "${FILES_ROOT}\mta\cgui\unifont.ttf"
 
-            SetOutPath "$INSTDIR\skins\GWEN Orange"
-            File "${FILES_ROOT}\skins\GWEN Orange\CGUI.is.xml"
-            File "${FILES_ROOT}\skins\GWEN Orange\CGUI.lnf.xml"
-            File "${FILES_ROOT}\skins\GWEN Orange\CGUI.png"
-            File "${FILES_ROOT}\skins\GWEN Orange\CGUI.xml"
+    SetOutPath "$INSTDIR\MTA\cgui\images"
+    File /nonfatal "${FILES_ROOT}\mta\cgui\images\*.png"
+    File /nonfatal "${FILES_ROOT}\mta\cgui\images\*.jpg"
 
-            SetOutPath "$INSTDIR\MTA\cgui"
-            File "${FILES_ROOT}\mta\cgui\Falagard.xsd"
-            File "${FILES_ROOT}\mta\cgui\Font.xsd"
-            File "${FILES_ROOT}\mta\cgui\GUIScheme.xsd"
-            File "${FILES_ROOT}\mta\cgui\Imageset.xsd"
-            File "${FILES_ROOT}\mta\cgui\pricedown.ttf"
-            File "${FILES_ROOT}\mta\cgui\sabankgothic.ttf"
-            File "${FILES_ROOT}\mta\cgui\sagothic.ttf"
-            File "${FILES_ROOT}\mta\cgui\saheader.ttf"
-            File "${FILES_ROOT}\mta\cgui\sans.ttf"
-            File "${FILES_ROOT}\mta\cgui\unifont.ttf"
+    SetOutPath "$INSTDIR\MTA\cgui\images\radarset"
+    File "${FILES_ROOT}\mta\cgui\images\radarset\*.png"
 
-            SetOutPath "$INSTDIR\MTA\cgui\images"
-            File /nonfatal "${FILES_ROOT}\mta\cgui\images\*.png"
-            File /nonfatal "${FILES_ROOT}\mta\cgui\images\*.jpg"
+    SetOutPath "$INSTDIR\MTA\cgui\images\transferset"
+    File "${FILES_ROOT}\mta\cgui\images\transferset\*.png"
 
-            SetOutPath "$INSTDIR\MTA\cgui\images\radarset"
-            File "${FILES_ROOT}\mta\cgui\images\radarset\*.png"
-
-            SetOutPath "$INSTDIR\MTA\cgui\images\transferset"
-            File "${FILES_ROOT}\mta\cgui\images\transferset\*.png"
-
-            SetOutPath "$INSTDIR\MTA\cgui\images\serverbrowser"
-            File "${FILES_ROOT}\mta\cgui\images\serverbrowser\*.png"
-
-        !endif
+    SetOutPath "$INSTDIR\MTA\cgui\images\serverbrowser"
+    File "${FILES_ROOT}\mta\cgui\images\serverbrowser\*.png"
 
         SetOutPath "$INSTDIR\MTA\locale\"
         File /r "${FILES_ROOT}\mta\locale\*.png"
         File /r "${FILES_ROOT}\mta\locale\*.pot"
 
         SetOutPath "$INSTDIR"
-        File "${FILES_ROOT}\Multi Theft Auto.exe"
+        File "${FILES_ROOT}\Monky.exe"
 
         # Ensure exe file can be updated without admin
-        AccessControl::GrantOnFile "$INSTDIR\Multi Theft Auto.exe" "($PermissionsGroup)" "FullAccess"
+        AccessControl::GrantOnFile "$INSTDIR\Monky.exe" "($PermissionsGroup)" "FullAccess"
 
         ${If} $AddToGameExplorer == 1
             ${GameExplorer_UpdateGame} ${GUID}
             ${If} ${Errors}
-                ${GameExplorer_AddGame} all "$INSTDIR\Multi Theft Auto.exe" "$INSTDIR" "$INSTDIR\Multi Theft Auto.exe" ${GUID}
+                ${GameExplorer_AddGame} all "$INSTDIR\Monky.exe" "$INSTDIR" "$INSTDIR\Monky.exe" ${GUID}
                 CreateDirectory $APPDATA\Microsoft\Windows\GameExplorer\${GUID}\SupportTasks\0
                 CreateShortcut "$APPDATA\Microsoft\Windows\GameExplorer\$0\SupportTasks\0\Client Manual.lnk" \ "https://wiki.multitheftauto.com/wiki/Client_Manual"
             ${EndIf}
@@ -834,204 +826,14 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
     SectionEnd
 SectionGroupEnd
 
-SectionGroup /e "$(INST_SEC_SERVER)" SECGSERVER
-    Section "$(INST_SEC_CORE)" SEC04
-        ${LogText} "+Section begin - SERVER CORE"
-        SectionIn 1 2 RO ; section is required
-
-        SetOutPath "$INSTDIR\server"
-        SetOverwrite on
-        File "${SERVER_FILES_ROOT}\core.dll"
-        File "${FILES_ROOT}\mta\xmll.dll"
-        File "${SERVER_FILES_ROOT}\MTA Server.exe"
-        File "${SERVER_FILES_ROOT}\net.dll"
-        File "${FILES_ROOT}\mta\pthread.dll"
-        ${LogText} "-Section end - SERVER CORE"
-    SectionEnd
-
-    Section "$(INST_SEC_GAME)" SEC05
-        ${LogText} "+Section begin - SERVER GAME"
-        SectionIn 1 2 RO ; section is required
-        SetOutPath "$INSTDIR\server\mods\deathmatch"
-
-        SetOverwrite on
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\deathmatch.dll"
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\lua5.1.dll"
-        File "${FILES_ROOT}\mods\deathmatch\pcre3.dll"
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\dbconmy.dll"
-        !ifndef LIGHTBUILD
-            File "${SERVER_FILES_ROOT}\mods\deathmatch\libmysql.dll"
-            File "${SERVER_FILES_ROOT}\mods\deathmatch\libcrypto-3.dll"
-            File "${SERVER_FILES_ROOT}\mods\deathmatch\libssl-3.dll"
-        !endif
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\mtaserver.conf.template"
-
-        ;Only overwrite the following files if previous versions were bugged and explicitly need replacing
-        !insertmacro FileIfMD5 "${SERVER_FILES_ROOT}\mods\deathmatch\editor_acl.xml" "711185d8f4ebb355542053ce408b82b3"
-        !insertmacro FileIfMD5 "${SERVER_FILES_ROOT}\mods\deathmatch\editor_acl.xml" "706869E53F508919F987A2F7F2653AD2"
-
-        SetOverwrite off
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\acl.xml"
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\editor_acl.xml"
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\banlist.xml"
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\mtaserver.conf"
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\local.conf"
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\editor.conf"
-        File "${SERVER_FILES_ROOT}\mods\deathmatch\vehiclecolors.conf"
-
-        !ifndef LIGHTBUILD
-            File "${SERVER_FILES_ROOT}\mods\deathmatch\local.conf"
-
-            SetOutPath "$INSTDIR\server\mods\deathmatch\resources"
-            SetOutPath "$INSTDIR\server\mods\deathmatch\resource-cache"
-            SetOutPath "$INSTDIR\server\mods\deathmatch\logs"
-        !endif
-        ${LogText} "-Section end - SERVER GAME"
-    SectionEnd
-
-    !ifndef LIGHTBUILD
-        Section "$(INST_SEC_CORE_RESOURCES)" SEC06
-            ${LogText} "+Section begin - SERVER CORE_RESOURCES"
-            SectionIn 1 2 ; RO section is now optional
-            SetOutPath "$INSTDIR\server\mods\deathmatch\resources\"
-            File "${SERVER_FILES_ROOT}\mods\deathmatch\resources\Directory layout readme.txt"
-
-            SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[admin]"
-            SetOverwrite ifnewer
-            File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[admin]\admin.zip"
-            File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[admin]\runcode.zip"
-            File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[admin]\acpanel.zip"
-            File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[admin]\ipb.zip"
-            SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[play]"
-            File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[play]\*.zip"
-            SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gameplay]"
-            File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gameplay]\*.zip"
-            SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[managers]"
-            File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[managers]\*.zip"
-            SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[web]"
-            File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[web]\*.zip"
-            ${LogText} "-Section end - SERVER CORE_RESOURCES"
-        SectionEnd
-    !endif
-
-    !ifndef LIGHTBUILD
-        SectionGroup "$(INST_SEC_OPTIONAL_RESOURCES)" SEC07
-            Section "Assault Gamemode"
-            SectionIn 1 2
-                SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[assault]"
-                SetOverwrite ifnewer
-                File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[assault]\*.zip"
-            SectionEnd
-            Section "Briefcase Race Gamemode"
-            SectionIn 1 2
-                SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[briefcaserace]"
-                SetOverwrite ifnewer
-                File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[briefcaserace]\*.zip"
-            SectionEnd
-            Section "Capture the Flag Gamemode"
-            SectionIn 1 2
-                SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[ctf]"
-                SetOverwrite ifnewer
-                File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[ctf]\*.zip"
-            SectionEnd
-            Section "Capture the Vehicle Gamemode"
-            SectionIn 1 2
-                SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[ctv]"
-                SetOverwrite ifnewer
-                File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[ctv]\*.zip"
-            SectionEnd
-            Section "Deathmatch Gamemode"
-            SectionIn 1 2
-                SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[deathmatch]"
-                SetOverwrite ifnewer
-                File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[deathmatch]\*.zip"
-            SectionEnd
-            Section "Fallout Gamemode"
-            SectionIn 1 2
-                SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[fallout]"
-                SetOverwrite ifnewer
-                File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[fallout]\*.zip"
-            SectionEnd
-            Section "Hay Gamemode"
-            SectionIn 1 2
-                SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[hay]"
-                SetOverwrite ifnewer
-                File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[hay]\*.zip"
-            SectionEnd
-            Section "Race Gamemode"
-            SectionIn 1 2
-                SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[race]"
-                SetOverwrite ifnewer
-                File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[race]\*.zip"
-            SectionEnd
-            Section "Stealth Gamemode"
-            SectionIn 1 2
-                SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[stealth]"
-                SetOverwrite ifnewer
-                File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[stealth]\*.zip"
-            SectionEnd
-            Section "Team Deathmatch Arena Gamemode"
-            SectionIn 1 2
-                SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[gamemodes]\[tdm]"
-                SetOverwrite ifnewer
-                File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[gamemodes]\[tdm]\*.zip"
-            SectionEnd
-        SectionGroupEnd
-    !endif
-
-    !ifdef INCLUDE_EDITOR
-        Section "$(INST_SEC_EDITOR)" SEC08
-            SectionIn 1 2
-            SetOutPath "$INSTDIR\server\mods\deathmatch\resources\[editor]"
-            SetOverwrite ifnewer
-            File /r "${SERVER_FILES_ROOT}\mods\deathmatch\resources\[editor]\*.zip"
-        SectionEnd
-    !endif
-
-SectionGroupEnd
-
-LangString INST_SEC_DEVELOPER ${LANG_ENGLISH}   "Development"
-!ifdef INCLUDE_DEVELOPMENT
-    SectionGroup /e "$(INST_SEC_DEVELOPER)" SECGDEV
-        Section /o "Module SDK" SEC09
-            SetOutPath "$INSTDIR\development\module SDK"
-            SetOverwrite ifnewer
-            File /r "${FILES_MODULE_SDK}\"
-        SectionEnd
-    SectionGroupEnd
-!endif
-
-!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC10} $(DESC_Section10)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC11} $(DESC_Section11)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC12} $(DESC_Section12)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC13} $(DESC_Section13)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_DIRECTX} $(DESC_DirectX)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC01} $(DESC_Section1)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC02} $(DESC_Section2)
-    ;!insertmacro MUI_DESCRIPTION_TEXT ${SEC03} $(DESC_Section3)
-    ;!insertmacro MUI_DESCRIPTION_TEXT ${SECGMODS} $(DESC_SectionGroupMods)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC04} $(DESC_Section4)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC05} $(DESC_Section5)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC06} $(DESC_Section6)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC07} $(DESC_Section7)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC08} $(DESC_Section8)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC09} $(DESC_Section9)
-    ;!insertmacro MUI_DESCRIPTION_TEXT ${SECBLANK} $(DESC_Blank)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SECGSERVER} $(DESC_SectionGroupServer)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SECGDEV} $(DESC_SectionGroupDev)
-    !insertmacro MUI_DESCRIPTION_TEXT ${SECGCLIENT} $(DESC_SectionGroupClient)
-!insertmacro MUI_FUNCTION_DESCRIPTION_END
-
-
 Section -Post
     ${LogText} "+Section begin - -Post"
     WriteUninstaller "$INSTDIR\Uninstall.exe"
-    ;WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\Multi Theft Auto.exe"
+    ;WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\Monky.exe"
 
     WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
     WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\Uninstall.exe"
-    WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\Multi Theft Auto.exe"
+    WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\Monky.exe"
     WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
     WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
     WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
@@ -1120,8 +922,8 @@ Section Uninstall
         Delete "$INSTDIR\server\x64\pcre3.dll"
         RmDir "$INSTDIR\server\x64"
 
-        Delete "$INSTDIR\Multi Theft Auto.exe"
-        Delete "$INSTDIR\Multi Theft Auto.exe.dat"
+        Delete "$INSTDIR\Monky.exe"
+        Delete "$INSTDIR\Monky.exe.dat"
         Delete "$INSTDIR\Uninstall.exe"
 
         Delete "$INSTDIR\mods\deathmatch\client.dll"
@@ -1151,7 +953,7 @@ Section Uninstall
         ${RemoveRegistryGroupWithSingleKey} HKLM "SOFTWARE\Multi Theft Auto: San Andreas All" "Common"
 
         ReadRegStr $0 HKLM "Software\Classes\mtasa\DefaultIcon" ""
-        ${If} $0 == "$INSTDIR\Multi Theft Auto.exe"
+        ${If} $0 == "$INSTDIR\Monky.exe"
             DeleteRegKey HKCR "mtasa"
         ${EndIf}
 
@@ -1173,8 +975,8 @@ Section Uninstall
 
         RmDir "$INSTDIR" ; fix for #3898
 
-        DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\Multi Theft Auto.exe.FriendlyAppName"
-        DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\Multi Theft Auto.exe.ApplicationCompany"
+        DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\Monky.exe.FriendlyAppName"
+        DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\Monky.exe.ApplicationCompany"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\MTA\wow64_helper.exe.FriendlyAppName"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\MTA\wow64_helper.exe.ApplicationCompany"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\server\MTA Server.exe.FriendlyAppName"
@@ -1182,7 +984,7 @@ Section Uninstall
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\server\MTA Server64.exe.FriendlyAppName"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\server\MTA Server64.exe.ApplicationCompany"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$APPDATA\MTA San Andreas All\${0.0}\GTA San Andreas\gta_sa.exe.FriendlyAppName"
-        DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\Multi Theft Auto.exe"
+        DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\Monky.exe"
         DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\server\MTA Server.exe"
         DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\server\MTA Server64.exe"
         DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\Uninstall.exe"
@@ -1194,7 +996,7 @@ Section Uninstall
         EnumRegValue $8 HKCU Software\Microsoft\Windows\CurrentVersion\UFH\SHC $7
         IfErrors done
 
-        ${ReadRegStrMultiSz} ${HKEY_CURRENT_USER} "Software\Microsoft\Windows\CurrentVersion\UFH\SHC" $8 "$INSTDIR\Multi Theft Auto.exe" $9
+        ${ReadRegStrMultiSz} ${HKEY_CURRENT_USER} "Software\Microsoft\Windows\CurrentVersion\UFH\SHC" $8 "$INSTDIR\Monky.exe" $9
         ${If} $9 != ""
             DeleteRegValue HKCU "Software\Microsoft\Windows\CurrentVersion\UFH\SHC" $8
             Goto loop
@@ -1229,7 +1031,7 @@ Section Uninstall
         IntOp $7 $7 + 1
         Goto loop
     done:
-        SimpleFC::RemoveApplication "$INSTDIR\Multi Theft Auto.exe"
+        SimpleFC::RemoveApplication "$INSTDIR\Monky.exe"
         SimpleFC::RemoveApplication "$INSTDIR\server\MTA Server.exe"
         SimpleFC::RemoveApplication "$INSTDIR\server\MTA Server64.exe"
         SimpleFC::RemoveApplication "$INSTDIR\Uninstall.exe"
@@ -2376,7 +2178,7 @@ Function DoServiceInstall
         GetDLLVersion "$INSTDIR\mta\loader.dll" $R0 $R1
         IntOp $R5 $R1 & 0x0000FFFF ; $R5 now contains build
         ${If} $R5 > 4909
-            Exec '"$INSTDIR\Multi Theft Auto.exe" /nolaunch /kdinstall'
+            Exec '"$INSTDIR\Monky.exe" /nolaunch /kdinstall'
             StrCpy $ServiceModified 1
         ${EndIf}
     ${EndIf}
@@ -2388,7 +2190,7 @@ Function un.DoServiceUninstall
         GetDLLVersion "$INSTDIR\mta\loader.dll" $R0 $R1
         IntOp $R5 $R1 & 0x0000FFFF ; $R5 now contains build
         ${If} $R5 > 4909
-            Exec '"$INSTDIR\Multi Theft Auto.exe" /nolaunch /kduninstall'
+            Exec '"$INSTDIR\Monky.exe" /nolaunch /kduninstall'
             StrCpy $ServiceModified 2
         ${EndIf}
     ${EndIf}
@@ -2690,7 +2492,7 @@ Function MTAInitFileNamesAndPaths
 	# Obvious fix is to roll 1 update where all shortcuts will be deleted and replaced with a unified names.
 	StrCpy $DesktopClientShortcutPath "$DESKTOP\$ClientShortcutName ${0.0}.lnk"
 	# Exe names
-	StrCpy $ClientExeName "Multi Theft Auto.exe"
+	StrCpy $ClientExeName "Monky.exe"
 	StrCpy $ServerExeName "MTA Server.exe"
 	StrCpy $UninstallExeName "Uninstall.exe"
 	# Exe paths

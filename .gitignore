@@ -3,6 +3,7 @@
 # Created by https://www.gitignore.io/api/osx,c++,linux,windows,visualstudio,premake-gmake,visualstudiocode
 
 bin
+*.exe
 
 ### C++ ###
 # Prerequisites
