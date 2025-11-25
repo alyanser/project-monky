@@ -295,7 +295,7 @@ CDuplicateLineFilter<SReportLine> ms_ReportLineFilter;
 #ifdef MTA_CLIENT
 
 #define PRODUCT_REGISTRY_PATH       "Software\\Project Monky All"       // HKLM
-#define PRODUCT_COMMON_DATA_DIR     "Projet Monky All"                               // C:\ProgramData
+#define PRODUCT_COMMON_DATA_DIR     "Project Monky All"                               // C:\ProgramData
 #define TROUBLE_URL1 "https://monkygaming.com/projectmonky"
 
 //
@@ -377,7 +377,7 @@ SString SharedUtil::GetMTASABaseDir()
             strInstallRoot = GetRegistryValue("", "Last Run Location");
             if (strInstallRoot.empty())
             {
-                MessageBoxUTF8(0, _("Project Monky has not been installed properly, please reinstall."), _("Error") + _E("U01"),
+                MessageBoxUTF8(0, _("Project Monky has been cursed. It is highly recommended that you restart your PC and try again."), _("Error") + _E("U01"),
                                MB_OK | MB_ICONERROR | MB_TOPMOST);
                 TerminateProcess(GetCurrentProcess(), 9);
             }
