@@ -61,16 +61,17 @@ Var UninstallExePath
     !define MAINT_VER "0"
 !endif
 !define 0.0 "${MAJOR_VER}.${MINOR_VER}"
+!define MASK.0.0 "1.0"
 !define 0.0.0 "${MAJOR_VER}.${MINOR_VER}.${MAINT_VER}"
 
-!define APPLICATION_ID "Project Monky ${0.0}"
+!define APPLICATION_ID "Project Monky ${MASK.0.0}"
 
 ; ###########################################################################################################
 !ifndef FILES_ROOT
     !define LIGHTBUILD    ; enable LIGHTBUILD for nightly
     !define FILES_ROOT "../../Bin"
     !define SERVER_FILES_ROOT "${FILES_ROOT}/server"
-    !define INSTALL_OUTPUT "monky-${0.0.0}-r1-installer.exe"
+    !define INSTALL_OUTPUT "Project Monky ${MASK.0.0} Installer.exe"
     !define PRODUCT_VERSION "v${0.0.0}"
     !define REVISION "1"
 !endif
@@ -93,13 +94,13 @@ Var UninstallExePath
     !define REVISION_TAG ""
 !endif
 
-!define PRODUCT_NAME "Monky:SA ${0.0}"
-!define PRODUCT_NAME_NO_VER "Monky:SA"
+!define PRODUCT_NAME "Project Monky 1.0"
+!define PRODUCT_NAME_NO_VER "Project Monky"
 
-!define PRODUCT_PUBLISHER "Project Monky"
-!define PRODUCT_WEB_SITE "https://monkygaming.com"
+!define PRODUCT_PUBLISHER "Monky Gaming"
+!define PRODUCT_WEB_SITE "https://monkygaming.com/projectmonky"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Project Monky ${0.0}.exe"
-!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
+!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_NO_VER} ${0.0}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
 ; MUI 1.67 compatible ------
@@ -185,7 +186,7 @@ Page custom CustomDirectoryPage CustomDirectoryPageLeave
         !define VI_PRODUCT_VERSION "${0.0.0}.0"
     !endif
     !define VI_PRODUCT_NAME "Project Monky"
-    !define VI_COMPANY_NAME "Project Monky"
+    !define VI_COMPANY_NAME "Monky Gaming"
     !define /date DATE_YEAR "%Y"
     !define VI_LEGAL_COPYRIGHT "(C) 2003 - ${DATE_YEAR} Project Monky"
     !ifndef LIGHTBUILD
@@ -204,9 +205,9 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "${VI_PRODUCT_VERSION}"
 
 ;@INSERT_TRANSLATIONS@
 
-LangString	GET_XPVISTA_PLEASE	${LANG_ENGLISH} "The version of Monky:SA you've downloaded does not support Windows XP or Vista.  Please download an alternative version from www.multitheftauto.com."
-LangString	GET_WIN81_PLEASE	${LANG_ENGLISH} "The version of Monky:SA you've downloaded does not support Windows 7, 8 or 8.1.  Please download an alternative version from www.multitheftauto.com."
-LangString  GET_MASTER_PLEASE	${LANG_ENGLISH} "The version of Monky:SA you've downloaded is designed for old versions of Windows.  Please download an alternative version from www.multitheftauto.com."
+LangString	GET_XPVISTA_PLEASE	${LANG_ENGLISH} "The version of  you've downloaded does not support Windows XP or Vista.  Please download an alternative version from www.multitheftauto.com."
+LangString	GET_WIN81_PLEASE	${LANG_ENGLISH} "The version of Project Monky you've downloaded does not support Windows 7, 8 or 8.1.  Please download an alternative version from www.multitheftauto.com."
+LangString  GET_MASTER_PLEASE	${LANG_ENGLISH} "The version of Project Monky you've downloaded is designed for old versions of Windows.  Please download an alternative version from www.multitheftauto.com."
 LangString  WELCOME_TEXT  ${LANG_ENGLISH}   "This wizard will guide you through the installation or update of $(^Name) ${REVISION_TAG}\n\n\
 It is recommended that you close all other applications before starting Setup.\n\n\
 [Admin access may be requested for Vista and up]\n\n\
@@ -217,20 +218,20 @@ LangString  DIRECTORY_Text_Top  ${LANG_ENGLISH} "Please select your Grand Theft 
 
 ; Language files
 LangString  DESC_Section10          ${LANG_ENGLISH} "Create a Start Menu group for installed applications"
-LangString  DESC_Section11          ${LANG_ENGLISH} "Create a Desktop Shortcut for the Monky:SA Client."
+LangString  DESC_Section11          ${LANG_ENGLISH} "Create a Desktop Shortcut for the Project Monky Client."
 LangString  DESC_Section12          ${LANG_ENGLISH} "Register mtasa:// protocol for browser clickable-ness."
 LangString  DESC_Section13          ${LANG_ENGLISH} "Add to Windows Games Explorer (if present)."
 LangString  DESC_DirectX            ${LANG_ENGLISH} "Install or update DirectX (if required)."
 LangString  DESC_Section1           ${LANG_ENGLISH} "The core components required to run Project Monky."
-LangString  DESC_Section2           ${LANG_ENGLISH} "The Monky:SA modification, allowing you to play online."
-;LangString DESC_Section3           ${LANG_ENGLISH} "The Project Monky:Editor for Monky:SA, allowing you to create and edit maps."
+LangString  DESC_Section2           ${LANG_ENGLISH} "The Project Monky modification, allowing you to play online."
+;LangString DESC_Section3           ${LANG_ENGLISH} "The Project Monky:Editor for Project Monky, allowing you to create and edit maps."
 ;LangString DESC_SectionGroupMods   ${LANG_ENGLISH} "Modifications for Project Monky. Without at least one of these, you cannot play Project Monky."
 LangString  DESC_SectionGroupServer  ${LANG_ENGLISH}    "The Project Monky Server. This allows you to host games from your computer. This requires a fast internet connection."
 LangString  DESC_Section4           ${LANG_ENGLISH} "The Project Monky server. This is a required component."
-LangString  DESC_Section5           ${LANG_ENGLISH} "The Monky:SA modification for the server."
+LangString  DESC_Section5           ${LANG_ENGLISH} "The Project Monky modification for the server."
 LangString  DESC_Section6           ${LANG_ENGLISH} "This is a set of required resources for your server."
 LangString  DESC_Section7           ${LANG_ENGLISH} "This is an optional set of gamemodes and maps for your server."
-LangString  DESC_Section8           ${LANG_ENGLISH} "The Monky:SA 1.0 Map Editor.  This can be used to create your very own maps for use in gamemodes for MTA."
+LangString  DESC_Section8           ${LANG_ENGLISH} "The Project Monky 1.0 Map Editor.  This can be used to create your very own maps for use in gamemodes for MTA."
 LangString  DESC_Section9           ${LANG_ENGLISH} "This is the SDK for creating binary modules for the MTA server. Only install if you have a good understanding of C++!"
 ;LangString DESC_Blank          ${LANG_ENGLISH} ""
 LangString  DESC_SectionGroupDev        ${LANG_ENGLISH} "Development code and tools that aid in the creation of mods for Project Monky"
@@ -275,7 +276,7 @@ Function .onInit
     ${LogText} "${PRODUCT_VERSION} ${REVISION_TAG}"
     ${LogText} "+Function begin - .onInit"
 
-    ; Try to find previously saved Monky:SA install path
+    ; Try to find previously saved Project Monky install path
     ReadRegStr $Install_Dir HKLM "SOFTWARE\Project Monky All\${0.0}" "Last Install Location"
     ${If} $Install_Dir == ""
         ReadRegStr $Install_Dir HKLM "SOFTWARE\Project Monky ${0.0}" "Last Install Location"
@@ -285,13 +286,13 @@ Function .onInit
     ${EndIf}
 
     ${If} $Install_Dir == ""
-        strcpy $Install_Dir "$PROGRAMFILES\Project Monky ${0.0}"
+        strcpy $Install_Dir "$PROGRAMFILES\Project Monky ${MASK.0.0}"
     ${EndIf}
     strcpy $INSTDIR $Install_Dir
     ${LogText} "Using install directory:'$INSTDIR'"
 
     ; Setup for install dir dialog
-    strcpy $DEFAULT_INSTDIR "$PROGRAMFILES\Project Monky ${0.0}"
+    strcpy $DEFAULT_INSTDIR "$PROGRAMFILES\Project Monky ${MASK.0.0}"
     strcpy $LAST_INSTDIR $Install_Dir
     strcpy $CUSTOM_INSTDIR $DEFAULT_INSTDIR
     ${If} $DEFAULT_INSTDIR == $LAST_INSTDIR
@@ -456,7 +457,7 @@ LangString INST_SERVER ${LANG_ENGLISH}  "Server only"
 ;InstType "$(INST_CLIENTSERVER)"
 ;InstType "$(INST_SERVER)"
 
-Name "${PRODUCT_NAME_NO_VER} ${PRODUCT_VERSION}"
+Name "${PRODUCT_NAME_NO_VER} ${MASK.0.0}"
 OutFile "${INSTALL_OUTPUT}"
 
 ;InstallDir "$PROGRAMfiles San Andreas"
@@ -580,7 +581,6 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
                 # More conservative permissions blat if install directory it too different from default
                 CreateDirectory "$INSTDIR\mods"
                 CreateDirectory "$INSTDIR\screenshots"
-                CreateDirectory "$INSTDIR\server"
                 CreateDirectory "$INSTDIR\skins"
                 FastPerms::FullAccessPlox "$INSTDIR\mods" "($PermissionsGroup)"
                 FastPerms::FullAccessPlox "$INSTDIR\MTA" "($PermissionsGroup)"
@@ -859,7 +859,7 @@ FunctionEnd
 
 LangString UNINST_REQUEST ${LANG_ENGLISH}   "Are you sure you want to completely remove $(^Name) and all of its components?"
 LangString UNINST_REQUEST_NOTE ${LANG_ENGLISH}  "Uninstalling before update?\
-$\r$\nIt is not necessary to uninstall before installing a new version of Monky:SA\
+$\r$\nIt is not necessary to uninstall before installing a new version of Project Monky\
 $\r$\nRun the new installer to upgrade and preserve your settings."
 
 Function un.onInit
@@ -966,9 +966,9 @@ Section Uninstall
         ${GameExplorer_RemoveGame} ${GUID}
 
         ; Delete client shortcuts
-        Delete "$SMPROGRAMS\\Project Monky ${0.0}\Project Monky.lnk"
-        Delete "$SMPROGRAMS\\Project Monky ${0.0}\Uninstall Project Monky.lnk"
-        Delete "$DESKTOP\Project Monky ${0.0}.lnk"
+        Delete "$SMPROGRAMS\\Project Monky ${MASK.0.0}\Project Monky.lnk"
+        Delete "$SMPROGRAMS\\Project Monky ${MASK.0.0}\Uninstall Project Monky.lnk"
+        Delete "$DESKTOP\Project Monky ${MASK.0.0}.lnk"
 
         ; Delete server shortcuts
         Delete "$SMPROGRAMS\\Project Monky ${0.0}\MTA Server.lnk"
@@ -1401,7 +1401,7 @@ Function ResizeSharedDialogContents
     Call MoveDialogItem
 
     StrCpy $ITEM_PARENT $HWNDPARENT
-    StrCpy $ITEM_ID 1038    ; Static - "Choose which features of Monky:SA v1.0 you want to install."
+    StrCpy $ITEM_ID 1038    ; Static - "Choose which features of Project Monky v1.0 you want to install."
     Call MoveDialogItem
 
     ${If} "$(LANGUAGE_RTL)" == "1"
@@ -1781,8 +1781,8 @@ Var PosY
 !define LT_GREY2K "0xD1CEC9"
 
 LangString INST_CHOOSE_LOC_TOP ${LANG_ENGLISH}  "Choose Install Location"
-LangString INST_CHOOSE_LOC ${LANG_ENGLISH}  "Choose the folder in which to install ${PRODUCT_NAME_NO_VER} ${PRODUCT_VERSION}"
-LangString INST_CHOOSE_LOC2 ${LANG_ENGLISH} "${PRODUCT_NAME_NO_VER} ${PRODUCT_VERSION} will be installed in the following folder.$\n\
+LangString INST_CHOOSE_LOC ${LANG_ENGLISH}  "Choose the folder in which to install ${PRODUCT_NAME_NO_VER} ${MASK.0.0}"
+LangString INST_CHOOSE_LOC2 ${LANG_ENGLISH} "${PRODUCT_NAME_NO_VER} ${MASK.0.0} will be installed in the following folder.$\n\
 To install in a different folder, click Browse and select another folder.$\n$\n Click Next to continue."
 LangString INST_CHOOSE_LOC3 ${LANG_ENGLISH} "Destination Folder"
 LangString INST_CHOOSE_LOC_BROWSE ${LANG_ENGLISH}   "Browse..."
@@ -1961,12 +1961,12 @@ Function CustomDirectoryPageDirRequestChange
 FunctionEnd
 
 Function CustomDirectoryPageSetDefaultButtonClick
-    StrCpy $INSTDIR "$PROGRAMFILES\Project Monky ${0.0}"
+    StrCpy $INSTDIR "$PROGRAMFILES\Project Monky ${MASK.0.0}"
     ${NSD_SetText} $DirRequest $INSTDIR
     Call CustomDirectoryPageSetUpgradeMessage
 FunctionEnd
 
-LangString INST_CHOOSE_LOC4 ${LANG_ENGLISH} "Select the folder to install ${PRODUCT_NAME_NO_VER} ${PRODUCT_VERSION} in:"
+LangString INST_CHOOSE_LOC4 ${LANG_ENGLISH} "Select the folder to install ${PRODUCT_NAME_NO_VER} ${MASK.0.0} in:"
 
 Function CustomDirectoryPageBrowseButtonClick
     ${NSD_GetText} $DirRequest $0
@@ -2483,22 +2483,18 @@ FunctionEnd
 Function MTAInitFileNamesAndPaths
 	# Shortcuts names
 	StrCpy $ClientShortcutName "Project Monky"
-	StrCpy $ServerShortcutName "MTA Server"
 	StrCpy $UninstallShortcutName "Uninstall Project Monky"
 	# Shostcuts paths
-	StrCpy $StartMenuMTAFolderPath "$SMPROGRAMS\Project Monky ${0.0}"
+	StrCpy $StartMenuMTAFolderPath "$SMPROGRAMS\Project Monky ${MASK.0.0}"
 	StrCpy $StartMenuClientShortcutPath "$StartMenuMTAFolderPath\$ClientShortcutName.lnk"
-	StrCpy $StartMenuServerShortcutPath "$StartMenuMTAFolderPath\$ServerShortcutName.lnk"
 	StrCpy $StartMenuUninstallShortcutPath "$StartMenuMTAFolderPath\$UninstallShortcutName.lnk"
 	# Shortcut names for desktop and start menu are different and can't be safely unified.
 	# Obvious fix is to roll 1 update where all shortcuts will be deleted and replaced with a unified names.
-	StrCpy $DesktopClientShortcutPath "$DESKTOP\$ClientShortcutName ${0.0}.lnk"
+	StrCpy $DesktopClientShortcutPath "$DESKTOP\$ClientShortcutName ${MASK.0.0}.lnk"
 	# Exe names
 	StrCpy $ClientExeName "Project Monky.exe"
-	StrCpy $ServerExeName "MTA Server.exe"
 	StrCpy $UninstallExeName "Uninstall.exe"
 	# Exe paths
 	StrCpy $ClientExePath "$INSTDIR\$ClientExeName"
-	StrCpy $ServerExePath "$INSTDIR\server\$ServerExeName"
 	StrCpy $UninstallExePath "$INSTDIR\$UninstallExeName"
 FunctionEnd

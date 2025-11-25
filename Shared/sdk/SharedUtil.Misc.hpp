@@ -294,9 +294,9 @@ CDuplicateLineFilter<SReportLine> ms_ReportLineFilter;
 
 #ifdef MTA_CLIENT
 
-#define PRODUCT_REGISTRY_PATH       "Software\\Project Monky: San Andreas All"       // HKLM
-#define PRODUCT_COMMON_DATA_DIR     "Monky San Andreas All"                               // C:\ProgramData
-#define TROUBLE_URL1 "https://help.multitheftauto.com/sa/trouble/?v=_VERSION_&id=_ID_&tr=_TROUBLE_"
+#define PRODUCT_REGISTRY_PATH       "Software\\Project Monky All"       // HKLM
+#define PRODUCT_COMMON_DATA_DIR     "Projet Monky All"                               // C:\ProgramData
+#define TROUBLE_URL1 "https://monkygaming.com/projectmonky"
 
 //
 // Output a UTF8 encoded messagebox
