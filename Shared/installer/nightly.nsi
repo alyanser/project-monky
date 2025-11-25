@@ -241,7 +241,7 @@ Function LaunchLink
     SetOutPath "$INSTDIR"
     # Problem: 'non-admin nsis' and 'admin nsis' run at the same time and can have different values for $INSTDIR
     # Fix: Copy to temp variable
-    StrCpy $1 "$INSTDIR\Monky.exe"
+    StrCpy $1 "$INSTDIR\Project Monky.exe"
     !insertmacro UAC_AsUser_ExecShell "" "$1" "" "" ""
 FunctionEnd
 
@@ -441,8 +441,8 @@ Function .onInstSuccess
         ; Add the protocol handler
         WriteRegStr HKCR "mtasa" "" "URL:Monky San Andreas Protocol"
         WriteRegStr HKCR "mtasa" "URL Protocol" ""
-        WriteRegStr HKCR "mtasa\DefaultIcon" "" "$INSTDIR\Monky.exe"
-        WriteRegStr HKCR "mtasa\shell\open\command" "" '"$INSTDIR\Monky.exe"%1'
+        WriteRegStr HKCR "mtasa\DefaultIcon" "" "$INSTDIR\Project Monky.exe"
+        WriteRegStr HKCR "mtasa\shell\open\command" "" '"$INSTDIR\Project Monky.exe"%1'
     ${EndIf}
 
     ;UAC::Unload ;Must call unload!
@@ -799,15 +799,15 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
         File /r "${FILES_ROOT}\mta\locale\*.pot"
 
         SetOutPath "$INSTDIR"
-        File "${FILES_ROOT}\Monky.exe"
+        File "${FILES_ROOT}\Project Monky.exe"
 
         # Ensure exe file can be updated without admin
-        AccessControl::GrantOnFile "$INSTDIR\Monky.exe" "($PermissionsGroup)" "FullAccess"
+        AccessControl::GrantOnFile "$INSTDIR\Project Monky.exe" "($PermissionsGroup)" "FullAccess"
 
         ${If} $AddToGameExplorer == 1
             ${GameExplorer_UpdateGame} ${GUID}
             ${If} ${Errors}
-                ${GameExplorer_AddGame} all "$INSTDIR\Monky.exe" "$INSTDIR" "$INSTDIR\Monky.exe" ${GUID}
+                ${GameExplorer_AddGame} all "$INSTDIR\Project Monky.exe" "$INSTDIR" "$INSTDIR\Project Monky.exe" ${GUID}
                 CreateDirectory $APPDATA\Microsoft\Windows\GameExplorer\${GUID}\SupportTasks\0
                 CreateShortcut "$APPDATA\Microsoft\Windows\GameExplorer\$0\SupportTasks\0\Client Manual.lnk" \ "https://wiki.multitheftauto.com/wiki/Client_Manual"
             ${EndIf}
@@ -831,11 +831,11 @@ SectionGroupEnd
 Section -Post
     ${LogText} "+Section begin - -Post"
     WriteUninstaller "$INSTDIR\Uninstall.exe"
-    ;WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\Monky.exe"
+    ;WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\Project Monky.exe"
 
     WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
     WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\Uninstall.exe"
-    WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\Monky.exe"
+    WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\Project Monky.exe"
     WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
     WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
     WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
@@ -924,8 +924,8 @@ Section Uninstall
         Delete "$INSTDIR\server\x64\pcre3.dll"
         RmDir "$INSTDIR\server\x64"
 
-        Delete "$INSTDIR\Monky.exe"
-        Delete "$INSTDIR\Monky.exe.dat"
+        Delete "$INSTDIR\Project Monky.exe"
+        Delete "$INSTDIR\Project Monky.exe.dat"
         Delete "$INSTDIR\Uninstall.exe"
 
         Delete "$INSTDIR\mods\deathmatch\client.dll"
@@ -955,7 +955,7 @@ Section Uninstall
         ${RemoveRegistryGroupWithSingleKey} HKLM "SOFTWARE\Project Monky: San Andreas All" "Common"
 
         ReadRegStr $0 HKLM "Software\Classes\mtasa\DefaultIcon" ""
-        ${If} $0 == "$INSTDIR\Monky.exe"
+        ${If} $0 == "$INSTDIR\Project Monky.exe"
             DeleteRegKey HKCR "mtasa"
         ${EndIf}
 
@@ -977,8 +977,8 @@ Section Uninstall
 
         RmDir "$INSTDIR" ; fix for #3898
 
-        DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\Monky.exe.FriendlyAppName"
-        DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\Monky.exe.ApplicationCompany"
+        DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\Project Monky.exe.FriendlyAppName"
+        DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\Project Monky.exe.ApplicationCompany"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\MTA\wow64_helper.exe.FriendlyAppName"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\MTA\wow64_helper.exe.ApplicationCompany"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\server\MTA Server.exe.FriendlyAppName"
@@ -986,7 +986,7 @@ Section Uninstall
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\server\MTA Server64.exe.FriendlyAppName"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$INSTDIR\server\MTA Server64.exe.ApplicationCompany"
         DeleteRegValue HKCR "Local Settings\Software\Microsoft\Windows\Shell\MuiCache" "$APPDATA\Monky San Andreas All\${0.0}\GTA San Andreas\gta_sa.exe.FriendlyAppName"
-        DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\Monky.exe"
+        DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\Project Monky.exe"
         DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\server\MTA Server.exe"
         DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\server\MTA Server64.exe"
         DeleteRegValue HKCU "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store" "$INSTDIR\Uninstall.exe"
@@ -998,7 +998,7 @@ Section Uninstall
         EnumRegValue $8 HKCU Software\Microsoft\Windows\CurrentVersion\UFH\SHC $7
         IfErrors done
 
-        ${ReadRegStrMultiSz} ${HKEY_CURRENT_USER} "Software\Microsoft\Windows\CurrentVersion\UFH\SHC" $8 "$INSTDIR\Monky.exe" $9
+        ${ReadRegStrMultiSz} ${HKEY_CURRENT_USER} "Software\Microsoft\Windows\CurrentVersion\UFH\SHC" $8 "$INSTDIR\Project Monky.exe" $9
         ${If} $9 != ""
             DeleteRegValue HKCU "Software\Microsoft\Windows\CurrentVersion\UFH\SHC" $8
             Goto loop
@@ -1033,7 +1033,7 @@ Section Uninstall
         IntOp $7 $7 + 1
         Goto loop
     done:
-        SimpleFC::RemoveApplication "$INSTDIR\Monky.exe"
+        SimpleFC::RemoveApplication "$INSTDIR\Project Monky.exe"
         SimpleFC::RemoveApplication "$INSTDIR\server\MTA Server.exe"
         SimpleFC::RemoveApplication "$INSTDIR\server\MTA Server64.exe"
         SimpleFC::RemoveApplication "$INSTDIR\Uninstall.exe"
@@ -2180,7 +2180,7 @@ Function DoServiceInstall
         GetDLLVersion "$INSTDIR\mta\loader.dll" $R0 $R1
         IntOp $R5 $R1 & 0x0000FFFF ; $R5 now contains build
         ${If} $R5 > 4909
-            Exec '"$INSTDIR\Monky.exe" /nolaunch /kdinstall'
+            Exec '"$INSTDIR\Project Monky.exe" /nolaunch /kdinstall'
             StrCpy $ServiceModified 1
         ${EndIf}
     ${EndIf}
@@ -2192,7 +2192,7 @@ Function un.DoServiceUninstall
         GetDLLVersion "$INSTDIR\mta\loader.dll" $R0 $R1
         IntOp $R5 $R1 & 0x0000FFFF ; $R5 now contains build
         ${If} $R5 > 4909
-            Exec '"$INSTDIR\Monky.exe" /nolaunch /kduninstall'
+            Exec '"$INSTDIR\Project Monky.exe" /nolaunch /kduninstall'
             StrCpy $ServiceModified 2
         ${EndIf}
     ${EndIf}
@@ -2494,7 +2494,7 @@ Function MTAInitFileNamesAndPaths
 	# Obvious fix is to roll 1 update where all shortcuts will be deleted and replaced with a unified names.
 	StrCpy $DesktopClientShortcutPath "$DESKTOP\$ClientShortcutName ${0.0}.lnk"
 	# Exe names
-	StrCpy $ClientExeName "Monky.exe"
+	StrCpy $ClientExeName "Project Monky.exe"
 	StrCpy $ServerExeName "MTA Server.exe"
 	StrCpy $UninstallExeName "Uninstall.exe"
 	# Exe paths

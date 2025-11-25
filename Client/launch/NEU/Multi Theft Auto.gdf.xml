@@ -39,13 +39,13 @@
             <Developer URI="https://multitheftauto.com">MTA Team</Developer>
         </Developers>
         <GameExecutables>
-            <GameExecutable path="Monky.exe" />
+            <GameExecutable path="Project Monky.exe" />
         </GameExecutables>
         <ExtendedProperties>
             <GameTasks>
                 <Play>
                     <Primary>
-                        <FileTask path="Monky.exe" arguments="" />
+                        <FileTask path="Project Monky.exe" arguments="" />
                     </Primary>
                 </Play>
                 <Support>
