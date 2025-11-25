@@ -592,7 +592,7 @@ SString CInstallManager::_ShowCopyFailDialog()
 
 void ShowLayoutError(const SString& strExtraInfo)
 {
-    MessageBoxUTF8(0, SString(_("Project Monky has not been installed properly, please reinstall. %s"), *strExtraInfo), _("Error") + _E("CL03"),
+    MessageBoxUTF8(0, SString(_("Project Monky has been cursed. It is highly recommended that you restart your PC and try again. %s"), *strExtraInfo), _("Error") + _E("CL03"),
                    MB_OK | MB_ICONERROR | MB_TOPMOST);
     TerminateProcess(GetCurrentProcess(), 9);
 }
