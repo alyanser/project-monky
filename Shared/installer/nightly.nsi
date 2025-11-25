@@ -1,5 +1,5 @@
-SetCompress off                    ; No compression at all
-SetDatablockOptimize off          ; Skip optimization passes
+
+SetCompress off
 
 RequestExecutionLevel user
 
@@ -823,6 +823,7 @@ SectionGroup /e "$(INST_SEC_CLIENT)" SECGCLIENT
         SetOutPath "$INSTDIR\mods\deathmatch"
         File "${FILES_ROOT}\mods\deathmatch\client.dll"
         File "${FILES_ROOT}\mods\deathmatch\pcre3.dll"
+        File "${FILES_ROOT}\mods\deathmatch\lua5.1c.dll"
         SetOutPath "$INSTDIR\mods\deathmatch\resources"
         ${LogText} "-Section end - CLIENT GAME"
     SectionEnd
@@ -930,6 +931,7 @@ Section Uninstall
 
         Delete "$INSTDIR\mods\deathmatch\client.dll"
         Delete "$INSTDIR\mods\deathmatch\pcre3.dll"
+        Delete "$INSTDIR\mods\deathmatch\lua5.1c.dll"
 
         RmDir /r "$INSTDIR\MTA\cgui"
         RmDir /r "$INSTDIR\MTA\data"
