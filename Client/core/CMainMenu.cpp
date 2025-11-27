@@ -46,6 +46,13 @@
 #define CORE_MTA_FILLER             "cgui\\images\\mta_filler.png"
 #define CORE_MTA_VERSION            "cgui\\images\\version.png"
 
+
+#define PLAY_SERVER_ADDRESS "135.148.32.184"
+#define PLAY_SERVER_PORT 22004
+
+#define MAPPING_SERVER_ADDRESS "103.62.51.130"
+#define MAPPING_SERVER_PORT 22003
+
 static const SColor headlineColors[] = {SColorRGBA(233, 234, 106, 255), SColorRGBA(233 / 6 * 4, 234 / 6 * 4, 106 / 6 * 4, 255),
                                         SColorRGBA(233 / 7 * 3, 234 / 7 * 3, 106 / 7 * 3, 255)};
 
@@ -872,7 +879,7 @@ bool CMainMenu::OnPlayNowButtonClick(CGUIElement* pElement, bool left)
     std::string strNick;
     CVARS_GET("nick", strNick);
 
-    g_pCore->GetConnectManager()->Connect("localhost", 22003, strNick.c_str(), "", false);
+    g_pCore->GetConnectManager()->Connect(PLAY_SERVER_ADDRESS, PLAY_SERVER_PORT, strNick.c_str(), "", false);
     return true;
 }
 
@@ -924,11 +931,19 @@ bool CMainMenu::OnMappingServerButtonClick()
     if (m_ucFade != FADE_VISIBLE)
         return false;
 
-    // Load deathmatch, but with local play
-    CModManager::GetSingleton().RequestLoad("editor");
+    if (!g_pCore->IsNetworkReady())
+    {
+        ShowNetworkNotReadyWindow();
+        return true;
+    }
 
+    std::string strNick;
+    CVARS_GET("nick", strNick);
+
+    g_pCore->GetConnectManager()->Connect(MAPPING_SERVER_ADDRESS, MAPPING_SERVER_PORT, strNick.c_str(), "", false);
     return true;
 }
+
 
 bool CMainMenu::OnSettingsButtonClick(CGUIElement* pElement)
 {

@@ -1343,7 +1343,7 @@ void CSettings::CreateGUI()
     m_pCheckBoxGrass->SetPosition(CVector2D(vecTemp.fX, vecTemp.fY + 50.0f));
     m_pCheckBoxGrass->AutoSize(NULL, 20.0f);
 
-    m_pCheckBoxHeatHaze = reinterpret_cast<CGUICheckBox*>(pManager->CreateCheckBox(pTabVideo, _("Heat haze"), true));
+    m_pCheckBoxHeatHaze = reinterpret_cast<CGUICheckBox*>(pManager->CreateCheckBox(pTabVideo, _("Heat haze"), false));
     m_pCheckBoxHeatHaze->SetPosition(CVector2D(vecTemp.fX, vecTemp.fY + 70.0f));
     m_pCheckBoxHeatHaze->AutoSize(NULL, 20.0f);
 
@@ -2661,7 +2661,7 @@ bool CSettings::OnVideoDefaultClick(CGUIElement* pElement)
     CVARS_SET("anisotropic", 0);
     CVARS_SET("volumetric_shadows", false);
     CVARS_SET("grass", true);
-    CVARS_SET("heat_haze", true);
+    CVARS_SET("heat_haze", false);
     CVARS_SET("tyre_smoke_enabled", true);
     CVARS_SET("high_detail_vehicles", false);
     CVARS_SET("high_detail_peds", false);

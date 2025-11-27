@@ -344,7 +344,7 @@ void CClientVariables::LoadDefaults()
     DEFAULT("hud_match_aspect_ratio", 1);                                             // GTA HUD should match the display aspect ratio
     DEFAULT("anisotropic", 0);                                                        // Anisotropic filtering
     DEFAULT("grass", 1);                                                              // Enable grass
-    DEFAULT("heat_haze", 1);                                                          // Enable heat haze
+    DEFAULT("heat_haze", 0);                                                          // Enable heat haze
     DEFAULT("tyre_smoke_enabled", 1);                                                 // Enable tyre smoke
     DEFAULT("high_detail_vehicles", 0);                                               // Disable rendering high detail vehicles all the time
     DEFAULT("high_detail_peds", 0);                                                   // Disable rendering high detail peds all the time
