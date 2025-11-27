@@ -1,7 +1,5 @@
-
-SetCompress off
-
 RequestExecutionLevel user
+SetCompressor /solid lzma
 
 !addincludedir "NSIS dirs\Include"
 !addplugindir "NSIS dirs\Plugins"
