@@ -28,34 +28,35 @@ CCredits::CCredits()
                     " ==\n"
                     "\n";
 
-    m_strCredits += _("Owner");
+    m_strCredits += _("Founder");
     m_strCredits +=
         "\n\n"
-
         "5150\n"
-        "\n"
-        "\n";
+        "\n\n";
 
-    m_strCredits += _("Contributors");
+    m_strCredits += _("Manager");
     m_strCredits +=
         "\n\n"
-        "TBA\n"
-        "\n"
-        "\n";
+        "Leon\n"
+        "\n\n";
 
-    m_strCredits += _("Donors");
+    m_strCredits += _("Project Monky Devs and Contributors");
     m_strCredits +=
         "\n\n"
-        "TBA\n"
-        "\n"
-        "\n";
+        "Staz - Client creation\n"
+        "Portside - Initial website creation\n"
+        "Leon - Major contributions to in-game work\n"
+        "Loki - Contributions to code\n"
+        "lbdBG - Initial VPS curator and security management (Retired)\n"
+        "\n\n";
 
-    m_strCredits += _("Special Thanks");
-    m_strCredits +=
-        "\n\n"
-        "TBA\n",
-        "\n"
-        "\n";
+    m_strCredits += _("Special Thanks To...");
+        m_strCredits +=
+            "\n\n"
+            "Everyone following and supporting us by playing\n"
+            "All testers\n"
+            "AGRP\n"
+            "Multi Theft Auto for banning me and pushing me to create this";
 
     // Create our window
     CVector2D RelativeWindow = CVector2D(fWindowX / pManager->GetResolution().fX, fWindowY / pManager->GetResolution().fY);
