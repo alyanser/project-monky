@@ -17,7 +17,7 @@
 
 static auto GetServerIp(std::optional<bool> includePort) -> const char*
 {
-    return g_pNet->GetConnectedServer(includePort.value_or(false));
+    return "nothappeningtoday";
 }
 
 void CLuaNetworkDefs::LoadFunctions()

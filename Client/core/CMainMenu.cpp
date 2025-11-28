@@ -47,10 +47,10 @@
 #define CORE_MTA_VERSION            "cgui\\images\\version.png"
 
 
-#define PLAY_SERVER_ADDRESS "135.148.32.184"
+#define PLAY_SERVER_ADDRESS "localhost"
 #define PLAY_SERVER_PORT 22004
 
-#define MAPPING_SERVER_ADDRESS "103.62.51.130"
+#define MAPPING_SERVER_ADDRESS "localhost"
 #define MAPPING_SERVER_PORT 22003
 
 static const SColor headlineColors[] = {SColorRGBA(233, 234, 106, 255), SColorRGBA(233 / 6 * 4, 234 / 6 * 4, 106 / 6 * 4, 255),
