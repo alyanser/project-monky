@@ -129,7 +129,7 @@ bool CConnectManager::Connect(const char* szHost, unsigned short usPort, const c
     SString strAddress = inet_ntoa(m_Address);
     if (m_usPort && !pNet->StartNetwork(strAddress, m_usPort, CVARS_GET_VALUE<bool>("packet_tag")))
     {
-        SString strBuffer(_("Connecting to %s at port %u failed!"), m_strHost.c_str(), m_usPort);
+        SString strBuffer(_("Connecting to the server failed!"));
         CCore::GetSingleton().ShowMessageBox(_("Error") + _E("CC22"), strBuffer, MB_BUTTON_OK | MB_ICON_ERROR);            // Failed to connect
         return false;
     }
@@ -154,7 +154,6 @@ bool CConnectManager::Connect(const char* szHost, unsigned short usPort, const c
     if (m_bReconnect)
         strBuffer = SString(_("Reconnecting to the server..."));
     CCore::GetSingleton().ShowMessageBox(_("CONNECTING"), strBuffer, MB_BUTTON_CANCEL | MB_ICON_INFO, m_pOnCancelClick);
-    WriteDebugEvent(SString("Connecting to %s:%u ...", m_strHost.c_str(), m_usPort));
 
     return true;
 }
