@@ -228,42 +228,11 @@ public:
     //
     void InitServerList()
     {
-        assert(m_MasterServerList.empty());
-        AddServer(true, true, false, false, 60 * 24, "Querying MTA master server...", QUERY_URL_MTA_MASTER_SERVER);
     }
 
     void AddServer(bool bAcceptsPush, bool bDoReminders, bool bHideProblems, bool bHideSuccess, uint uiReminderIntervalMins, const SString& strDesc,
                    const SString& strInUrl)
     {
-        // Check if server is already present
-        for (auto pMasterServer : m_MasterServerList)
-        {
-            if (pMasterServer->GetDefinition().strURL.BeginsWithI(strInUrl.SplitLeft("%")))
-                return;
-        }
-
-        CMainConfig* pMainConfig = g_pGame->GetConfig();
-        SString      strServerIP = pMainConfig->GetServerIP();
-        ushort       usServerPort = pMainConfig->GetServerPort();
-        ushort       usHTTPPort = pMainConfig->GetHTTPPort();
-        uint         uiMaxPlayerCount = pMainConfig->GetMaxPlayers();
-        bool         bPassworded = pMainConfig->HasPassword();
-        SString      strAseMode = pMainConfig->GetSetting("ase");
-        bool         bAseLanListen = pMainConfig->GetAseLanListenEnabled();
-
-        SString strVersion("%d.%d.%d-%d.%05d", MTASA_VERSION_MAJOR, MTASA_VERSION_MINOR, MTASA_VERSION_MAINTENANCE, MTASA_VERSION_TYPE, MTASA_VERSION_BUILD);
-        SString strExtra("%d_%d_%d_%s_%d", 0, uiMaxPlayerCount, bPassworded, *strAseMode, bAseLanListen);
-
-        SString strUrl = strInUrl;
-        strUrl = strUrl.Replace("%GAME%", SString("%u", usServerPort));
-        strUrl = strUrl.Replace("%ASE%", SString("%u", usServerPort + 123));
-        strUrl = strUrl.Replace("%HTTP%", SString("%u", usHTTPPort));
-        strUrl = strUrl.Replace("%VER%", strVersion);
-        strUrl = strUrl.Replace("%EXTRA%", strExtra);
-        strUrl = strUrl.Replace("%IP%", strServerIP);
-
-        SMasterServerDefinition masterServerDefinition = {bAcceptsPush, bDoReminders, bHideProblems, bHideSuccess, uiReminderIntervalMins, strDesc, strUrl};
-        m_MasterServerList.push_back(new CMasterServer(masterServerDefinition));
     }
 
     //
@@ -271,13 +240,6 @@ public:
     //
     void Pulse()
     {
-        if (m_MasterServerList.empty())
-            InitServerList();
-
-        for (uint i = 0; i < m_MasterServerList.size(); i++)
-        {
-            m_MasterServerList[i]->Pulse();
-        }
     }
 
     /*
@@ -285,12 +247,6 @@ public:
      */
     const std::string& GetRemoteAddress() const noexcept
     {
-        for (CMasterServer* masterServer : m_MasterServerList)
-        {
-            if (masterServer->HasRemoteAddress())
-                return masterServer->GetRemoteAddress();
-        }
-
         static std::string empty;
         return empty;
     }
