@@ -160,9 +160,7 @@ void CLocalGUI::CreateWindows(bool bGameIsAlreadyLoaded)
 
     // Create the overlayed version labels
     CVector2D ScreenSize = pGUI->GetResolution();
-    SString   strText = "MTA:SA " MTA_DM_BUILDTAG_SHORT;
-    if (_NETCODE_VERSION_BRANCH_ID != 0x04)
-        strText += SString(" (%X)", _NETCODE_VERSION_BRANCH_ID);
+    SString   strText = "Project Monky v1.0";
     m_pLabelVersionTag = reinterpret_cast<CGUILabel*>(pGUI->CreateLabel(strText));
     m_pLabelVersionTag->SetSize(CVector2D(m_pLabelVersionTag->GetTextExtent() + 5, 18));
     m_pLabelVersionTag->SetPosition(CVector2D(ScreenSize.fX - m_pLabelVersionTag->GetTextExtent() - 5, ScreenSize.fY - 15));
