@@ -59,9 +59,9 @@
 #endif
 
 #ifdef MTA_CLIENT
-#define MTA_DM_FULL_STRING "MTA:SA Client"
+#define MTA_DM_FULL_STRING "Project Monky Client"
 #else
-#define MTA_DM_FULL_STRING "MTA:SA Server"
+#define MTA_DM_FULL_STRING "Project Monky Server"
 #endif
 
 // Compile types

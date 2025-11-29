@@ -2213,7 +2213,6 @@ Var NetTryCount
 Var NetDone
 Var NetImage
 Var NetImageHandle
-Var NetMsgURL
 Var NetPrevInfo
 Var NetEnableNext
 Var NetOtherSuccessCount
@@ -2370,38 +2369,6 @@ Function DoSendInfo
         StrCpy $0 1
     ${EndIf}
     ${LogText} "-Function end - DoSendInfo result:$0"
-FunctionEnd
-
-;--------------------------
-; Out $NetMsgURL = URL
-Function NetComposeURL
-    ${If} $NetMsgURL == ""
-        IfFileExists "$APPDATA\Project Monky All" 0 skip
-            StrCpy $NetPrevInfo "$NetPrevInfo&pp=1"
-        skip:
-        StrCpy $NetPrevInfo "$NetPrevInfo&ver=${0.0.0}"
-    !ifndef LIGHTBUILD
-        StrCpy $NetPrevInfo "$NetPrevInfo&n=1"
-    !endif
-    !ifdef REVISION
-        StrCpy $NetPrevInfo "$NetPrevInfo&rev=${REVISION}"
-    !endif
-    ${EndIf}
-
-    IntOp $NetMirror $NetMirror + 1
-    IntOp $NetMirror $NetMirror % 2
-    ${Switch} $NetMirror
-        ${Case} 0
-            StrCpy $NetMsgURL "https://updatesa.multitheftauto.com/sa/install/1/?x=0"
-            ${Break}
-        ${Default}
-            StrCpy $NetMsgURL "https://updatesa.multitheftauto.com/sa/install/1/?x=0"
-            ${Break}
-    ${EndSwitch}
-    StrCpy $NetMsgURL "$NetMsgURL$NetPrevInfo"
-    StrCpy $NetMsgURL "$NetMsgURL&try=$NetTryCount"
-    StrCpy $NetMsgURL "$NetMsgURL&other=$NetOtherSuccessCount"
-    ${LogText} "NetComposeURL result:$NetMsgURL"
 FunctionEnd
 
 Function NoteMTAWasPresent
