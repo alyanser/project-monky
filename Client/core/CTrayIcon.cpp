@@ -14,8 +14,8 @@
 #include "resource.h"
 
 #define TRAY_DUMMY_WINDOW_NAME  L"NotificationsDummy"
-#define TRAY_BALLOON_TITLE      L"Notification from MTA:SA server"
-#define TRAY_ICON_TOOLTIP_TEXT  L"Multi Theft Auto: San Andreas"
+#define TRAY_BALLOON_TITLE      L"Notification from Project Monky"
+#define TRAY_ICON_TOOLTIP_TEXT  L"Project Monky"
 #define TRAY_BALLOON_INTERVAL   30000L // ms
 
 extern HINSTANCE g_hModule;

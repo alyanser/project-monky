@@ -441,7 +441,7 @@ CGame::~CGame()
 void CGame::GetTag(char* szInfoTag, int iInfoTag)
 {
     // Construct the info tag
-    SString strInfoTag("%c[%c%c%c] MTA: San Andreas %c:%c: %d/%d players %c:%c: %u resources", 132, 135, szProgress[ucProgress], 132, 130, 130,
+    SString strInfoTag("%c[%c%c%c] Project Monky %c:%c: %d/%d players %c:%c: %u resources", 132, 135, szProgress[ucProgress], 132, 130, 130,
                        m_pPlayerManager->Count(), m_pMainConfig->GetMaxPlayers(), 130, 130, m_pResourceManager->GetResourceLoadedCount());
 
     if (!GetConfig()->GetThreadNetEnabled())
@@ -799,7 +799,7 @@ bool CGame::Start(int iArgumentCount, char* szArguments[])
     // Show the server header
     CLogger::LogPrintfNoStamp(
         "==================================================================\n"
-        "= Multi Theft Auto: San Andreas v%s\n"
+        "= Project Monky v%s\n"
         "==================================================================\n"
         "= Server name      : %s\n"
         "= Server IP address: %s\n"
@@ -1767,7 +1767,6 @@ void CGame::Packet_PlayerJoin(const NetServerPlayerID& Source)
 
 void CGame::Packet_PlayerJoinData(CPlayerJoinDataPacket& Packet)
 {
-    // Grab the nick
     const char* szNick = Packet.GetNick();
     if (szNick && szNick[0] != 0)
     {
