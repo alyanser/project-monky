@@ -127,7 +127,7 @@ Var UninstallExePath
 !define MUI_PAGE_CUSTOMFUNCTION_LEAVE "LicenseLeaveProc"
 !insertmacro MUI_PAGE_LICENSE                   "eula.txt"
 
-Page custom CustomNetMessagePage CustomNetMessagePageLeave
+
 
 ; Components page
 ; !define MUI_PAGE_CUSTOMFUNCTION_SHOW "ComponentsShowProc"
@@ -2223,153 +2223,12 @@ LangString NETTEST_TITLE2   ${LANG_ENGLISH} "Checking for update information"
 LangString NETTEST_STATUS1  ${LANG_ENGLISH} "Checking for installer update information..."
 LangString NETTEST_STATUS2  ${LANG_ENGLISH} "Please ensure your firewall is not blocking"
 
-Function CustomNetMessagePage
-    ${LogText} "+Function begin - CustomNetMessagePage"
-    # Initial try with blank page
-    Call TryToSendInfo
-    ${If} $NetDone == 1
-        # If it works, then skip this page
-        ${LogText} "-Function end - CustomNetMessagePage (NetDone)"
-        Return
-    ${EndIf}
 
-    # Setup page
-    nsDialogs::Create 1018
-    Pop $NetDialog
-    ${If} $NetDialog == error
-        ${LogText} "-Function end - CustomNetMessagePage (error)"
-        Abort
-    ${EndIf}
 
-    GetDlgItem $0 $HWNDPARENT 1037
-    ${NSD_SetText} $0 "$(NETTEST_TITLE1)"
 
-    GetDlgItem $0 $HWNDPARENT 1038
-    ${NSD_SetText} $0 "$(NETTEST_TITLE2)"
 
-    ${NSD_CreateLabel} 0 20 100% 15 "$(NETTEST_STATUS1)"
-    Pop $NetStatusLabel1
-    ${NSD_AddStyle} $NetStatusLabel1 ${SS_CENTER}
 
-    ${NSD_CreateLabel} 0 155 100% 15 "$(NETTEST_STATUS2)"
-    Pop $NetStatusLabel2
-    ${NSD_AddStyle} $NetStatusLabel2 ${SS_CENTER}
 
-    ${NSD_CreateBitmap} 155 71 100% 100% ""
-    Pop $NetImage
-    ${NSD_SetImage} $NetImage $TEMP\image.bmp $NetImageHandle
-
-    # Disable Next button maybe
-    ${If} $NetEnableNext != 1
-        GetDlgItem $0 $HWNDPARENT ${NEXT_BUTTON_ID}
-        EnableWindow $0 0
-    ${EndIf}
-
-    Call UnexpandComponentsPage
-    ${NSD_CreateTimer} NetFuncTimer 1000
-    nsDialogs::Show
-    ${NSD_FreeImage} $NetImageHandle
-    ${LogText} "-Function end - CustomNetMessagePage"
-FunctionEnd
-
-Function CustomNetMessagePageLeave
-    ${LogText} "+Function begin - CustomNetMessagePageLeave"
-    ${NSD_KillTimer} NetFuncTimer
-    Call TryToSendInfo
-    Call UnexpandComponentsPage
-    ${LogText} "-Function end - CustomNetMessagePageLeave"
-FunctionEnd
-
-Function NetFuncTimer
-    ${LogText} "+Function begin - NetFuncTimer"
-    ${NSD_KillTimer} NetFuncTimer
-    IntOp $NetTryCount $NetTryCount + 1
-    Call TryToSendInfo
-
-    # Allow Next button after a number of tries
-    ${If} $NetTryCount > 3
-        StrCpy $NetEnableNext 1
-    ${EndIf}
-
-    ${If} $NetEnableNext == 1
-        GetDlgItem $0 $HWNDPARENT ${NEXT_BUTTON_ID}
-        EnableWindow $0 1
-    ${EndIf}
-
-    ${If} $NetDone == 1
-        # If it works now, then proceed to the next page
-        SendMessage $HWNDPARENT "0x408" "1" ""      # GotoNextPage
-    ${Else}
-        # Otherwise, try again in a second
-        ${NSD_CreateTimer} NetFuncTimer 1000
-    ${EndIf}
-    ${LogText} "-Function end - NetFuncTimer"
-FunctionEnd
-
-;--------------------------
-; Out $NetDone = result   (1 = success)
-Function TryToSendInfo
-    # Check if already done
-    ${If} $NetDone == 1
-        Return
-    ${EndIf}
-
-    ${LogText} "+Function begin - TryToSendInfo"
-
-    # Do attempt
-    Call NetComposeURL
-    StrCpy $0 $NetMsgURL
-    StrCpy $1 3000
-    Call DoSendInfo
-
-    # Set result
-    ${If} $0 == 1
-        StrCpy $NetDone 1
-    ${Else}
-        # Check if anything else is contactable
-        StrCpy $0 "https://www.google.com/"
-        StrCpy $1 1000
-        Call DoSendInfo
-        ${If} $0 == 1
-            StrCpy $NetEnableNext 1
-            IntOp $NetOtherSuccessCount $NetOtherSuccessCount + 1
-            ${If} $NetOtherSuccessCount > 3
-                StrCpy $NetDone 1
-            ${EndIf}
-        ${EndIf}
-    ${EndIf}
-    ${LogText} "-Function end - TryToSendInfo"
-FunctionEnd
-
-;--------------------------
-; In $0 = URL
-; In $1 = Timeout
-; Out $0 = result   (1 = success)
-Function DoSendInfo
-    ${LogText} "+Function begin - DoSendInfo($0,$1)"
-    NSISdl::download_quiet /TIMEOUT=$1 "$0" "$TEMP\prev_install"
-    Pop $R0
-    ${LogText} "NSISdl::download_quiet result:$R0"
-
-    # Allow for server errors #1
-    StrCpy $0 $R0 14
-    ${If} $0 == "Server did not"
-        StrCpy $R0 "success"
-    ${EndIf}
-
-    # Allow for server errors #2
-    StrCpy $0 $R0 4
-    ${If} $0 == "HTTP"
-        StrCpy $R0 "success"
-    ${EndIf}
-
-    # Set result
-    StrCpy $0 0
-    ${If} $R0 == "success"
-        StrCpy $0 1
-    ${EndIf}
-    ${LogText} "-Function end - DoSendInfo result:$0"
-FunctionEnd
 
 Function NoteMTAWasPresent
     StrCpy $NetPrevInfo "$NetPrevInfo&pm=1"
