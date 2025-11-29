@@ -1550,7 +1550,7 @@ bool CConsoleCommands::ReloadModule(CConsole* pConsole, const char* szArguments,
 
 bool CConsoleCommands::Ver(CConsole* pConsole, const char* szArguments, CClient* pClient, CClient* pEchoClient)
 {
-    pEchoClient->SendConsole(MTA_DM_FULL_STRING " v" MTA_DM_BUILDTAG_LONG);
+    pEchoClient->SendConsole(MTA_DM_FULL_STRING);
     return true;
 }
 

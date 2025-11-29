@@ -19,7 +19,7 @@
 bool CPlayerConnectCompletePacket::Write(NetBitStreamInterface& BitStream) const
 {
     // Send the connection string
-    SString strConnText("%s %s", MTA_DM_FULL_STRING, MTA_DM_VERSIONSTRING);
+    SString strConnText("%s 1.0", MTA_DM_FULL_STRING);
     BitStream.WriteString(strConnText.Left(MAX_CONN_TEXT_LEN));
 
     // Send the full server version

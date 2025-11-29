@@ -799,7 +799,7 @@ bool CGame::Start(int iArgumentCount, char* szArguments[])
     // Show the server header
     CLogger::LogPrintfNoStamp(
         "==================================================================\n"
-        "= Project Monky v%s\n"
+        "= Project Monky v1.0\n"
         "==================================================================\n"
         "= Server name      : %s\n"
         "= Server IP address: %s\n"
@@ -810,9 +810,8 @@ bool CGame::Start(int iArgumentCount, char* szArguments[])
         "= HTTP port        : %u\n"
         "= Voice Chat       : %s\n"
         "= Bandwidth saving : %s\n"
-        "==================================================================\n",
-
-        MTA_DM_BUILDTAG_SHORT
+        "==================================================================\n"
+        
 #ifdef ANY_x64
         " [64 bit]"
 #elif defined(ANY_arm)
@@ -4821,10 +4820,6 @@ CMtaVersion CGame::CalculateMinClientRequirement()
     if (strNewMin != m_strPrevMinClientConnectRequirement)
     {
         m_strPrevMinClientConnectRequirement = strNewMin;
-        if (!strNewMin.empty())
-            CLogger::LogPrintf(SString("Server minclientversion is now %s\n", *strNewMin));
-        else
-            CLogger::LogPrintf("Server minclientversion is now cleared\n");
     }
 
     // Handle settings that change depending on the lowest connected player version

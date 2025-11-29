@@ -267,6 +267,7 @@ SString CInstallManager::Continue()
     AddReportLog(1041, SString("* Launch * pid:%d '%s' MTASAPath set from %s '%s'", dwProcessId, GetLaunchPathFilename().c_str(), GotPathFrom.c_str(),
                                GetMTASAPath().c_str()));
 
+
     // Run sequencer
     for (int i = 0; !m_pSequencer->AtEnd() && i < 1000; i++)
         m_pSequencer->ProcessNextLine();
@@ -366,8 +367,8 @@ SString CInstallManager::_ChangeToAdmin()
     if (!IsUserAdmin())
     {
         MessageBoxUTF8(
-            NULL, SString(_("MTA:SA needs Administrator access for the following task:\n\n  '%s'\n\nPlease confirm in the next window."), *m_strAdminReason),
-            "Multi Theft Auto: San Andreas", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
+            NULL, SString(_("Project Monky needs Administrator access for the following task:\n\n  '%s'\n\nPlease confirm in the next window."), *m_strAdminReason),
+            "Project Monky", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
         SetIsBlockingUserProcess();
         ReleaseSingleInstanceMutex();
         if (ShellExecuteBlocking("runas", GetLauncherPathFilename(), GetSequencerSnapshot()))
@@ -381,8 +382,8 @@ SString CInstallManager::_ChangeToAdmin()
         }
         CreateSingleInstanceMutex();
         ClearIsBlockingUserProcess();
-        MessageBoxUTF8(NULL, SString(_("MTA:SA could not complete the following task:\n\n  '%s'\n"), *m_strAdminReason),
-                       "Multi Theft Auto: San Andreas" + _E("CL01"), MB_OK | MB_ICONWARNING | MB_TOPMOST);
+        MessageBoxUTF8(NULL, SString(_("Project Monky could not complete the following task:\n\n  '%s'\n"), *m_strAdminReason),
+                       "Project Monky" + _E("CL01"), MB_OK | MB_ICONWARNING | MB_TOPMOST);
     }
     return "fail";
 }
