@@ -1452,7 +1452,7 @@ bool SharedUtil::ProcessPendingBrowseToSolution()
     ClearPendingBrowseToSolution();
 
     SString strTitle;
-    strTitle.Format("MTA: San Andreas %s   (CTRL+C to copy)", strErrorCode.c_str());
+    strTitle.Format("Project Monky %s   (CTRL+C to copy)", strErrorCode.c_str());
     // Show message if set, ask question if required, and then launch URL
     if (iFlags & ASK_GO_ONLINE)
     {
@@ -1473,7 +1473,7 @@ bool SharedUtil::ProcessPendingBrowseToSolution()
     MessageBoxUTF8(
         NULL,
         _("Your browser will now display a web page with some help infomation.\n\n(If the page fails to load, paste (CTRL-V) the URL into your web browser)"),
-        "MTA: San Andreas", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
+        "Project Monky", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
 
     SString strQueryURL = GetApplicationSetting("trouble-url");
     if (strQueryURL == "")

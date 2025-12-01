@@ -609,7 +609,7 @@ auto SetImportProcAddress(const char* moduleName, const char* procedureName, FAR
  */
 int DisplayMessageBox(const std::wstring& message, const std::wstring& errorCode, UINT flags)
 {
-    std::wstring caption = L"MTA: San Andreas  [" + errorCode + L"]   (CTRL+C to copy)";
+    std::wstring caption = L"Project Monky  [" + errorCode + L"]   (CTRL+C to copy)";
     std::wstring extended = message;
     extended +=
         L"\n\nIf you are unable to resolve this issue on your own, "
@@ -907,7 +907,7 @@ auto MakeLauncherError(std::wstring message) -> std::wstring
         message += L"\n\n";
 
     message +=
-        L"Please launch the game through the Multi Theft Auto launcher executable. "
+        L"Please launch the game through the Project Monky launcher executable. "
         L"You can find the launcher either on your desktop or in the MTA:SA installation directory.";
 
     return message;

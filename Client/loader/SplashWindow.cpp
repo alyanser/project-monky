@@ -120,7 +120,7 @@ bool Splash::CreateSplashWindow(HINSTANCE instance)
             return false;
     }
 
-    HWND window = CreateWindow(windowClass.lpszClassName, "Multi Theft Auto Launcher", WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
+    HWND window = CreateWindow(windowClass.lpszClassName, "Projet Monky Launcher", WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
                                NULL, NULL, instance, NULL);
 
     if (window == nullptr)

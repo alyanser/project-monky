@@ -48,7 +48,7 @@ namespace {
     
     inline constexpr std::string_view ERROR_MSG_PREFIX = "ShowCrashedDialog: CreateDialogW failed with error ";
     inline constexpr std::string_view CRASH_MSG_DIALOG_FAIL = "MTA has crashed. (Failed to create crash dialog)";
-    inline constexpr std::string_view CRASH_TITLE_FATAL = "MTA: San Andreas - Fatal Error";
+    inline constexpr std::string_view CRASH_TITLE_FATAL = "Project Monky - Fatal Error";
     inline constexpr std::wstring_view DEFAULT_ERROR_MSG = L"An error occurred. No details available.";
     inline constexpr size_t MAX_CRASH_MESSAGE_LENGTH = 65536;
     static_assert(ERROR_MSG_PREFIX.size() <= INT_MAX, "ERROR_MSG_PREFIX too long for int cast");
@@ -80,18 +80,18 @@ const SDialogItemInfo g_ProgressDialogItems[] = {
 };
 
 const SDialogItemInfo g_CrashedDialogItems[] = {
-    {0, 0, _td("MTA: San Andreas has encountered a problem")},
+    {0, 0, _td("Project Monky has encountered a problem")},
     {IDC_CRASH_HEAD, 0, _td("Crash information")},
     {IDC_SEND_DUMP_CHECK, 0, _td("Tick the check box to send this crash info to MTA devs using the 'internet'")},
     {IDC_SEND_DESC_STATIC, 0, _td("Doing so will increase the chance of this crash being fixed.")},
-    {IDC_RESTART_QUESTION_STATIC, 1, _td("Do you want to restart MTA: San Andreas ?")},
+    {IDC_RESTART_QUESTION_STATIC, 1, _td("Do you want to restart Project Monky ?")},
     {IDCANCEL, 0, dialogStringsNo},
     {IDOK, 0, dialogStringsYes},
     {-1},
 };
 
 const SDialogItemInfo g_GraphicsDllDialogItems[] = {
-    {0, 0, _td("MTA: San Andreas - Warning")},
+    {0, 0, _td("Project Monky - Warning")},
     {IDC_D3DDLL_TEXT1, 0, _td("Your Grand Theft Auto: San Andreas install directory contains these files:")},
     {IDC_D3DDLL_TEXT2, 0,
      _td("These files are not required and may interfere with the graphical features in this version of MTA:SA.\n\n"
@@ -106,7 +106,7 @@ const SDialogItemInfo g_GraphicsDllDialogItems[] = {
 };
 
 const SDialogItemInfo g_OptimusDialogItems[] = {
-    {0, 0, _td("MTA: San Andreas - Confusing options")},
+    {0, 0, _td("Project Monky - Confusing options")},
     {IDC_OPTIMUS_TEXT1, 0, _td("NVidia Optimus detected!")},
     {IDC_OPTIMUS_TEXT2, 0, _td("Try each option and see what works:")},
     {IDC_RADIO1, 1, _td("A - Standard NVidia")},
@@ -123,7 +123,7 @@ const SDialogItemInfo g_OptimusDialogItems[] = {
 };
 
 const SDialogItemInfo g_NoAvDialogItems[] = {
-    {0, 0, _td("MTA: San Andreas")},
+    {0, 0, _td("Project Monky")},
     {IDC_NOAV_TEXT1, 0, _td("Warning: Could not detect anti-virus product")},
     {IDC_NOAV_TEXT2, 0,
      _td("MTA could not detect an anti-virus on your PC.\n\n"
@@ -362,7 +362,7 @@ void StopPseudoProgress()
         !validHandle || !*validHandle) [[unlikely]]
     {
         try {
-            MessageBoxA(nullptr, "MTA has crashed."sv.data(), "MTA: San Andreas"sv.data(), MB_OK | MB_ICONERROR | MB_TOPMOST);
+            MessageBoxA(nullptr, "MTA has crashed."sv.data(), "Project Monky"sv.data(), MB_OK | MB_ICONERROR | MB_TOPMOST);
         }
         catch (...) {
         }
@@ -422,7 +422,7 @@ void StopPseudoProgress()
         if (!guard) [[unlikely]]
         {
             try {
-                MessageBoxA(nullptr, "MTA has crashed."sv.data(), "MTA: San Andreas"sv.data(),
+                MessageBoxA(nullptr, "MTA has crashed."sv.data(), "Project Monky"sv.data(),
                            MB_OK | MB_ICONERROR | MB_TOPMOST | MB_SETFOREGROUND);
             }
             catch (...) {
@@ -662,7 +662,7 @@ void ShowOOMMessageBox([[maybe_unused]] HINSTANCE hInstance)
 {
     static constexpr const char* fallbackMessage = 
         "The crash you experienced is due to memory abuse by servers. Contact server owner or MTA support.";
-    static constexpr const char* fallbackTitle = "MTA: San Andreas - Out of Memory Crash";
+    static constexpr const char* fallbackTitle = "Project Monky - Out of Memory Crash";
 
     const char* message = _("The crash you experienced is due to memory abuse by servers.\n\n"
         "Even with plenty of RAM, this is a x86 game with address space limits up to 3.6GB "
@@ -670,7 +670,7 @@ void ShowOOMMessageBox([[maybe_unused]] HINSTANCE hInstance)
         "can make this happen, as well as lag your game.\n\n"
         "Contact the server owner or MTA support in the MTA official discord (https://discord.gg/mtasa) for more information.");
     
-    const char* title = _("MTA: San Andreas - Out of Memory Information");
+    const char* title = _("Project Monky - Out of Memory Information");
 
     MessageBoxA(NULL, 
                 message ? message : fallbackMessage,
@@ -1029,7 +1029,7 @@ void TestDialogs()
     }
     HideProgressDialog();
 
-    ShowProgressDialog( g_hInstance, "MTA: San Andreas" );
+    ShowProgressDialog( g_hInstance, "Project Monky" );
     for ( uint i = 0 ; i < 100 ; i++ )
     {
         UpdateProgress( i, 100, _("Installing update...") );
@@ -1037,7 +1037,7 @@ void TestDialogs()
     }
     HideProgressDialog();
 
-    ShowProgressDialog( g_hInstance, "MTA: San Andreas" );
+    ShowProgressDialog( g_hInstance, "Project Monky" );
     for ( uint i = 0 ; i < 100 ; i++ )
     {
         UpdateProgress( i, 100, _("Extracting files..." ) );
