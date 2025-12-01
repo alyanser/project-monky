@@ -2657,7 +2657,7 @@ bool CSettings::OnVideoDefaultClick(CGUIElement* pElement)
     CGameSettings* gameSettings = CCore::GetSingleton().GetGame()->GetSettings();
 
     CVARS_SET("aspect_ratio", ASPECT_RATIO_AUTO);
-    CVARS_SET("fov", 70);
+    CVARS_SET("fov", 90);
     CVARS_SET("anisotropic", 0);
     CVARS_SET("volumetric_shadows", false);
     CVARS_SET("grass", true);

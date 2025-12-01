@@ -386,7 +386,7 @@ void CClientVariables::LoadDefaults()
     DEFAULT("mute_voice_when_minimized", 0);                                          // 0-off 1-on
     DEFAULT("share_file_cache", 1);                                                   // 0-no 1-share client resource file cache with other MTA installs
     DEFAULT("show_unsafe_resolutions", 0);                                            // 0-off 1-show resolutions that are higher that the desktop
-    DEFAULT("fov", 70);                                                               // Camera field of view
+    DEFAULT("fov", 90);                                                               // Camera field of view
     DEFAULT("browser_remote_websites", true);                                         // Load remote websites?
     DEFAULT("browser_remote_javascript", true);                                       // Execute javascript on remote websites?
     DEFAULT("filter_duplicate_log_lines", true);                                      // Filter duplicate log lines for debug view and clientscript.log
