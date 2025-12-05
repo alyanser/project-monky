@@ -2,7 +2,7 @@ project "Launcher"
 	language "C++"
 	kind "ConsoleApp"
 	targetdir(buildpath("server"))
-	targetname "mta-server"
+	targetname "project-monky-server"
 
 	includedirs {
 		"../../Shared/sdk",

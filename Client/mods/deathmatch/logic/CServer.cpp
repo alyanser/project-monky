@@ -14,9 +14,9 @@
 #include <string_view>
 
 #ifdef MTA_DEBUG
-    #define SERVER_EXE_PATH "MTA Server_d.exe"
+    #define SERVER_EXE_PATH "Project Monky Server_d.exe"
 #else
-    #define SERVER_EXE_PATH "MTA Server.exe"
+    #define SERVER_EXE_PATH "Project Monky Server.exe"
 #endif
 
 constexpr UINT PROCESS_FORCEFULLY_TERMINATED = 0x90804050u;

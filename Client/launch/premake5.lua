@@ -1,7 +1,7 @@
 project "Client Launcher"
 	language "C++"
 	kind "WindowedApp"
-	targetname "Multi Theft Auto"
+	targetname "Project Monky"
 	targetdir(buildpath("."))
 	debugdir(buildpath("."))
 
