@@ -23,7 +23,7 @@ project "Launcher"
 	}
 
 	filter "system:windows"
-		targetname "MTA Server"
+		targetname "Project Monky Server"
 		staticruntime "On"
 		files {
 			"launcher.rc",
@@ -36,19 +36,19 @@ project "Launcher"
 		linkoptions { "-pthread", "-rdynamic" }
 
 	filter "platforms:arm"
-		targetname "mta-server-arm"
+		targetname "project-monky-server-arm"
 
 	filter "platforms:arm64"
-		targetname "mta-server-arm64"
+		targetname "project-monky-server-arm64"
 
 	filter { "system:linux", "platforms:x64" }
-		targetname "mta-server64"
+		targetname "project-monky-server"
 
 	filter { "system:windows", "platforms:x64" }
-		targetname "MTA Server64"
+		targetname "Project Monky Server"
 
 	filter { "system:windows", "platforms:arm" }
-		targetname "MTA Server ARM"
+		targetname "Project Monky Server ARM"
 
 	filter { "system:windows", "platforms:arm64" }
-		targetname "MTA Server ARM64"
+		targetname "Project Monky Server ARM64"
