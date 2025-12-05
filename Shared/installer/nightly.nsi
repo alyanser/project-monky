@@ -1632,7 +1632,7 @@ FunctionEnd
 ;          "0.0.0.0" if no file
 Function GetVersionAtLocation
     ; Check installed version at this location
-    StrCpy $5 "$0\MTA\core.dll"
+    StrCpy $5 "$0\Project Monky.exe"
 
     ClearErrors
     GetDLLVersion $5 $R0 $R1
